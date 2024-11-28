@@ -1,9 +1,9 @@
 "use client";
+import ColorThemeSwitch from "@/components/ColorThemeSwitch/ColorThemeSwitch";
+import LogoSvg from "@/components/LogoSvg/LogoSvg";
 import { AppShell, Burger, Container, Flex, List } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
-import LogoSvg from "../LogoSvg";
-import ColorThemeSwitch from "./ColorThemeSwitch";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const [opened, { toggle }] = useDisclosure();
