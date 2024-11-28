@@ -4,8 +4,8 @@ import Layout from "../components/Layout/Layout";
 import { theme } from "../theme";
 
 export const metadata = {
-	title: "Asterius",
-	description: "Another algorithm visualizer",
+	title: "Corbin Murray | Software Engineer",
+	description: "Portfolio website for Corbin Murray",
 };
 
 export default function RootLayout({ children }: { children: any }) {
