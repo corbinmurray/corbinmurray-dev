@@ -1,0 +1,7 @@
+.polygon {
+	color: var(--mantine-primary-color-5)
+}
+
+.text {
+	color: var(--mantine-primary-color-contrast);
+}
