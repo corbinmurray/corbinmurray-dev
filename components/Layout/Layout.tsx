@@ -52,7 +52,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				</Stack>
 
 				<Stack hiddenFrom="sm" align="center">
-					<Link href="#projects" className={clsx(classes["nav-link"])}>
+					<Link href="#about" className={clsx(classes["nav-link"])} onClick={toggle}>
+						About Me
+					</Link>
+					<Link href="#experience" className={clsx(classes["nav-link"])} onClick={toggle}>
+						Work Experience
+					</Link>
+					<Link href="#projects" className={clsx(classes["nav-link"])} onClick={toggle}>
 						Projects
 					</Link>
 					<ColorThemeSwitch />
