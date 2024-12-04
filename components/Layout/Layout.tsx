@@ -51,7 +51,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 					<EmailSvg className={classes["social-link"]} />
 				</Stack>
 
-				<Stack hiddenFrom="sm" align="center">
+				<Stack hiddenFrom="sm" align="center" gap="xl">
 					<Link href="#about" className={clsx(classes["nav-link"])} onClick={toggle}>
 						About Me
 					</Link>
