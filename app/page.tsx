@@ -19,7 +19,7 @@ export default function HomePage() {
 						I lead projects focused on optimizing software processes and ensuring scalable solutions. My career spans developing complex integrations, building
 						robust microservices, and mentoring teams to establish standards in fast-paced environments.
 					</Text>
-					<Button component="a" href="/Corbin Murray - Resume.pdf" target="_blank" variant="outline" color="accent" mt="md">
+					<Button component="a" href="/Corbin Murray - Resume.pdf" target="_blank" variant="outline" color="neutral" mt="md">
 						Resume
 					</Button>
 				</Stack>
