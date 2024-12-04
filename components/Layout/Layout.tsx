@@ -65,8 +65,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				</Stack>
 			</AppShell.Navbar>
 
-			<AppShell.Main>
-				<Container p="0">{children}</Container>
+			<AppShell.Main p="xl">
+				<Container p={0} m={0}>
+					{children}
+				</Container>
 			</AppShell.Main>
 		</AppShell>
 	);
