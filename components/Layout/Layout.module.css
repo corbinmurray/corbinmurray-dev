@@ -1,0 +1,21 @@
+.nav-link {
+	text-decoration: none;
+	color: var(--mantine-color-text);
+}
+
+.nav-link:hover {
+	text-decoration: underline;
+}
+
+.social-link {
+	width: 1.5rem;
+	height: 1.5rem;
+	color: var(--mantine-color-neutral-filled);
+}
+
+.social-link:hover {
+	color: var(--mantine-color-neutral-filled-hover);
+	cursor: pointer;
+	transition: color;
+	transition-delay: 0.3;
+}
