@@ -1,9 +1,15 @@
 "use client";
 import ColorThemeSwitch from "@/components/ColorThemeSwitch/ColorThemeSwitch";
+import EmailSvg from "@/components/EmailSvg";
+import GitHubSvg from "@/components/GitHubSvg";
+import LinkedInSvg from "@/components/LinkedInSvg";
 import LogoSvg from "@/components/LogoSvg/LogoSvg";
-import { AppShell, Burger, Container, Flex, List } from "@mantine/core";
+import { AppShell, Burger, Container, Flex, Group, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import clsx from "clsx";
+import Link from "next/link";
 import React from "react";
+import classes from "./Layout.module.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const [opened, { toggle }] = useDisclosure();
@@ -29,17 +35,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				<Flex align="center" justify="space-between">
 					<Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="md" />
 					<LogoSvg height={40} width={40} />
-					<ColorThemeSwitch />
+					<Group visibleFrom="sm">
+						<Link href="#projects" className={clsx(classes["nav-link"])}>
+							Projects
+						</Link>
+						<ColorThemeSwitch />
+					</Group>
 				</Flex>
 			</AppShell.Header>
 
 			<AppShell.Navbar p="xl" withBorder={false}>
-				<List listStyleType="none" type="unordered" spacing="lg">
-					<List.Item>item 1</List.Item>
-					<List.Item>item 2</List.Item>
-					<List.Item>item 3</List.Item>
-					<List.Item>item 4</List.Item>
-				</List>
+				<Stack gap="lg" justify="center" align="flex-start" h="100%" visibleFrom="sm">
+					<GitHubSvg className={classes["social-link"]} />
+					<LinkedInSvg className={classes["social-link"]} />
+					<EmailSvg className={classes["social-link"]} />
+				</Stack>
+
+				<Stack hiddenFrom="sm" align="center">
+					<Link href="#projects" className={clsx(classes["nav-link"])}>
+						Projects
+					</Link>
+					<ColorThemeSwitch />
+				</Stack>
 			</AppShell.Navbar>
 
 			<AppShell.Main>
