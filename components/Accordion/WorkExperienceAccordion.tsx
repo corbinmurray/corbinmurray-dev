@@ -8,13 +8,15 @@ const WorkExperienceAccordion = ({
 	experiences: { dateRange: string; companyName: string; positionTitle: string; descriptions: string[] }[];
 }) => {
 	return (
-		<Accordion defaultValue={experiences[0].companyName}>
+		<Accordion multiple defaultValue={[experiences[0].companyName]}>
 			{experiences.map((experience, i) => {
 				return (
 					<Accordion.Item key={i} value={experience.companyName}>
 						<Accordion.Control>
 							<Flex justify="space-between" align="center" px="sm">
-								<Text c="secondary" size="lg">{experience.companyName}</Text>
+								<Text c="secondary" size="lg">
+									{experience.companyName}
+								</Text>
 								<Text size="xs">
 									<em>{experience.dateRange}</em>{" "}
 								</Text>
@@ -23,7 +25,9 @@ const WorkExperienceAccordion = ({
 
 						<Accordion.Panel>
 							<Box px="sm">
-								<Title order={5} mb="md">{experience.positionTitle}</Title>
+								<Title order={5} mb="md">
+									{experience.positionTitle}
+								</Title>
 								{experience.descriptions.map((description, ii) => {
 									return (
 										<Box key={ii}>
