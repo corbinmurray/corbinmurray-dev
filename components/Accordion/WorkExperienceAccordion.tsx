@@ -14,7 +14,7 @@ const WorkExperienceAccordion = ({
 					<Accordion.Item key={i} value={experience.companyName}>
 						<Accordion.Control>
 							<Flex justify="space-between" align="center" px="sm">
-								<Title order={4}>{experience.companyName}</Title>
+								<Text c="secondary" size="lg">{experience.companyName}</Text>
 								<Text size="xs">
 									<em>{experience.dateRange}</em>{" "}
 								</Text>
