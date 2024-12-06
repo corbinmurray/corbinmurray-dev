@@ -8,7 +8,7 @@ const WorkExperienceAccordion = ({
 	experiences: { dateRange: string; companyName: string; positionTitle: string; descriptions: string[] }[];
 }) => {
 	return (
-		<Accordion>
+		<Accordion defaultValue={experiences[0].companyName}>
 			{experiences.map((experience, i) => {
 				return (
 					<Accordion.Item key={i} value={experience.companyName}>
