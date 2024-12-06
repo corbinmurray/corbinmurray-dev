@@ -1,16 +1,37 @@
-
 .text-primary {
-    color: var(--mantine-primary-color-5);
+	color: var(--mantine-primary-color-5);
 }
 
 .font-sans {
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.leading-tight {
+	line-height: 0.9;
+}
+
+.leading-relaxed {
+	line-height: 1.1;
 }
 
 .hero {
-    height: calc(100vh - 100px);
+	min-height: calc(100vh - 100px);
+	height: calc(100vh - 100px);
+}
+
+.about-me {
+	margin-top: calc(100px + 1.5rem);
+}
+
+.experience {
+	margin-top: calc(100px + 1.5rem);
+}
+
+.skills {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
