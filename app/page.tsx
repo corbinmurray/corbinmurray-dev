@@ -1,6 +1,8 @@
 import WorkExperienceAccordion from "@/components/Accordion/WorkExperienceAccordion";
+import GitHubSvg from "@/components/GitHubSvg";
 import experiences from "@/lib/experiences.json";
-import { Button, Center, Stack, Text, Title } from "@mantine/core";
+import projects from "@/lib/projects.json";
+import { Anchor, Badge, Button, Center, Group, Paper, Stack, Text, Title } from "@mantine/core";
 import clsx from "clsx";
 import classes from "./page.module.css";
 
@@ -40,11 +42,11 @@ export default function HomePage() {
 					</Title>
 				</Center>
 
-				<Text>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</Text>
+				<Text maw="65ch">Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</Text>
 
 				<br></br>
 
-				<Text>
+				<Text maw="65ch">
 					I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
 					excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
 					motivated to continuously learn, improve, and push boundaries. Whether it&apos;s debugging intricate issues, architecting scalable systems, or
@@ -72,17 +74,48 @@ export default function HomePage() {
 				</Center>
 
 				<WorkExperienceAccordion experiences={experiences} />
+			</section>
 
-				{/* <Accordion>
-					{experiences.map((experience, i) => {
+			<section id="projects" className={clsx(classes.projects)}>
+				<Center>
+					<Title order={1} size="clamp(26px,5vw,32px)" mb="xl" textWrap="nowrap">
+						Projects
+					</Title>
+				</Center>
+
+				<Stack>
+					{projects.map((project, i) => {
 						return (
-							<Accordion.Item key={i} value={experience.companyName}>
-								<Accordion.Control>{experience.companyName}</Accordion.Control>
-								<Accordion.Panel>{experience.descriptions}</Accordion.Panel>
-							</Accordion.Item>
+							<Paper key={i} radius="md" shadow="lg" withBorder p="md">
+								<Group justify="space-between" align="center">
+									<Title order={3}>
+										{project.title}
+									</Title>
+
+									<Anchor href={project.githubLink} target="_blank" c="neutral">
+										<GitHubSvg className={clsx(classes["svg-link"])} />
+									</Anchor>
+								</Group>
+
+								<br />
+
+								<Text maw="65ch">{project.description}</Text>
+
+								<br />
+
+								<Group gap="sm">
+									{project.skills.map((skill, ii) => {
+										return (
+											<Badge key={ii} autoContrast variant="outline" color="neutral" size="sm">
+												{skill}
+											</Badge>
+										);
+									})}
+								</Group>
+							</Paper>
 						);
 					})}
-				</Accordion> */}
+				</Stack>
 			</section>
 		</>
 	);
