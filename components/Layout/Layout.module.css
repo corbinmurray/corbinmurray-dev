@@ -19,3 +19,18 @@
 	transition: color;
 	transition-delay: 0.3;
 }
+
+.margin-top-lg {
+	margin-top: calc(100px + 1.5rem);
+}
+
+.exclamation {
+	height: 1.5rem;
+	width: 1.5rem;
+	color: var(--mantine-color-accent-text);
+}
+
+.message {
+	height: 1rem;
+	width: 1rem;
+}

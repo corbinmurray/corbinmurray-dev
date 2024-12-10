@@ -14,7 +14,7 @@ const WorkExperienceAccordion = ({
 					<Accordion.Item key={i} value={experience.companyName}>
 						<Accordion.Control>
 							<Flex justify="space-between" align="center" px="sm">
-								<Text c="secondary" size="lg">
+								<Text c="neutral" size="lg">
 									{experience.companyName}
 								</Text>
 								<Text size="xs">
@@ -31,7 +31,7 @@ const WorkExperienceAccordion = ({
 								{experience.descriptions.map((description, ii) => {
 									return (
 										<Box key={ii}>
-											<Text>{description}</Text>
+											<Text maw="65ch">{description}</Text>
 											<br />
 										</Box>
 									);
