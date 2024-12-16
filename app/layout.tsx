@@ -1,17 +1,20 @@
 import Navbar from "@/components/ui/navbar";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans, Overpass_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const fontMono = Overpass_Mono({
+	variable: "--font-mono",
 	subsets: ["latin"],
+	weight: ["400"],
 });
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const fontSans = Open_Sans({
+	variable: "--font-sans",
 	subsets: ["latin"],
+	weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -47,10 +50,10 @@ export default function RootLayout({
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+			<body className={cn(fontMono.variable, fontSans.variable, "font-sans", "antialiased", "scroll-smooth")}>
+				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar />
-					<div className="container py-0 mx-auto flex items-center justify-between px-4">{children}</div>
+					<div className="container py-0 mx-auto flex items-center justify-center px-4">{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
