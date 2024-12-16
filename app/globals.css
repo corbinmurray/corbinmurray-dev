@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 15 20% 96%;
@@ -23,8 +19,8 @@ body {
     --secondary: 350 23% 26%;
     --secondary-foreground: 15 20% 96%;
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 207 43% 9%;
+    --muted-foreground: 207 43% 9%;
 
     --accent: 248 31% 30%;
     --accent-foreground: 15 20% 96%;
