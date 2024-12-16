@@ -28,7 +28,7 @@ export default function NavBar() {
 				</svg>
 
 				{/* Links (Desktop) */}
-				<div className="hidden md:flex space-x-6">
+				<div className="hidden md:flex space-x-8">
 					<Link href="#hero" className="text-sm font-medium text-foreground hover:text-primary">
 						Home
 					</Link>
@@ -63,7 +63,7 @@ export default function NavBar() {
 								stiffness: 300,
 								damping: 30,
 							}}>
-							<div className="flex flex-col p-6 space-y-4 mt-24 items-center">
+							<div className="flex flex-col p-6 space-y-8 mt-24 items-center">
 								<Link href="#hero" className="text-sm font-medium text-foreground hover:text-primary" onClick={closeMenu}>
 									Home
 								</Link>
