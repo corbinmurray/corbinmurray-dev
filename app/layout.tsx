@@ -1,3 +1,4 @@
+import Navbar from "@/components/ui/navbar";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -47,8 +48,9 @@ export default function RootLayout({
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					{children}
+				<ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+					<Navbar />
+					<div className="container py-0 mx-auto flex items-center justify-between px-4">{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>
