@@ -15,7 +15,7 @@ export default async function Home() {
 						</p>
 					</article>
 
-					<Button asChild variant="outline" size="wide">
+					<Button asChild variant="outline" size="blockToWide">
 						<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize mt-5">
 							resume
 						</a>
