@@ -23,6 +23,7 @@ const buttonVariants = cva(
 				icon: "h-10 w-10",
 				wide: "h-10 px-28 py-2",
 				block: "h-10 w-full py-2",
+				blockToWide: "h-10 w-full py-2 md:px-28 md:w-auto"
 			},
 		},
 		defaultVariants: {
