@@ -96,6 +96,6 @@
   }
 
   article {
-    @apply dark:prose-invert
+    @apply prose dark:prose-invert
   }
 }
