@@ -1,4 +1,6 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import experiences from "@/lib/experiences.json";
 
 export default async function Home() {
 	return (
@@ -51,13 +53,40 @@ export default async function Home() {
 					</ul>
 				</article>
 			</section>
+
+			<section id="experience" className="scroll-mt-28">
+				<SectionHeader>Work Experience</SectionHeader>
+
+				<Accordion type="multiple" defaultValue={[experiences[0].companyName]} orientation="horizontal" dir="ltr">
+					{experiences.map((experience, i) => {
+						return (
+							<AccordionItem key={i} value={experience.companyName}>
+								<AccordionTrigger>
+									<div className="w-full pe-3 flex justify-between items-end">
+										<h3 className="text-secondary">{experience.companyName}</h3>
+										<h4 className="text-sm italic">{experience.dateRange}</h4>
+									</div>
+								</AccordionTrigger>
+								<AccordionContent>
+									<article>
+										<h4>{experience.positionTitle}</h4>
+										{experience.descriptions.map((description, ii) => {
+											return <p key={ii}>{description}</p>;
+										})}
+									</article>
+								</AccordionContent>
+							</AccordionItem>
+						);
+					})}
+				</Accordion>
+			</section>
 		</main>
 	);
 }
 
 const SectionHeader = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div className="capitalize flex justify-center items-center mb-8">
+		<div className="capitalize flex justify-center items-center my-20">
 			<h1>{children}</h1>
 		</div>
 	);
