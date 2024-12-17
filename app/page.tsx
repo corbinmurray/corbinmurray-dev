@@ -1,6 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
+import projects from "@/lib/projects.json";
 
 export default async function Home() {
 	return (
@@ -79,6 +81,30 @@ export default async function Home() {
 						);
 					})}
 				</Accordion>
+			</section>
+
+			<section id="projects" className="scroll-mt-28">
+				<SectionHeader>Projects</SectionHeader>
+
+				<div className="space-y-8">
+					{projects.map((project, i) => {
+						return (
+							<Card key={i}>
+								<CardHeader>
+									<CardTitle className="text-secondary">{project.title}</CardTitle>
+								</CardHeader>
+								<CardContent>
+									<article>
+										<p>{project.description}</p>
+									</article>
+								</CardContent>
+								<CardFooter>
+									<a href={project.githubLink}>GitHub</a>
+								</CardFooter>
+							</Card>
+						);
+					})}
+				</div>
 			</section>
 		</main>
 	);
