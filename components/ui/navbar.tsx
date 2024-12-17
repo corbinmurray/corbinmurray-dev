@@ -10,22 +10,30 @@ export default function NavBar() {
 	const closeMenu = () => setMenuOpen(false);
 
 	return (
-		<nav className="fixed top-0 w-full z-50 h-20 border-b bg-background">
-			<div className="container mx-auto flex items-center justify-between p-4 h-full">
+		<motion.nav className="w-full z-50 h-20 border-b bg-background">
+			<motion.div className="container mx-auto flex items-center justify-between p-4 h-full">
 				{/* Brand */}
 				<div className="text-xl font-bold text-primary">Brand</div>
 
 				{/* Hamburger Menu (Mobile) */}
-				<svg
+				<motion.svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
 					strokeWidth={2}
 					stroke="currentColor"
 					onClick={() => setMenuOpen(!menuOpen)}
-					className="w-6 h-6 md:hidden z-[100] hover:cursor-pointer hover:scale-105">
-					<path strokeLinecap="round" strokeLinejoin="round" d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-				</svg>
+					className="w-6 h-6 md:hidden z-[51] hover:cursor-pointer hover:scale-105"
+					initial={false}
+					animate={{ rotate: menuOpen ? 90 : 0 }} // Optionally animate rotation
+					transition={{ duration: 0.3 }}>
+					<motion.path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+						transition={{ duration: 0.3 }} // Smooth transition for path change
+					/>
+				</motion.svg>
 
 				{/* Links (Desktop) */}
 				<div className="hidden md:flex space-x-8">
@@ -41,8 +49,9 @@ export default function NavBar() {
 					<Link href="#projects" className="text-sm font-medium text-foreground hover:text-primary">
 						Projects
 					</Link>
+					<ThemeToggle />
 				</div>
-			</div>
+			</motion.div>
 
 			{/* Full-Screen Overlay for Mobile Menu */}
 			<AnimatePresence>
@@ -82,6 +91,6 @@ export default function NavBar() {
 					</>
 				)}
 			</AnimatePresence>
-		</nav>
+		</motion.nav>
 	);
 }
