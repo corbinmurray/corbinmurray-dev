@@ -42,8 +42,8 @@
     --background: 207 43% 9%;
     --foreground: 15 20% 96%;
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 207 43% 7%;
+    --card-foreground: 15 20% 96%;
 
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
@@ -96,6 +96,6 @@
   }
 
   article {
-    @apply prose dark:prose-invert
+    @apply prose dark:prose-invert md:prose-lg
   }
 }
