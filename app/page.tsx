@@ -9,37 +9,38 @@ import * as motion from "motion/react-client";
 export default async function Home() {
 	return (
 		<main>
-			<motion.section
-				id="hero"
-				className="min-h-screen flex flex-col justify-center items-start mb-24 md:mb-48"
-				initial="hidden"
-				animate="visible"
-				variants={sectionContainerVariants}>
-				<motion.div className="-mt-48 space-y-2" variants={sectionChildVariants}>
-					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</motion.h1>
+			<section id="hero" className="min-h-screen flex flex-col justify-center items-start mb-24 md:mb-48">
+				<motion.div className="-mt-48" initial="hidden" whileInView="visible" variants={sectionContainerVariants} viewport={{ once: true, amount: "some" }}>
+					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono" variants={sectionChildVariants}>
+						Hi, my name is
+					</motion.h1>
 
-					<motion.h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary">
+					<motion.h2
+						className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary"
+						variants={sectionChildVariants}>
 						Corbin Murray.
 					</motion.h2>
 
-					<motion.h3 className="text-[clamp(30px,6vw,70px)] font-semibold">I build software.</motion.h3>
+					<motion.h3 className="text-[clamp(30px,6vw,70px)] font-semibold" variants={sectionChildVariants}>
+						I build software.
+					</motion.h3>
 
-					<motion.article className="my-5">
+					<motion.article className="my-5" variants={sectionChildVariants}>
 						<p>
 							I lead projects focused on optimizing software processes and ensuring scalable solutions. My career spans developing complex integrations,
 							building robust microservices, and mentoring teams to establish standards in fast-paced environments.
 						</p>
 					</motion.article>
-				</motion.div>
 
-				<motion.div className="flex justify-center w-full md:w-auto" variants={sectionChildVariants}>
-					<Button asChild variant="outline" size="blockToWide">
-						<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize mt-5">
-							resume
-						</a>
-					</Button>
+					<motion.div variants={sectionChildVariants}>
+						<Button asChild variant="outline" size="blockToWide">
+							<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize">
+								resume
+							</a>
+						</Button>
+					</motion.div>
 				</motion.div>
-			</motion.section>
+			</section>
 
 			<section id="about" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
@@ -95,17 +96,21 @@ export default async function Home() {
 
 			<section id="experience" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
-					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
+					className="capitalize flex justify-center items-center md:justify-start"
 					initial={{ opacity: 0, y: 75, scale: 0 }}
 					whileInView={{ opacity: 1, y: 0, scale: 1 }}
 					viewport={{ once: true, amount: "some" }}>
-					<h1>Work Experience</h1>
+					<h1 className="mb-8 md:mb-16">Work Experience</h1>
 				</motion.div>
 
-				<motion.div initial={{ opacity: 0, y: 75, scale: 0 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: "some" }}>
-					<Accordion type="multiple" defaultValue={[experiences[0].companyName]} orientation="horizontal" dir="ltr">
-						{experiences.map((experience, i) => {
-							return (
+				<Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
+					{experiences.map((experience, i) => {
+						return (
+							<motion.div
+								key={i}
+								initial={{ opacity: 0, y: 75, scale: 0 }}
+								whileInView={{ opacity: 1, y: 0, scale: 1 }}
+								viewport={{ once: true, amount: "some", margin: "300px" }}>
 								<AccordionItem key={i} value={experience.companyName}>
 									<AccordionTrigger>
 										<div className="w-full pe-3 flex justify-between items-end">
@@ -115,17 +120,17 @@ export default async function Home() {
 									</AccordionTrigger>
 									<AccordionContent>
 										<article>
-											<h4 className="text-center mb-4">{experience.positionTitle}</h4>
+											<h4 className="mb-4">{experience.positionTitle}</h4>
 											{experience.descriptions.map((description, ii) => {
 												return <p key={ii}>{description}</p>;
 											})}
 										</article>
 									</AccordionContent>
 								</AccordionItem>
-							);
-						})}
-					</Accordion>
-				</motion.div>
+							</motion.div>
+						);
+					})}
+				</Accordion>
 			</section>
 
 			<section id="projects" className="mb-24 md:mb-48 scroll-mt-24">

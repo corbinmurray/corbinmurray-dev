@@ -19,7 +19,7 @@ const ThemeToggle = () => {
 	return (
 		<div className="flex items-center space-x-2">
 			<svg
-				className="stroke-base-100 fill-base-100 col-start-1 row-start-1 w-3 md:w-5"
+				className="stroke-base-100 fill-base-100 col-start-1 row-start-1 w-6"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="none"
@@ -34,7 +34,7 @@ const ThemeToggle = () => {
 			<Switch onClick={toggleTheme} />
 
 			<svg
-				className="stroke-base-100 fill-base-100 col-start-2 row-start-1 w-3 md:w-5"
+				className="stroke-base-100 fill-base-100 col-start-2 row-start-1 w-6"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="none"
