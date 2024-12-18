@@ -146,7 +146,7 @@ export default async function Home() {
 								initial={i % 2 === 0 ? "hidden" : "hidden"}
 								whileInView="visible"
 								viewport={{ once: true, amount: "some" }}>
-								<Card key={i}>
+								<Card key={i} className="shadow">
 									<CardHeader>
 										<CardTitle className="text-secondary">{project.title}</CardTitle>
 									</CardHeader>
