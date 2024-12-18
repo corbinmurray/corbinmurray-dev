@@ -1,19 +1,23 @@
 "use client";
 import ThemeToggle from "@/components/ui/theme-toggle";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function NavBar() {
+export default function NavBar({ className }: { className: string }) {
 	const [menuOpen, setMenuOpen] = useState(false);
-
 	const closeMenu = () => setMenuOpen(false);
 
 	return (
-		<motion.nav className="w-full z-50 h-20 border-b bg-background">
-			<motion.div className="container mx-auto flex items-center justify-between p-4 h-full">
+		<motion.nav className="w-full sticky top-0 z-50 h-20 border-b bg-background">
+			<motion.div
+				className={cn(className, "container mx-auto flex items-center justify-between h-full")}
+				initial={{ opacity: 0, y: -300 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ ease: "easeOut", duration: 0.3 }}>
 				{/* Brand */}
-				<div className="text-xl font-bold text-primary">Brand</div>
+				<motion.div className="text-xl font-bold text-primary">Brand</motion.div>
 
 				{/* Hamburger Menu (Mobile) */}
 				<motion.svg
@@ -36,21 +40,18 @@ export default function NavBar() {
 				</motion.svg>
 
 				{/* Links (Desktop) */}
-				<div className="hidden md:flex space-x-8">
-					<Link href="#hero" className="text-sm font-medium text-foreground hover:text-primary">
-						Home
-					</Link>
-					<Link href="#about" className="text-sm font-medium text-foreground hover:text-primary">
+				<motion.div className="hidden md:flex space-x-8">
+					<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 						About
 					</Link>
-					<Link href="#experience" className="text-sm font-medium text-foreground hover:text-primary">
+					<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 						Experience
 					</Link>
-					<Link href="#projects" className="text-sm font-medium text-foreground hover:text-primary">
+					<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 						Projects
 					</Link>
 					<ThemeToggle />
-				</div>
+				</motion.div>
 			</motion.div>
 
 			{/* Full-Screen Overlay for Mobile Menu */}
@@ -58,11 +59,11 @@ export default function NavBar() {
 				{menuOpen && (
 					<>
 						{/* Background Blur */}
-						<motion.div key="blur" className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" exit={{ opacity: 0 }} onClick={closeMenu}></motion.div>
+						<motion.div key="blur" className="fixed inset-0 bg-black/50 backdrop-blur z-40" exit={{ opacity: 0 }} onClick={closeMenu} />
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
-							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 p-6"
+							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 p-6 flex flex-col space-y-8 items-start pt-20"
 							key="mobile-menu"
 							initial={{ x: "100%", opacity: 0 }}
 							animate={{ x: 0, opacity: 1 }}
@@ -72,21 +73,19 @@ export default function NavBar() {
 								stiffness: 300,
 								damping: 30,
 							}}>
-							<div className="flex flex-col p-6 space-y-8 mt-24 items-center">
-								<Link href="#hero" className="text-sm font-medium text-foreground hover:text-primary" onClick={closeMenu}>
-									Home
-								</Link>
-								<Link href="#about" className="text-sm font-medium text-foreground hover:text-primary" onClick={closeMenu}>
-									About
-								</Link>
-								<Link href="#experience" className="text-sm font-medium text-foreground hover:text-primary" onClick={closeMenu}>
-									Experience
-								</Link>
-								<Link href="#projects" className="text-sm font-medium text-foreground hover:text-primary">
-									Projects
-								</Link>
-								<ThemeToggle />
-							</div>
+							{/* Brand */}
+							<div className="text-xl font-bold text-primary">Brand</div>
+
+							<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+								About
+							</Link>
+							<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+								Experience
+							</Link>
+							<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+								Projects
+							</Link>
+							<ThemeToggle />
 						</motion.div>
 					</>
 				)}
