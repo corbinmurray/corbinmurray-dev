@@ -1,11 +1,10 @@
 import { Variants } from "motion/react";
 
 export const sectionContainerVariants: Variants = {
-	hiddenLeft: { opacity: 0, x: "-100vw" },
-	hiddenRight: { opacity: 0, x: "100vw" },
+	hidden: { opacity: 0, y: 300 },
 	visible: {
 		opacity: 1,
-		x: 0,
+		y: 0,
 		transition: {
 			ease: "easeOut",
 			duration: 0.6,
@@ -15,7 +14,6 @@ export const sectionContainerVariants: Variants = {
 };
 
 export const sectionChildVariants: Variants = {
-	hiddenLeft: { opacity: 0, x: "-100vw" },
-	hiddenRight: { opacity: 0, x: "100vw" },
-	visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+	hidden: { opacity: 0, y: 300 },
 };

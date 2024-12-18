@@ -12,25 +12,27 @@ export default async function Home() {
 			<motion.section
 				id="hero"
 				className="min-h-screen flex flex-col justify-center items-start mb-24 md:mb-48"
-				initial="hiddenLeft"
+				initial="hidden"
 				animate="visible"
 				variants={sectionContainerVariants}>
-				<motion.div className="-mt-48" variants={sectionChildVariants}>
-					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] opacity-80 font-mono">Hi, my name is</motion.h1>
+				<motion.div className="-mt-48 space-y-2" variants={sectionChildVariants}>
+					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</motion.h1>
 
-					<motion.h2 className="text-[clamp(40px,8vw,80px)] font-semibold text-primary font-sans border-none">Corbin Murray.</motion.h2>
+					<motion.h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary">
+						Corbin Murray.
+					</motion.h2>
 
-					<motion.h3 className="text-[clamp(30px,6vw,70px)] opacity-60 font-semibold leading-none font-sans">I build software.</motion.h3>
+					<motion.h3 className="text-[clamp(30px,6vw,70px)] font-semibold">I build software.</motion.h3>
 
 					<motion.article className="my-5">
-						<p className="opacity-80">
+						<p>
 							I lead projects focused on optimizing software processes and ensuring scalable solutions. My career spans developing complex integrations,
 							building robust microservices, and mentoring teams to establish standards in fast-paced environments.
 						</p>
 					</motion.article>
 				</motion.div>
 
-				<motion.div className="w-full flex justify-center" variants={sectionChildVariants}>
+				<motion.div className="flex justify-center w-full md:w-auto" variants={sectionChildVariants}>
 					<Button asChild variant="outline" size="blockToWide">
 						<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize mt-5">
 							resume
@@ -39,51 +41,68 @@ export default async function Home() {
 				</motion.div>
 			</motion.section>
 
-			<motion.section
-				id="about"
-				className="scroll-mt-28 mb-24 md:mb-48"
-				initial="hiddenLeft"
-				whileInView="visible"
-				viewport={{ once: true, amount: 0.2 }}
-				variants={sectionContainerVariants}>
-				<SectionHeader>About Me</SectionHeader>
+			<section id="about" className="mb-24 md:mb-48 scroll-mt-24">
+				<motion.div
+					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
+					initial={{ opacity: 0, y: 75, scale: 0 }}
+					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					viewport={{ once: true, amount: "some" }}>
+					<h1>About Me</h1>
+				</motion.div>
 
-				{/* Introduction */}
-				<motion.article variants={sectionChildVariants}>
-					<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
-					<p>
+				<article>
+					<motion.p
+						initial={{ opacity: 0, y: 75 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.4 }}
+						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+						Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.
+					</motion.p>
+
+					<motion.p
+						initial={{ opacity: 0, y: 75 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.4 }}
+						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
 						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
 						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
 						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
 						new technologies, I thrive on the growth and innovation each opportunity brings.
-					</p>
-				</motion.article>
+					</motion.p>
 
-				{/* Technologies */}
-				<motion.article className="mt-8">
-					<p>Here are a few technologies I have worked with recently:</p>
+					<motion.p
+						initial={{ opacity: 0, y: 75 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.4 }}
+						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+						Here are some technologies I have worked with recently:
+					</motion.p>
 					<ul className="list-none p-0 md:p-0 grid grid-cols-2 gap-2 md:grid-cols-3">
 						{RECENT_TECHNOLOGIES.map((tech, i) => (
-							<li
+							<motion.li
 								key={i}
-								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0">
+								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0"
+								initial={{ opacity: 0, y: 75 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true, amount: 0.4 }}
+								transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
 								{tech}
-							</li>
+							</motion.li>
 						))}
 					</ul>
-				</motion.article>
-			</motion.section>
+				</article>
+			</section>
 
-			<motion.section
-				id="experience"
-				className="scroll-mt-28 mb-24 md:mb-48"
-				initial="hiddenLeft"
-				whileInView="visible"
-				viewport={{ once: true, amount: 0.1 }}
-				variants={sectionContainerVariants}>
-				<SectionHeader>Work Experience</SectionHeader>
+			<section id="experience" className="mb-24 md:mb-48 scroll-mt-24">
+				<motion.div
+					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
+					initial={{ opacity: 0, y: 75, scale: 0 }}
+					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					viewport={{ once: true, amount: "some" }}>
+					<h1>Work Experience</h1>
+				</motion.div>
 
-				<motion.div variants={sectionChildVariants}>
+				<motion.div initial={{ opacity: 0, y: 75, scale: 0 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: "some" }}>
 					<Accordion type="multiple" defaultValue={[experiences[0].companyName]} orientation="horizontal" dir="ltr">
 						{experiences.map((experience, i) => {
 							return (
@@ -107,15 +126,26 @@ export default async function Home() {
 						})}
 					</Accordion>
 				</motion.div>
-			</motion.section>
+			</section>
 
-			<motion.section id="projects" className="scroll-mt-28 mb-24 md:mb-48">
-				<SectionHeader>Projects</SectionHeader>
+			<section id="projects" className="mb-24 md:mb-48 scroll-mt-24">
+				<motion.div
+					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
+					initial={{ opacity: 0, y: 75, scale: 0 }}
+					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					viewport={{ once: true, amount: "some" }}>
+					<h1>Projects</h1>
+				</motion.div>
 
-				<div className="space-y-8">
+				<ul className="space-y-8">
 					{projects.map((project, i) => {
 						return (
-							<motion.div key={i}>
+							<motion.li
+								key={i}
+								variants={sectionChildVariants}
+								initial={i % 2 === 0 ? "hidden" : "hidden"}
+								whileInView="visible"
+								viewport={{ once: true, amount: "some" }}>
 								<Card key={i}>
 									<CardHeader>
 										<CardTitle className="text-secondary">{project.title}</CardTitle>
@@ -129,21 +159,13 @@ export default async function Home() {
 										<a href={project.githubLink}>GitHub</a>
 									</CardFooter>
 								</Card>
-							</motion.div>
+							</motion.li>
 						);
 					})}
-				</div>
-			</motion.section>
+				</ul>
+			</section>
 		</main>
 	);
 }
-
-const SectionHeader = ({ children }: { children: React.ReactNode }) => {
-	return (
-		<div className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16">
-			<h1>{children}</h1>
-		</div>
-	);
-};
 
 const RECENT_TECHNOLOGIES = ["C#", "TypeScript", ".NET Core", "Docker", "MongoDB", "PostgreSQL", "Apache Kafka", "AWS", "Redis"];

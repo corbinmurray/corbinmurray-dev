@@ -3,24 +3,26 @@ import EmailSvg from "@/components/ui/email-svg";
 import GitHubSvg from "@/components/ui/github-svg";
 import LinkedInSvg from "@/components/ui/linkedin-svg";
 import Navbar from "@/components/ui/navbar";
+import { sectionChildVariants, sectionContainerVariants } from "@/lib/animation-variants";
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
+import * as motion from "motion/react-client";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Open_Sans, Overpass_Mono } from "next/font/google";
+import { JetBrains_Mono, Raleway } from "next/font/google";
 import "./globals.css";
 
-const fontMono = Overpass_Mono({
+const fontMono = JetBrains_Mono({
 	variable: "--font-mono",
 	subsets: ["latin"],
-	weight: ["400"],
+	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
-const fontSans = Open_Sans({
+const fontSans = Raleway({
 	variable: "--font-sans",
 	subsets: ["latin"],
-	weight: ["300", "400", "500", "700"],
+	weight: ["100", "200", "300", "400", "500", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -56,13 +58,13 @@ export default function RootLayout({
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
-			<body className={cn(fontMono.variable, fontSans.variable, "font-sans", "antialiased", "scroll-smooth")}>
+			<body className={cn(fontMono.variable, fontSans.variable, "font-mono antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-					<Navbar />
-					<div className="container py-0 mx-auto flex items-center justify-center px-4">{children}</div>
+					<Navbar className="px-8 md:px-16 lg:px-32" />
+					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
-					<footer className="my-20">
-						<div className="container py-0 mx-auto flex items-center justify-center px-4">
+					<motion.footer className="my-20" initial="hidden" animate="visible" variants={sectionContainerVariants}>
+						<motion.div className="container py-0 mx-auto flex items-center justify-center px-4" variants={sectionChildVariants}>
 							<section id="contact">
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me
@@ -102,8 +104,8 @@ export default function RootLayout({
 									<SocialLinkGroup orientation="horizontal" />
 								</div>
 							</section>
-						</div>
-					</footer>
+						</motion.div>
+					</motion.footer>
 				</ThemeProvider>
 			</body>
 		</html>
