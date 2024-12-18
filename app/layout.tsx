@@ -63,7 +63,7 @@ export default function RootLayout({
 					<Navbar className="px-8 md:px-16 lg:px-32" />
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
-					<motion.footer className="my-20" initial="hidden" animate="visible" variants={sectionContainerVariants}>
+					<motion.footer className="my-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }} variants={sectionContainerVariants}>
 						<motion.div className="container py-0 mx-auto flex items-center justify-center px-4" variants={sectionChildVariants}>
 							<section id="contact">
 								<h1 className="flex flex-row items-center justify-center">
