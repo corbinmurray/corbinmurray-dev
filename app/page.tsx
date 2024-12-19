@@ -5,11 +5,29 @@ import RevealSection from "@/components/ui/reveal-section";
 import { sectionChildVariants, sectionContainerVariants } from "@/lib/animation-variants";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
+import { Variants } from "motion/react";
 import * as motion from "motion/react-client";
 
 export default async function Home() {
+	const sectionChildAnimationVariants: Variants = {
+		hidden: {
+			y: 75,
+			opacity: 0,
+			scale: 0,
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			scale: 1,
+			transition: {
+				type: "spring",
+				bounce: 0.25,
+			},
+		},
+	};
+
 	return (
-		<main>
+		<main className="overflow-y-scroll">
 			<RevealSection
 				id="hero"
 				className="min-h-[calc(100vh-5rem)]"
@@ -50,37 +68,26 @@ export default async function Home() {
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
-					initial={{ opacity: 0, y: 75, scale: 0 }}
-					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					variants={sectionChildAnimationVariants}
+					initial="hidden"
+					whileInView="visible"
 					viewport={{ once: true, amount: "some" }}>
 					<h1>About Me</h1>
 				</motion.div>
 
 				<article>
-					<motion.p
-						initial={{ opacity: 0, y: 75 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.4 }}
-						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
 						Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.
 					</motion.p>
 
-					<motion.p
-						initial={{ opacity: 0, y: 75 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.4 }}
-						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
 						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
 						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
 						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
 						new technologies, I thrive on the growth and innovation each opportunity brings.
 					</motion.p>
 
-					<motion.p
-						initial={{ opacity: 0, y: 75 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.4 }}
-						transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
 						Here are some technologies I have worked with recently:
 					</motion.p>
 					<ul className="list-none p-0 md:p-0 grid grid-cols-2 gap-2 md:grid-cols-3">
@@ -88,10 +95,10 @@ export default async function Home() {
 							<motion.li
 								key={i}
 								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0"
-								initial={{ opacity: 0, y: 75 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true, amount: 0.4 }}
-								transition={{ ease: "easeOut", duration: 0.3, when: "beforeChildren" }}>
+								variants={sectionChildAnimationVariants}
+								initial="hidden"
+								whileInView="visible"
+								viewport={{ once: true, amount: "some" }}>
 								{tech}
 							</motion.li>
 						))}
@@ -102,8 +109,9 @@ export default async function Home() {
 			<RevealSection id="experience" className="mb-24 md:mb-48 scroll-mt-24 max-w-screen-md">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start"
-					initial={{ opacity: 0, y: 75, scale: 0 }}
-					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					variants={sectionChildAnimationVariants}
+					initial="hidden"
+					whileInView="visible"
 					viewport={{ once: true, amount: "some" }}>
 					<h1 className="mb-8 md:mb-16">Work Experience</h1>
 				</motion.div>
@@ -141,8 +149,9 @@ export default async function Home() {
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
-					initial={{ opacity: 0, y: 75, scale: 0 }}
-					whileInView={{ opacity: 1, y: 0, scale: 1 }}
+					variants={sectionChildAnimationVariants}
+					initial="hidden"
+					whileInView="visible"
 					viewport={{ once: true, amount: "some" }}>
 					<h1>Projects</h1>
 				</motion.div>
@@ -152,7 +161,7 @@ export default async function Home() {
 						return (
 							<motion.li
 								key={i}
-								variants={sectionChildVariants}
+								variants={sectionChildAnimationVariants}
 								initial={i % 2 === 0 ? "hidden" : "hidden"}
 								whileInView="visible"
 								viewport={{ once: true, amount: "some" }}>
