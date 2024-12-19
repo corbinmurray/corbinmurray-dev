@@ -8,7 +8,7 @@ import projects from "@/lib/projects.json";
 export default async function Home() {
 	return (
 		<main>
-			<RevealSection id="hero" className="min-h-[calc(100vh-12rem)] mb-[6rem] flex flex-col justify-center">
+			<RevealSection id="hero" className="min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110 leading-tight">
@@ -32,7 +32,12 @@ export default async function Home() {
 			</RevealSection>
 
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
-				<h1>About Me</h1>
+				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
+					<h3 className="font-mono flex">
+						0 <span className="text-accent">1</span>.
+					</h3>
+					<h1 className="text-nowrap">About Me</h1>
+				</div>
 
 				<article>
 					<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
@@ -62,7 +67,12 @@ export default async function Home() {
 			</RevealSection>
 
 			<RevealSection id="experience" className="mb-24 md:mb-48 scroll-mt-24 max-w-screen-md">
-				<h1>Work Experience</h1>
+				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
+					<h3 className="font-mono flex">
+						0 <span className="text-accent">2</span>.
+					</h3>
+					<h1 className="text-nowrap">Experience</h1>
+				</div>
 
 				<Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
 					{experiences.map((experience, i) => {
@@ -89,13 +99,18 @@ export default async function Home() {
 			</RevealSection>
 
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
-				<h1>Projects</h1>
+				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
+					<h3 className="font-mono flex">
+						0 <span className="text-accent">3</span>.
+					</h3>
+					<h1 className="text-nowrap">Projects</h1>
+				</div>
 
-				<ul className="space-y-8">
+				<ul className="flex flex-col gap-8 xl:flex-row">
 					{projects.map((project, i) => {
 						return (
 							<li key={i}>
-								<Card key={i} className="shadow">
+								<Card className="shadow max-w-md">
 									<CardHeader>
 										<CardTitle className="text-secondary">{project.title}</CardTitle>
 									</CardHeader>

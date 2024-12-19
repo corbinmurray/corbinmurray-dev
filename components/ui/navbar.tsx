@@ -103,6 +103,11 @@ export default function Navbar({ className }: { className: string }) {
 							Projects
 						</Link>
 					</motion.div>
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
+						<Link href="#contact" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
+							Contact
+						</Link>
+					</motion.div>
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<ThemeToggle />
@@ -152,6 +157,12 @@ export default function Navbar({ className }: { className: string }) {
 							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
 									Projects
+								</Link>
+							</motion.div>
+
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
+								<Link href="#contact" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+									Contact
 								</Link>
 							</motion.div>
 
