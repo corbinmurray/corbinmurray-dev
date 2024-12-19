@@ -1,11 +1,7 @@
 import { Button } from "@/components/ui/button";
-import EmailSvg from "@/components/ui/email-svg";
-import GitHubSvg from "@/components/ui/github-svg";
-import LinkedInSvg from "@/components/ui/linkedin-svg";
 import Navbar from "@/components/ui/navbar";
-import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { EMAIL_ADDRESS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { ClassValue } from "clsx";
 import * as motion from "motion/react-client";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
@@ -68,13 +64,13 @@ export default function RootLayout({
 						whileInView="visible"
 						viewport={{ once: true, amount: "some" }}
 						variants={{
-							hidden: { opacity: 0, y: 75 },
+							hidden: { opacity: 0, y: -75 },
 							visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
 						}}>
 						<motion.div
 							className="container py-0 mx-auto flex items-center justify-center px-4"
 							variants={{
-								hidden: { opacity: 0, y: 75 },
+								hidden: { opacity: 0, y: -75 },
 								visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
 							}}>
 							<section id="contact">
