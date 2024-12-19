@@ -24,13 +24,11 @@ export default async function Home() {
 					</p>
 				</article>
 
-				<div>
-					<Button asChild variant="outline" size="blockToWide">
-						<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize">
-							resume
-						</a>
-					</Button>
-				</div>
+				<Button asChild variant="outline" size="blockToWide">
+					<a href="/Corbin Murray - Resume.pdf" target="_blank" className="mt-4">
+						Resume
+					</a>
+				</Button>
 			</RevealSection>
 
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
