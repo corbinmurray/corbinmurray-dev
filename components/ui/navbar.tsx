@@ -3,13 +3,27 @@ import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className: string }) {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const closeMenu = useCallback(() => setMenuOpen(false), []);
 	const { scrollY } = useScroll();
 	const [scrollState, setScrollState] = useState({ direction: "up", atTop: true });
+
+	// Prevent background scroll when the menu is open
+	useEffect(() => {
+		if (menuOpen) {
+			document.body.classList.add("overflow-hidden");
+		} else {
+			document.body.classList.remove("overflow-hidden");
+		}
+
+		// Clean up on component unmount
+		return () => {
+			document.body.classList.remove("overflow-hidden");
+		};
+	}, [menuOpen]);
 
 	useMotionValueEvent(scrollY, "change", (current) => {
 		const diff = current - (scrollY.getPrevious() || 0);

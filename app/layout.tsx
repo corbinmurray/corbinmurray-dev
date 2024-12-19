@@ -58,7 +58,7 @@ export default function RootLayout({
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
-			<body className={cn(fontMono.variable, fontSans.variable, "font-mono antialiased")}>
+			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar className="px-8 md:px-16 lg:px-32" />
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
