@@ -3,7 +3,6 @@ import EmailSvg from "@/components/ui/email-svg";
 import GitHubSvg from "@/components/ui/github-svg";
 import LinkedInSvg from "@/components/ui/linkedin-svg";
 import Navbar from "@/components/ui/navbar";
-import { sectionChildVariants, sectionContainerVariants } from "@/lib/animation-variants";
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
@@ -58,13 +57,26 @@ export default function RootLayout({
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
-			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
+			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased overflow-hidden")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar className="px-8 md:px-16 lg:px-32" />
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
-					<motion.footer className="my-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }} variants={sectionContainerVariants}>
-						<motion.div className="container py-0 mx-auto flex items-center justify-center px-4" variants={sectionChildVariants}>
+					<motion.footer
+						className="my-20"
+						initial="hidden"
+						whileInView="visible"
+						viewport={{ once: true, amount: "some" }}
+						variants={{
+							hidden: { opacity: 0, y: 75 },
+							visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
+						}}>
+						<motion.div
+							className="container py-0 mx-auto flex items-center justify-center px-4"
+							variants={{
+								hidden: { opacity: 0, y: 75 },
+								visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
+							}}>
 							<section id="contact">
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me
@@ -99,10 +111,6 @@ export default function RootLayout({
 										</a>
 									</Button>
 								</div>
-
-								<div className="flex w-full justify-center items-center mt-28 mb-4">
-									<SocialLinkGroup orientation="horizontal" />
-								</div>
 							</section>
 						</motion.div>
 					</motion.footer>
@@ -111,49 +119,3 @@ export default function RootLayout({
 		</html>
 	);
 }
-
-const SocialLinkGroup = ({ orientation, className }: { orientation: "horizontal" | "vertical"; className?: string }) => {
-	const anchorSvgClassName: ClassValue = "w-5 h-5 md:w-6 md:h-6 hover:text-accent transition-[fill] duration-200 ease-in";
-
-	if (orientation === "horizontal") {
-		return (
-			<ul className={cn(className, "flex", "gap-x-12", "md:gap-x-16")}>
-				<li>
-					<a href={GITHUB_URL} target="_blank">
-						<GitHubSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-				<li>
-					<a href={LINKEDIN_URL} target="_blank">
-						<LinkedInSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-				<li>
-					<a href={"mailto:" + EMAIL_ADDRESS} target="_blank">
-						<EmailSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-			</ul>
-		);
-	} else {
-		return (
-			<ul className={cn(className, "flex", "flex-col", "gap-y-12")}>
-				<li>
-					<a href={GITHUB_URL} target="_blank">
-						<GitHubSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-				<li>
-					<a href={LINKEDIN_URL} target="_blank">
-						<LinkedInSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-				<li>
-					<a href={"mailto:" + EMAIL_ADDRESS} target="_blank">
-						<EmailSvg className={cn(anchorSvgClassName)} />
-					</a>
-				</li>
-			</ul>
-		);
-	}
-};
