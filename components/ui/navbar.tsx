@@ -1,4 +1,5 @@
 "use client";
+import SocialLinks from "@/components/ui/social-links";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
@@ -149,13 +150,13 @@ export default function Navbar({ className }: { className: string }) {
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
-							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 p-6 flex flex-col space-y-8 items-start pt-20"
+							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
 							variants={mobileNavMenuContainerAnimationVariants}
 							initial="hidden"
 							animate="visible"
 							exit="hidden">
 							{/* Brand */}
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary mb-4" variants={mobileNavMenuChildrenAnimationVariants}>
 								<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
 									<g>
 										<g>
@@ -174,32 +175,22 @@ export default function Navbar({ className }: { className: string }) {
 								</svg>
 							</motion.div>
 
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
-								<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-									About
-								</Link>
-							</motion.div>
+							{navItems.map((navItem, i) => {
+								return (
+									<motion.div key={i} variants={mobileNavMenuChildrenAnimationVariants} whileHover={{ scale: 1.1 }} className="my-2">
+										<Link href={navItem.href} className="md:text-lg lg:text-lg xl:text-xl font-medium hover:text-primary" onClick={closeMenu}>
+											{navItem.name}
+										</Link>
+									</motion.div>
+								);
+							})}
 
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
-								<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-									Experience
-								</Link>
-							</motion.div>
-
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
-								<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-									Projects
-								</Link>
-							</motion.div>
-
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
-								<Link href="#contact" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-									Contact
-								</Link>
-							</motion.div>
-
-							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary mt-8" variants={mobileNavMenuChildrenAnimationVariants}>
 								<ThemeToggle />
+							</motion.div>
+
+							<motion.div className="mt-8" variants={mobileNavMenuChildrenAnimationVariants}>
+								<SocialLinks orientation="horizontal" />
 							</motion.div>
 						</motion.div>
 					</>
@@ -226,9 +217,9 @@ const mobileNavMenuChildrenAnimationVariants: Variants = {
 	visible: {
 		x: 0,
 		opacity: 1,
-		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
+		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
 	},
-	hidden: { x: 75, opacity: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
+	hidden: { x: 150, opacity: 0, transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] } },
 };
 
 const desktopNavMenuContainerAnimationVariants: Variants = {
@@ -251,3 +242,22 @@ const desktopNavMenuChildrenAnimationVariants: Variants = {
 	},
 	hidden: { y: -15 },
 };
+
+const navItems = [
+	{
+		name: "About",
+		href: "#about",
+	},
+	{
+		name: "Experience",
+		href: "#experience",
+	},
+	{
+		name: "Projects",
+		href: "#projects",
+	},
+	{
+		name: "Contact",
+		href: "#contact",
+	},
+];

@@ -12,7 +12,12 @@ const SocialLinks = ({ orientation }: { orientation: "horizontal" | "vertical" }
 			})}>
 			{SOCIALS.map((social, i) => {
 				return (
-					<motion.li key={i}>
+					<motion.li
+						key={i}
+						initial={{ scale: 1 }}
+						whileHover={{ scale: 1.1 }}
+						transition={{ duration: 0.1, ease: [0.33, 1, 0.68, 1] }}
+						className="hover:text-primary">
 						<a href={social.href}>{social.icon}</a>
 					</motion.li>
 				);
