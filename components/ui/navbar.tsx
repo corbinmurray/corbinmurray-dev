@@ -1,7 +1,7 @@
 "use client";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
@@ -32,38 +32,6 @@ export default function Navbar({ className }: { className: string }) {
 			atTop: scrollY.get() === 0,
 		});
 	});
-
-	const navLinkContainerAnimationVariants = {
-		visible: {
-			x: 0,
-			opacity: 1,
-			transition: {
-				ease: "easeOut",
-				staggerChildren: 0.1,
-			},
-		},
-		hidden: {
-			opacity: 0,
-			x: "100vw",
-			transition: {
-				ease: "easeOut",
-				duration: 0.3,
-				// staggerChildren: 0.2,
-				// staggerDirection: -1,
-			},
-		},
-	};
-
-	const navLinkChildrenAnimationVariants = {
-		visible: {
-			x: 0,
-			opacity: 1,
-			transition: {
-				ease: "easeOut",
-			},
-		},
-		hidden: { x: 75, opacity: 0 },
-	};
 
 	return (
 		<motion.nav
@@ -118,25 +86,25 @@ export default function Navbar({ className }: { className: string }) {
 				</motion.svg>
 
 				{/* Links (Desktop) */}
-				<motion.div className="hidden md:flex space-x-8" variants={navLinkContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
-					<motion.div variants={navLinkChildrenAnimationVariants}>
+				<motion.div className="hidden md:flex space-x-8" variants={desktopNavMenuContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 							About
 						</Link>
 					</motion.div>
 
-					<motion.div variants={navLinkChildrenAnimationVariants}>
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 							Experience
 						</Link>
 					</motion.div>
-					<motion.div variants={navLinkChildrenAnimationVariants}>
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 							Projects
 						</Link>
 					</motion.div>
 
-					<motion.div variants={navLinkChildrenAnimationVariants}>
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<ThemeToggle />
 					</motion.div>
 				</motion.div>
@@ -151,41 +119,43 @@ export default function Navbar({ className }: { className: string }) {
 							key="blur"
 							className="fixed inset-0 bg-black/50 backdrop-blur z-40"
 							onClick={closeMenu}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
-							transition={{ ease: "easeOut", duration: 0.3 }}
+							transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
 						/>
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
 							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 p-6 flex flex-col space-y-8 items-start pt-20"
-							variants={navLinkContainerAnimationVariants}
+							variants={mobileNavMenuContainerAnimationVariants}
 							initial="hidden"
 							animate="visible"
 							exit="hidden">
 							{/* Brand */}
-							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								Brand
 							</motion.div>
 
-							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
 									About
 								</Link>
 							</motion.div>
 
-							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
 									Experience
 								</Link>
 							</motion.div>
 
-							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
 									Projects
 								</Link>
 							</motion.div>
 
-							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary" variants={mobileNavMenuChildrenAnimationVariants}>
 								<ThemeToggle />
 							</motion.div>
 						</motion.div>
@@ -195,3 +165,46 @@ export default function Navbar({ className }: { className: string }) {
 		</motion.nav>
 	);
 }
+
+const mobileNavMenuContainerAnimationVariants: Variants = {
+	visible: {
+		x: 0,
+		opacity: 1,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], staggerChildren: 0.15 },
+	},
+	hidden: {
+		x: "100%",
+		opacity: 0,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], staggerChildren: 0.15, delay: 0.15 },
+	},
+};
+
+const mobileNavMenuChildrenAnimationVariants: Variants = {
+	visible: {
+		x: 0,
+		opacity: 1,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
+	},
+	hidden: { x: 75, opacity: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
+};
+
+const desktopNavMenuContainerAnimationVariants: Variants = {
+	visible: {
+		y: 0,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], staggerChildren: 0.2 },
+	},
+	hidden: {
+		y: -15,
+		transition: {
+			ease: "easeOut",
+		},
+	},
+};
+
+const desktopNavMenuChildrenAnimationVariants: Variants = {
+	visible: {
+		y: 0,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
+	},
+	hidden: { y: -15 },
+};
