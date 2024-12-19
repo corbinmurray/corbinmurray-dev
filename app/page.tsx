@@ -11,7 +11,7 @@ export default async function Home() {
 			<RevealSection id="hero" className="min-h-[calc(100vh-12rem)] mb-[6rem] flex flex-col justify-center">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
-				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary leading-tight">
+				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110  leading-tight">
 					Corbin Murray.
 				</h2>
 
