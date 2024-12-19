@@ -74,29 +74,6 @@ export default async function Home() {
 					<h1 className="text-nowrap">Experience</h1>
 				</div>
 
-				{/* <Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
-					{experiences.map((experience, i) => {
-						return (
-							<AccordionItem key={i} value={experience.companyName}>
-								<AccordionTrigger>
-									<div className="w-full pe-3 flex justify-between items-end">
-										<h3 className="text-secondary">{experience.companyName}</h3>
-										<h4 className="text-sm italic">{experience.dateRange}</h4>
-									</div>
-								</AccordionTrigger>
-								<AccordionContent>
-									<article>
-										<h4 className="mb-4">{experience.positionTitle}</h4>
-										{experience.descriptions.map((description, ii) => {
-											return <p key={ii}>{description}</p>;
-										})}
-									</article>
-								</AccordionContent>
-							</AccordionItem>
-						);
-					})}
-				</Accordion> */}
-
 				{experiences.map((experience, i) => {
 					return (
 						<article key={i} className="flex flex-col gap-y-3 mb-8 border-b">
