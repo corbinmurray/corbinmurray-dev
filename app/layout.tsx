@@ -53,26 +53,22 @@ export default function RootLayout({
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
-			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased overflow-hidden")}>
+			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar className="px-8 md:px-16 lg:px-32" />
+
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
 					<motion.footer
-						className="my-20"
+						className="relative my-24 md:my-48"
 						initial="hidden"
 						whileInView="visible"
 						viewport={{ once: true, amount: "some" }}
 						variants={{
-							hidden: { opacity: 0, y: -75 },
+							hidden: { opacity: 0, y: 75 },
 							visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
 						}}>
-						<motion.div
-							className="container py-0 mx-auto flex items-center justify-center px-4"
-							variants={{
-								hidden: { opacity: 0, y: -75 },
-								visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
-							}}>
+						<motion.div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto flex flex-col">
 							<section id="contact">
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me
