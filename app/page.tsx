@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
@@ -74,7 +74,7 @@ export default async function Home() {
 					<h1 className="text-nowrap">Experience</h1>
 				</div>
 
-				<Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
+				{/* <Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
 					{experiences.map((experience, i) => {
 						return (
 							<AccordionItem key={i} value={experience.companyName}>
@@ -95,7 +95,36 @@ export default async function Home() {
 							</AccordionItem>
 						);
 					})}
-				</Accordion>
+				</Accordion> */}
+
+				{experiences.map((experience, i) => {
+					return (
+						<article key={i} className="flex flex-col gap-y-3 mb-8 border-b">
+							<div className="flex justify-between items-baseline">
+								<h3>{experience.companyName}</h3>
+								<h3 className="italic text-sm">{experience.dateRange}</h3>
+							</div>
+
+							<div>
+								<span className="text-primary font-semibold text-md">{experience.positionTitle}</span>
+							</div>
+
+							{experience.descriptions.map((description, ii) => {
+								return <p key={ii}>{description}</p>;
+							})}
+
+							<ul className="list-none p-0 m-0 flex flex-row flex-wrap">
+								{experience.skills.map((skill, ii) => {
+									return (
+										<li key={ii} className="text-nowrap">
+											<Badge variant="secondary">{skill}</Badge>
+										</li>
+									);
+								})}
+							</ul>
+						</article>
+					);
+				})}
 			</RevealSection>
 
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
