@@ -68,7 +68,7 @@ export default function RootLayout({
 							hidden: { opacity: 0, y: 75 },
 							visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
 						}}>
-						<motion.div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto flex flex-col">
+						<motion.div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto flex flex-col items-center">
 							<section id="contact">
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me
@@ -91,7 +91,7 @@ export default function RootLayout({
 								</article>
 
 								<div className="flex w-full justify-center items-center">
-									<Button asChild size="blockToWide">
+									<Button asChild size="blockToWide" variant="outline">
 										<a href={"mailto:" + EMAIL_ADDRESS} className="mt-5">
 											Say Hello
 											<svg className="w-4 " viewBox="0 0 55.59259 56.25544">
