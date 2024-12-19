@@ -2,167 +2,101 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
-import { sectionChildVariants, sectionContainerVariants } from "@/lib/animation-variants";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import { Variants } from "motion/react";
-import * as motion from "motion/react-client";
 
 export default async function Home() {
-	const sectionChildAnimationVariants: Variants = {
-		hidden: {
-			y: 75,
-			opacity: 0,
-			// scale: 0,
-		},
-		visible: {
-			y: 0,
-			opacity: 1,
-			// scale: 1,
-			transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
-		},
-	};
-
 	return (
 		<main>
-			<RevealSection
-				id="hero"
-				className="min-h-[calc(100vh-5rem)]"
-				initial="hidden"
-				whileInView="visible"
-				variants={sectionContainerVariants}
-				viewport={{ once: true, amount: "some" }}>
-				<motion.div className="min-h-[calc(100vh-5rem)] flex flex-col justify-center">
-					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</motion.h1>
+			<RevealSection id="hero" className="min-h-[calc(100vh-12rem)] mb-[6rem] flex flex-col justify-center">
+				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
-					<motion.h2
-						className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary leading-tight"
-						variants={sectionChildVariants}>
-						Corbin Murray.
-					</motion.h2>
+				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary leading-tight">
+					Corbin Murray.
+				</h2>
 
-					<motion.h3 className="text-[clamp(30px,6vw,70px)] font-semibold" variants={sectionChildVariants}>
-						I build software.
-					</motion.h3>
+				<h3 className="text-[clamp(30px,6vw,70px)] font-semibold">I build software.</h3>
 
-					<motion.article className="my-5" variants={sectionChildVariants}>
-						<p>
-							I lead projects focused on optimizing software processes and ensuring scalable solutions. My career spans developing complex integrations,
-							building robust microservices, and mentoring teams to establish standards in fast-paced environments.
-						</p>
-					</motion.article>
+				<article className="my-5">
+					<p>
+						I lead projects focused on optimizing software processes and ensuring scalable solutions. My career spans developing complex integrations, building
+						robust microservices, and mentoring teams to establish standards in fast-paced environments.
+					</p>
+				</article>
 
-					<motion.div variants={sectionChildVariants}>
-						<Button asChild variant="outline" size="blockToWide">
-							<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize">
-								resume
-							</a>
-						</Button>
-					</motion.div>
-				</motion.div>
+				<div>
+					<Button asChild variant="outline" size="blockToWide">
+						<a href="/Corbin Murray - Resume.pdf" target="_blank" className="capitalize">
+							resume
+						</a>
+					</Button>
+				</div>
 			</RevealSection>
 
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
-				<motion.div
-					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
-					variants={sectionChildAnimationVariants}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true, amount: "some" }}>
-					<h1>About Me</h1>
-				</motion.div>
+				<h1>About Me</h1>
 
 				<article>
-					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
-						Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.
-					</motion.p>
+					<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
+				</article>
 
-					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
+				<article>
+					<p>
 						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
 						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
 						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
 						new technologies, I thrive on the growth and innovation each opportunity brings.
-					</motion.p>
+					</p>
+				</article>
 
-					<motion.p variants={sectionChildAnimationVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: "some" }}>
-						Here are some technologies I have worked with recently:
-					</motion.p>
+				<article>
+					<p>Here are some technologies I have worked with recently:</p>
 					<ul className="list-none p-0 md:p-0 grid grid-cols-2 gap-2 md:grid-cols-3">
 						{RECENT_TECHNOLOGIES.map((tech, i) => (
-							<motion.li
+							<li
 								key={i}
-								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0"
-								variants={sectionChildAnimationVariants}
-								initial="hidden"
-								whileInView="visible"
-								viewport={{ once: true, amount: "some" }}>
+								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0">
 								{tech}
-							</motion.li>
+							</li>
 						))}
 					</ul>
 				</article>
 			</RevealSection>
 
 			<RevealSection id="experience" className="mb-24 md:mb-48 scroll-mt-24 max-w-screen-md">
-				<motion.div
-					className="capitalize flex justify-center items-center md:justify-start"
-					variants={sectionChildAnimationVariants}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true, amount: "some" }}>
-					<h1 className="mb-8 md:mb-16">Work Experience</h1>
-				</motion.div>
+				<h1>Work Experience</h1>
 
 				<Accordion type="multiple" defaultValue={[experiences[0].companyName]}>
 					{experiences.map((experience, i) => {
 						return (
-							<motion.div
-								key={i}
-								variants={sectionChildAnimationVariants}
-								initial="hidden"
-								whileInView="visible"
-								viewport={{ once: true, amount: "some", margin: "300px" }}>
-								<AccordionItem key={i} value={experience.companyName}>
-									<AccordionTrigger>
-										<div className="w-full pe-3 flex justify-between items-end">
-											<h3 className="text-secondary">{experience.companyName}</h3>
-											<h4 className="text-sm italic">{experience.dateRange}</h4>
-										</div>
-									</AccordionTrigger>
-									<AccordionContent>
-										<article>
-											<h4 className="mb-4">{experience.positionTitle}</h4>
-											{experience.descriptions.map((description, ii) => {
-												return <p key={ii}>{description}</p>;
-											})}
-										</article>
-									</AccordionContent>
-								</AccordionItem>
-							</motion.div>
+							<AccordionItem key={i} value={experience.companyName}>
+								<AccordionTrigger>
+									<div className="w-full pe-3 flex justify-between items-end">
+										<h3 className="text-secondary">{experience.companyName}</h3>
+										<h4 className="text-sm italic">{experience.dateRange}</h4>
+									</div>
+								</AccordionTrigger>
+								<AccordionContent>
+									<article>
+										<h4 className="mb-4">{experience.positionTitle}</h4>
+										{experience.descriptions.map((description, ii) => {
+											return <p key={ii}>{description}</p>;
+										})}
+									</article>
+								</AccordionContent>
+							</AccordionItem>
 						);
 					})}
 				</Accordion>
 			</RevealSection>
 
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
-				<motion.div
-					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
-					variants={sectionChildAnimationVariants}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true, amount: "some" }}>
-					<h1>Projects</h1>
-				</motion.div>
+				<h1>Projects</h1>
 
 				<ul className="space-y-8">
 					{projects.map((project, i) => {
 						return (
-							<motion.li
-								key={i}
-								variants={sectionChildAnimationVariants}
-								initial={i % 2 === 0 ? "hidden" : "hidden"}
-								whileInView="visible"
-								viewport={{ once: true, amount: "some" }}>
+							<li key={i}>
 								<Card key={i} className="shadow">
 									<CardHeader>
 										<CardTitle className="text-secondary">{project.title}</CardTitle>
@@ -176,7 +110,7 @@ export default async function Home() {
 										<a href={project.githubLink}>GitHub</a>
 									</CardFooter>
 								</Card>
-							</motion.li>
+							</li>
 						);
 					})}
 				</ul>
