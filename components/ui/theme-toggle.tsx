@@ -2,9 +2,15 @@
 
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
 	const { setTheme, resolvedTheme } = useTheme();
+	const [mounted, setMounted] = useState(false); // Track if the component is mounted
+
+	useEffect(() => {
+		setMounted(true); // After the component is mounted, set the `mounted` state to true
+	}, []);
 
 	const THEMES = {
 		light: "light",
@@ -15,6 +21,10 @@ const ThemeToggle = () => {
 		const newTheme = resolvedTheme === THEMES.light ? THEMES.dark : THEMES.light;
 		setTheme(newTheme);
 	};
+
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<div className="flex items-center space-x-2">
@@ -31,7 +41,7 @@ const ThemeToggle = () => {
 				<path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
 			</svg>
 
-			<Switch onClick={toggleTheme} />
+			<Switch onClick={toggleTheme} checked={resolvedTheme === THEMES.dark} />
 
 			<svg
 				className="stroke-base-100 fill-base-100 col-start-2 row-start-1 w-6"

@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import RevealSection from "@/components/ui/reveal-section";
 import { sectionChildVariants, sectionContainerVariants } from "@/lib/animation-variants";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
@@ -9,14 +10,18 @@ import * as motion from "motion/react-client";
 export default async function Home() {
 	return (
 		<main>
-			<section id="hero" className="min-h-screen flex flex-col justify-center items-start mb-24 md:mb-48">
-				<motion.div className="-mt-48" initial="hidden" whileInView="visible" variants={sectionContainerVariants} viewport={{ once: true, amount: "some" }}>
-					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono" variants={sectionChildVariants}>
-						Hi, my name is
-					</motion.h1>
+			<RevealSection
+				id="hero"
+				className="min-h-[calc(100vh-5rem)]"
+				initial="hidden"
+				whileInView="visible"
+				variants={sectionContainerVariants}
+				viewport={{ once: true, amount: "some" }}>
+				<motion.div className="min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+					<motion.h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</motion.h1>
 
 					<motion.h2
-						className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary"
+						className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary leading-tight"
 						variants={sectionChildVariants}>
 						Corbin Murray.
 					</motion.h2>
@@ -40,9 +45,9 @@ export default async function Home() {
 						</Button>
 					</motion.div>
 				</motion.div>
-			</section>
+			</RevealSection>
 
-			<section id="about" className="mb-24 md:mb-48 scroll-mt-24">
+			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
 					initial={{ opacity: 0, y: 75, scale: 0 }}
@@ -92,9 +97,9 @@ export default async function Home() {
 						))}
 					</ul>
 				</article>
-			</section>
+			</RevealSection>
 
-			<section id="experience" className="mb-24 md:mb-48 scroll-mt-24">
+			<RevealSection id="experience" className="mb-24 md:mb-48 scroll-mt-24 max-w-screen-md">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start"
 					initial={{ opacity: 0, y: 75, scale: 0 }}
@@ -131,9 +136,9 @@ export default async function Home() {
 						);
 					})}
 				</Accordion>
-			</section>
+			</RevealSection>
 
-			<section id="projects" className="mb-24 md:mb-48 scroll-mt-24">
+			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
 				<motion.div
 					className="capitalize flex justify-center items-center md:justify-start mb-8 md:mb-16"
 					initial={{ opacity: 0, y: 75, scale: 0 }}
@@ -168,7 +173,7 @@ export default async function Home() {
 						);
 					})}
 				</ul>
-			</section>
+			</RevealSection>
 		</main>
 	);
 }

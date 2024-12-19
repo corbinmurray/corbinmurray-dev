@@ -1,16 +1,67 @@
 "use client";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
-export default function NavBar({ className }: { className: string }) {
+export default function Navbar({ className }: { className: string }) {
 	const [menuOpen, setMenuOpen] = useState(false);
-	const closeMenu = () => setMenuOpen(false);
+	const closeMenu = useCallback(() => setMenuOpen(false), []);
+	const { scrollY } = useScroll();
+	const [scrollState, setScrollState] = useState({ direction: "up", atTop: true });
+
+	useMotionValueEvent(scrollY, "change", (current) => {
+		const diff = current - (scrollY.getPrevious() || 0);
+		setScrollState({
+			direction: diff > 0 ? "down" : "up",
+			atTop: scrollY.get() === 0,
+		});
+	});
+
+	const navLinkContainerAnimationVariants = {
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				ease: "easeOut",
+				staggerChildren: 0.1,
+			},
+		},
+		hidden: {
+			opacity: 0,
+			x: "100vw",
+			transition: {
+				ease: "easeOut",
+				duration: 0.3,
+				// staggerChildren: 0.2,
+				// staggerDirection: -1,
+			},
+		},
+	};
+
+	const navLinkChildrenAnimationVariants = {
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				ease: "easeOut",
+			},
+		},
+		hidden: { x: 75, opacity: 0 },
+	};
 
 	return (
-		<motion.nav className="w-full sticky top-0 z-50 h-20 border-b bg-background">
+		<motion.nav
+			className={cn("sticky top-0 w-full z-50 h-20 bg-background")}
+			initial={{ y: 0 }}
+			animate={{
+				y: scrollState.direction === "down" ? "-100%" : 0,
+			}}
+			transition={{
+				ease: "easeOut",
+				duration: 0.5,
+			}}>
 			<motion.div
 				className={cn(className, "container mx-auto flex items-center justify-between h-full")}
 				initial={{ opacity: 0, y: -300 }}
@@ -40,17 +91,27 @@ export default function NavBar({ className }: { className: string }) {
 				</motion.svg>
 
 				{/* Links (Desktop) */}
-				<motion.div className="hidden md:flex space-x-8">
-					<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-						About
-					</Link>
-					<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-						Experience
-					</Link>
-					<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-						Projects
-					</Link>
-					<ThemeToggle />
+				<motion.div className="hidden md:flex space-x-8" variants={navLinkContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
+					<motion.div variants={navLinkChildrenAnimationVariants}>
+						<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
+							About
+						</Link>
+					</motion.div>
+
+					<motion.div variants={navLinkChildrenAnimationVariants}>
+						<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
+							Experience
+						</Link>
+					</motion.div>
+					<motion.div variants={navLinkChildrenAnimationVariants}>
+						<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
+							Projects
+						</Link>
+					</motion.div>
+
+					<motion.div variants={navLinkChildrenAnimationVariants}>
+						<ThemeToggle />
+					</motion.div>
 				</motion.div>
 			</motion.div>
 
@@ -59,33 +120,47 @@ export default function NavBar({ className }: { className: string }) {
 				{menuOpen && (
 					<>
 						{/* Background Blur */}
-						<motion.div key="blur" className="fixed inset-0 bg-black/50 backdrop-blur z-40" exit={{ opacity: 0 }} onClick={closeMenu} />
+						<motion.div
+							key="blur"
+							className="fixed inset-0 bg-black/50 backdrop-blur z-40"
+							onClick={closeMenu}
+							exit={{ opacity: 0 }}
+							transition={{ ease: "easeOut", duration: 0.3 }}
+						/>
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
 							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 p-6 flex flex-col space-y-8 items-start pt-20"
-							key="mobile-menu"
-							initial={{ x: "100%", opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
-							exit={{ x: "100%", opacity: 0 }}
-							transition={{
-								type: "spring",
-								stiffness: 300,
-								damping: 30,
-							}}>
+							variants={navLinkContainerAnimationVariants}
+							initial="hidden"
+							animate="visible"
+							exit="hidden">
 							{/* Brand */}
-							<div className="text-xl font-bold text-primary">Brand</div>
+							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+								Brand
+							</motion.div>
 
-							<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-								About
-							</Link>
-							<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-								Experience
-							</Link>
-							<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
-								Projects
-							</Link>
-							<ThemeToggle />
+							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+								<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+									About
+								</Link>
+							</motion.div>
+
+							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+								<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+									Experience
+								</Link>
+							</motion.div>
+
+							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+								<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors" onClick={closeMenu}>
+									Projects
+								</Link>
+							</motion.div>
+
+							<motion.div className="text-xl font-bold text-primary" variants={navLinkChildrenAnimationVariants}>
+								<ThemeToggle />
+							</motion.div>
 						</motion.div>
 					</>
 				)}
