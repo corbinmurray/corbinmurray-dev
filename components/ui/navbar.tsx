@@ -1,5 +1,6 @@
 "use client";
 import ThemeToggle from "@/components/ui/theme-toggle";
+import { sectionContainerDownVariants } from "@/lib/animation-variants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
@@ -31,6 +32,8 @@ export default function Navbar({ className }: { className: string }) {
 			direction: diff > 0 ? "down" : "up",
 			atTop: scrollY.get() === 0,
 		});
+
+		console.log("direction ", diff > 0 ? "down" : "up", "atTop ", scrollY.get() === 0, "scrollY ", scrollY.get());
 	});
 
 	const navLinkContainerAnimationVariants = {
@@ -71,16 +74,15 @@ export default function Navbar({ className }: { className: string }) {
 			initial={{ y: 0 }}
 			animate={{
 				y: scrollState.direction === "down" ? "-100%" : 0,
+				opacity: scrollState.direction === "down" ? 0 : 1,
 			}}
-			transition={{
-				ease: "easeOut",
-				duration: 0.5,
-			}}>
+			transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}>
 			<motion.div
 				className={cn(className, "container mx-auto flex items-center justify-between h-full")}
-				initial={{ opacity: 0, y: -300 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ ease: "easeOut", duration: 0.3 }}>
+				initial="hidden"
+				whileInView="visible"
+				variants={sectionContainerDownVariants}
+				viewport={{ once: true, amount: "some" }}>
 				{/* Brand */}
 				<motion.div className="text-xl font-bold text-primary">Brand</motion.div>
 

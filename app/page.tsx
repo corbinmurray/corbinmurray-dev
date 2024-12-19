@@ -13,21 +13,18 @@ export default async function Home() {
 		hidden: {
 			y: 75,
 			opacity: 0,
-			scale: 0,
+			// scale: 0,
 		},
 		visible: {
 			y: 0,
 			opacity: 1,
-			scale: 1,
-			transition: {
-				type: "spring",
-				bounce: 0.25,
-			},
+			// scale: 1,
+			transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
 		},
 	};
 
 	return (
-		<main className="overflow-y-scroll">
+		<main>
 			<RevealSection
 				id="hero"
 				className="min-h-[calc(100vh-5rem)]"
@@ -121,8 +118,9 @@ export default async function Home() {
 						return (
 							<motion.div
 								key={i}
-								initial={{ opacity: 0, y: 75, scale: 0 }}
-								whileInView={{ opacity: 1, y: 0, scale: 1 }}
+								variants={sectionChildAnimationVariants}
+								initial="hidden"
+								whileInView="visible"
 								viewport={{ once: true, amount: "some", margin: "300px" }}>
 								<AccordionItem key={i} value={experience.companyName}>
 									<AccordionTrigger>
