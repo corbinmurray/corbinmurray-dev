@@ -5,7 +5,7 @@ import * as motion from "motion/react-client";
 
 const SocialLinks = ({ orientation }: { orientation: "horizontal" | "vertical" }) => {
 	return (
-		<motion.ul
+		<ul
 			className={cn("flex gap-8", {
 				"flex-col": orientation === "vertical",
 				"flex-row": orientation === "horizontal",
@@ -22,7 +22,7 @@ const SocialLinks = ({ orientation }: { orientation: "horizontal" | "vertical" }
 					</motion.li>
 				);
 			})}
-		</motion.ul>
+		</ul>
 	);
 };
 
