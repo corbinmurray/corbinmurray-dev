@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/ui/navbar";
+import RevealSection from "@/components/ui/reveal-section";
+import SocialLinks from "@/components/ui/social-links";
 import { EMAIL_ADDRESS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import * as motion from "motion/react-client";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { JetBrains_Mono, Raleway } from "next/font/google";
@@ -63,17 +64,9 @@ export default function RootLayout({
 
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
-					<motion.footer
-						className="relative my-24 md:my-48"
-						initial="hidden"
-						whileInView="visible"
-						viewport={{ once: true, amount: "some" }}
-						variants={{
-							hidden: { opacity: 0, y: 75 },
-							visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] } },
-						}}>
-						<motion.div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto flex flex-col items-center">
-							<section id="contact">
+					<footer id="contact" className="my-20">
+						<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">
+							<RevealSection>
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me
 									<svg className="w-2 md:w-3 ms-2 text-accent" viewBox="0 0 18.55445 54.01644">
@@ -87,6 +80,7 @@ export default function RootLayout({
 										/>
 									</svg>
 								</h1>
+
 								<article>
 									<p>
 										Although I’m not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi,
@@ -94,9 +88,9 @@ export default function RootLayout({
 									</p>
 								</article>
 
-								<div className="flex w-full justify-center items-center">
-									<Button asChild size="blockToWide" variant="outline">
-										<a href={"mailto:" + EMAIL_ADDRESS} className="mt-5">
+								<div className="flex justify-center">
+									<Button asChild size="blockToWide" variant="outline" className="text-center">
+										<a href={"mailto:" + EMAIL_ADDRESS}>
 											Say Hello
 											<svg className="w-4 " viewBox="0 0 55.59259 56.25544">
 												<path
@@ -107,9 +101,13 @@ export default function RootLayout({
 										</a>
 									</Button>
 								</div>
-							</section>
-						</motion.div>
-					</motion.footer>
+
+								<div className="flex justify-center mt-20">
+									<SocialLinks orientation="horizontal" />
+								</div>
+							</RevealSection>
+						</div>
+					</footer>
 				</ThemeProvider>
 			</body>
 		</html>
