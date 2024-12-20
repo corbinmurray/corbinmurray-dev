@@ -104,7 +104,7 @@ export default function Navbar({ className }: { className: string }) {
 				</motion.svg>
 
 				{/* Links (Desktop) */}
-				<motion.div className="hidden md:flex space-x-8" variants={desktopNavMenuContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
+				<motion.div className="hidden md:flex space-x-8 items-center" variants={desktopNavMenuContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 							About
@@ -189,7 +189,7 @@ export default function Navbar({ className }: { className: string }) {
 								<ThemeToggle />
 							</motion.div>
 
-							<motion.div className="mt-8" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="mt-14" variants={mobileNavMenuChildrenAnimationVariants}>
 								<SocialLinks orientation="horizontal" />
 							</motion.div>
 						</motion.div>

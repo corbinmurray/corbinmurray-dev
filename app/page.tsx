@@ -66,19 +66,21 @@ export default async function Home() {
 				</article>
 			</RevealSection>
 
-			<RevealSection id="experience" className="mb-24 md:mb-48 scroll-mt-24 max-w-screen-md">
-				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
+			<RevealSection id="experience" className="scroll-mt-24 max-w-screen-md mb-12 md:mb-20">
+				<div className="relative flex justify-start items-end space-x-2">
 					<h3 className="font-mono flex">
 						0 <span className="text-accent">2</span>.
 					</h3>
 					<h1 className="text-nowrap">Experience</h1>
 				</div>
+			</RevealSection>
 
-				{experiences.map((experience, i) => {
-					return (
-						<article key={i} className="flex flex-col gap-y-3 mb-8 border-b">
+			{experiences.map((experience, i) => {
+				return (
+					<RevealSection key={i}>
+						<article className="flex flex-col gap-y-3 mb-16 border-b">
 							<div className="flex justify-between items-baseline">
-								<h3>{experience.companyName}</h3>
+								<h3 className="m-0">{experience.companyName}</h3>
 								<h3 className="italic text-sm">{experience.dateRange}</h3>
 							</div>
 
@@ -100,9 +102,11 @@ export default async function Home() {
 								})}
 							</ul>
 						</article>
-					);
-				})}
-			</RevealSection>
+					</RevealSection>
+				);
+			})}
+
+			<div className="mb-24 md:mb-48 h-px"></div>
 
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
 				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
@@ -115,21 +119,23 @@ export default async function Home() {
 				<ul className="flex flex-col gap-8 xl:flex-row">
 					{projects.map((project, i) => {
 						return (
-							<li key={i}>
-								<Card className="shadow max-w-md">
-									<CardHeader>
-										<CardTitle className="text-secondary">{project.title}</CardTitle>
-									</CardHeader>
-									<CardContent>
-										<article>
-											<p>{project.description}</p>
-										</article>
-									</CardContent>
-									<CardFooter>
-										<a href={project.githubLink}>GitHub</a>
-									</CardFooter>
-								</Card>
-							</li>
+							<RevealSection key={i}>
+								<li>
+									<Card className="shadow max-w-md">
+										<CardHeader>
+											<CardTitle className="text-secondary">{project.title}</CardTitle>
+										</CardHeader>
+										<CardContent>
+											<article>
+												<p>{project.description}</p>
+											</article>
+										</CardContent>
+										<CardFooter>
+											<a href={project.githubLink}>GitHub</a>
+										</CardFooter>
+									</Card>
+								</li>
+							</RevealSection>
 						);
 					})}
 				</ul>
