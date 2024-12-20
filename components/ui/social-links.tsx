@@ -39,6 +39,6 @@ const SOCIALS = [
 	},
 	{
 		icon: <Mail />,
-		href: "MAILTO:" + EMAIL_ADDRESS,
+		href: "mailto:" + EMAIL_ADDRESS,
 	},
 ];
