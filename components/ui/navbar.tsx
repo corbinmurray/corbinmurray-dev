@@ -49,7 +49,7 @@ export default function Navbar({ className }: { className: string }) {
 				y: scrollState.direction === "down" ? "-100%" : 0,
 				opacity: scrollState.direction === "down" ? 0 : 1,
 			}}
-			transition={{ duration: 0.2, ease: [0.33, 1, 0.68, 1] }}>
+			transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}>
 			<motion.div
 				className={cn(className, "container mx-auto flex items-center justify-between h-full")}
 				initial="hidden"
@@ -117,30 +117,28 @@ export default function Navbar({ className }: { className: string }) {
 					initial="hidden"
 					exit="hidden"
 					animate="visible">
-					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-							About
-						</Link>
-					</motion.div>
+					{navItems.map((navItem, i) => {
+						return (
+							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
+								<div className="relative flex flex-col overflow-x-hidden group">
+									<Link href={navItem.href} className="lg:text-lg hover:text-primary smooth-hover font-medium" onClick={closeMenu}>
+										{navItem.name}
+									</Link>
+
+									<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+								</div>
+							</motion.div>
+						);
+					})}
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Link href="#experience" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-							Experience
-						</Link>
-					</motion.div>
-					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Link href="#projects" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-							Projects
-						</Link>
-					</motion.div>
-					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Link href="#contact" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
-							Contact
-						</Link>
-					</motion.div>
-
-					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<ThemeToggle />
+						<motion.div
+							initial={{ scale: 1 }}
+							whileHover={{ scale: 1.1 }}
+							transition={{ duration: 0.1, ease: [0.33, 1, 0.68, 1] }}
+							className="hover:text-primary">
+							<ThemeToggle />
+						</motion.div>
 					</motion.div>
 				</motion.div>
 			</motion.div>
@@ -189,16 +187,26 @@ export default function Navbar({ className }: { className: string }) {
 
 							{navItems.map((navItem, i) => {
 								return (
-									<motion.div key={i} variants={mobileNavMenuChildrenAnimationVariants} whileHover={{ scale: 1.1 }} className="my-2">
-										<Link href={navItem.href} className="md:text-lg lg:text-lg xl:text-xl font-medium hover:text-primary" onClick={closeMenu}>
-											{navItem.name}
-										</Link>
+									<motion.div key={i} variants={mobileNavMenuChildrenAnimationVariants}>
+										<div className="relative flex flex-col overflow-x-hidden group my-4">
+											<Link href={navItem.href} className="lg:text-lg hover:text-primary smooth-hover font-medium" onClick={closeMenu}>
+												{navItem.name}
+											</Link>
+
+											<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+										</div>
 									</motion.div>
 								);
 							})}
 
 							<motion.div className="text-xl font-bold text-primary mt-8" variants={mobileNavMenuChildrenAnimationVariants}>
-								<ThemeToggle />
+								<motion.div
+									initial={{ scale: 1 }}
+									whileHover={{ scale: 1.1 }}
+									transition={{ duration: 0.1, ease: [0.33, 1, 0.68, 1] }}
+									className="hover:text-primary">
+									<ThemeToggle />
+								</motion.div>
 							</motion.div>
 
 							<motion.div className="mt-14" variants={mobileNavMenuChildrenAnimationVariants}>
@@ -250,7 +258,7 @@ const desktopNavMenuContainerAnimationVariants: Variants = {
 const desktopNavMenuChildrenAnimationVariants: Variants = {
 	visible: {
 		y: 0,
-		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
+		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
 	},
 	hidden: { y: -15 },
 };

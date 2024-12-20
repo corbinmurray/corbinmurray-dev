@@ -56,6 +56,9 @@ export default {
 				sans: "var(--font-sans)",
 				mono: "var(--font-mono)",
 			},
+			transitionTimingFunction: {
+				"smooth-cubic": "cubic-bezier(0.33, 1, 0.68, 1)",
+			},
 		},
 	},
 	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
