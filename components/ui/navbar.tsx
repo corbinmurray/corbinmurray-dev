@@ -28,10 +28,17 @@ export default function Navbar({ className }: { className: string }) {
 
 	useMotionValueEvent(scrollY, "change", (current) => {
 		const diff = current - (scrollY.getPrevious() || 0);
-		setScrollState({
+		const newScrollState = {
 			direction: diff > 0 ? "down" : "up",
 			atTop: scrollY.get() === 0,
-		});
+		};
+
+		if (scrollState.atTop === newScrollState.atTop && scrollState.direction === newScrollState.direction) {
+			// Avoid queueing a re-render if state hasn't changed
+			return;
+		}
+
+		setScrollState(newScrollState);
 	});
 
 	return (
@@ -104,7 +111,12 @@ export default function Navbar({ className }: { className: string }) {
 				</motion.svg>
 
 				{/* Links (Desktop) */}
-				<motion.div className="hidden md:flex space-x-8 items-center" variants={desktopNavMenuContainerAnimationVariants} initial="hidden" exit="hidden" animate="visible">
+				<motion.div
+					className="hidden md:flex space-x-8 items-center"
+					variants={desktopNavMenuContainerAnimationVariants}
+					initial="hidden"
+					exit="hidden"
+					animate="visible">
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<Link href="#about" className="md:text-md lg:text-lg font-medium text-foreground hover:text-primary transition-colors">
 							About
