@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
 import experiences from "@/lib/experiences.json";
@@ -24,11 +23,11 @@ export default async function Home() {
 					</p>
 				</article>
 
-				<Button asChild variant="outline" size="blockToWide">
+				{/* <Button asChild variant="outline" size="blockToWide">
 					<a href="/Corbin Murray - Resume.pdf" target="_blank" className="mt-4">
 						Resume
 					</a>
-				</Button>
+				</Button> */}
 			</RevealSection>
 
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
@@ -86,7 +85,7 @@ export default async function Home() {
 								{experience.skills.map((skill, ii) => {
 									return (
 										<li key={ii} className="text-nowrap">
-											<Badge variant="secondary">{skill}</Badge>
+											<Badge variant="accent">{skill}</Badge>
 										</li>
 									);
 								})}
