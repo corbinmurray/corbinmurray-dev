@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import SocialLinks from "@/components/ui/social-links";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -140,6 +141,12 @@ export default function Navbar({ className }: { className: string }) {
 							<ThemeToggle />
 						</motion.div>
 					</motion.div>
+
+					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
+						<Button asChild variant="outline">
+							<a href="/resume">Resume</a>
+						</Button>
+					</motion.div>
 				</motion.div>
 			</motion.div>
 
@@ -209,7 +216,13 @@ export default function Navbar({ className }: { className: string }) {
 								</motion.div>
 							</motion.div>
 
-							<motion.div className="mt-14" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="mt-14 w-full" variants={mobileNavMenuChildrenAnimationVariants}>
+								<Button asChild variant="outline" size="block">
+									<a href="/resume">Resume</a>
+								</Button>
+							</motion.div>
+
+							<motion.div className="mt-14 mx-auto" variants={mobileNavMenuChildrenAnimationVariants}>
 								<SocialLinks orientation="horizontal" />
 							</motion.div>
 						</motion.div>
