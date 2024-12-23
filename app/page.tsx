@@ -15,7 +15,7 @@ export default async function Home() {
 					Corbin Murray.
 				</h2>
 
-				<h3 className="text-[clamp(30px,6vw,70px)] font-semibold">I build software.</h3>
+				<h3 className="text-[clamp(30px,6vw,48px)] font-semibold leading-none">Software Engineer</h3>
 
 				<article className="my-5">
 					<p>
