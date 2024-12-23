@@ -1,17 +1,19 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
+import SocialLinks from "@/components/ui/social-links";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
+import { Github } from "lucide-react";
 
 export default async function Home() {
 	return (
 		<main>
-			<RevealSection id="hero" className="relative min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center overflow-x-hidden">
+			<RevealSection id="hero" className="relative min-h-[calc(100vh-6rem)] mb-[12rem] flex flex-col justify-center overflow-hidden">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110 leading-tight">
-					Corbin Murray.
+					Corbin Murray
 				</h2>
 
 				<h3 className="text-[clamp(30px,6vw,48px)] font-semibold leading-none">Software Engineer</h3>
@@ -23,14 +25,16 @@ export default async function Home() {
 					</p>
 				</article>
 
-				{/* <Button asChild variant="outline" size="blockToWide">
-					<a href="/Corbin Murray - Resume.pdf" target="_blank" className="mt-4">
-						Resume
-					</a>
+				{/* <Button variant="outline" size="blockToWide" className="mt-12">
+					Resume
 				</Button> */}
+
+				<div className="mt-12 flex items-center gap-x-12">
+					<SocialLinks orientation="horizontal" />
+				</div>
 			</RevealSection>
 
-			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
+			<RevealSection id="about" className="relative mb-32 md:mb-64 scroll-mt-24">
 				<SectionHeader sequence={1} title="About Me" />
 
 				<article>
@@ -47,20 +51,16 @@ export default async function Home() {
 				</article>
 
 				<article>
-					<p>Here are some technologies I have worked with recently:</p>
-					<ul className="list-none p-0 md:p-0 grid grid-cols-2 gap-2 md:grid-cols-3">
-						{RECENT_TECHNOLOGIES.map((tech, i) => (
-							<li
-								key={i}
-								className="relative md:relative before:content-['>'] before:absolute before:left-0 before:text-accent ps-5 m-0 md:before:content-['>'] md:before:absolute md:before:left-0 md:before:text-accent md:ps-5 md:m-0">
-								{tech}
-							</li>
-						))}
-					</ul>
+					<p>
+						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
+						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
+						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
+						new technologies, I thrive on the growth and innovation each opportunity brings.
+					</p>
 				</article>
 			</RevealSection>
 
-			<RevealSection id="experience" className="scroll-mt-24 mb-12 md:mb-20">
+			<RevealSection id="experience" className="scroll-mt-24">
 				<SectionHeader sequence={2} title="Experience" />
 			</RevealSection>
 
@@ -78,7 +78,11 @@ export default async function Home() {
 							</div>
 
 							{experience.descriptions.map((description, ii) => {
-								return <p key={ii} className="mb-0">{description}</p>;
+								return (
+									<p key={ii} className="mb-0">
+										{description}
+									</p>
+								);
 							})}
 
 							<ul className="list-none p-0 m-0 flex flex-row flex-wrap">
@@ -95,9 +99,7 @@ export default async function Home() {
 				);
 			})}
 
-			<div className="mb-24 md:mb-48 h-px"></div>
-
-			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
+			<RevealSection id="projects" className="mb-32 md:mb-64 scroll-mt-24 mt-32 md:mt-64">
 				<SectionHeader sequence={3} title="Projects" />
 
 				<ul className="flex flex-col gap-8 xl:flex-row">
@@ -115,7 +117,9 @@ export default async function Home() {
 											</article>
 										</CardContent>
 										<CardFooter>
-											<a href={project.githubLink}>GitHub</a>
+											<a href={project.githubLink}>
+												<Github className="smooth-hover hover:text-primary" />
+											</a>
 										</CardFooter>
 									</Card>
 								</li>

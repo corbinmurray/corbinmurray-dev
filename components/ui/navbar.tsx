@@ -264,19 +264,17 @@ const desktopNavMenuContainerAnimationVariants: Variants = {
 		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], staggerChildren: 0.2 },
 	},
 	hidden: {
-		y: -15,
-		transition: {
-			ease: "easeOut",
-		},
+		y: -100,
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
 	},
 };
 
 const desktopNavMenuChildrenAnimationVariants: Variants = {
 	visible: {
 		y: 0,
-		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
+		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
 	},
-	hidden: { y: -15 },
+	hidden: { y: -100 },
 };
 
 const navItems = [
