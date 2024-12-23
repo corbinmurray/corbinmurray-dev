@@ -59,6 +59,22 @@ export default {
 			transitionTimingFunction: {
 				"smooth-cubic": "cubic-bezier(0.33, 1, 0.68, 1)",
 			},
+			container: {
+				center: true,
+				padding: {
+					DEFAULT: "1rem", // Default padding
+					sm: "2rem", // Padding for small screens and above
+					md: "3rem", // Padding for medium screens and above
+					lg: "4rem", // Padding for large screens and above
+					xl: "5rem", // Padding for extra-large screens and above
+				},
+				screens: {
+					sm: "600px",
+					md: "728px",
+					lg: "984px",
+					xl: "1240px",
+				},
+			},
 		},
 	},
 	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

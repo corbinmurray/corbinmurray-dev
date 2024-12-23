@@ -68,9 +68,9 @@ export default async function Home() {
 				return (
 					<RevealSection key={i}>
 						<article className="flex flex-col gap-y-3 mb-16 border-b">
-							<div className="flex justify-between items-baseline">
+							<div className="flex justify-start items-baseline">
 								<h3 className="m-0">{experience.companyName}</h3>
-								<h3 className="italic text-sm">{experience.dateRange}</h3>
+								<h3 className="italic text-sm ms-10">{experience.dateRange}</h3>
 							</div>
 
 							<div>
@@ -78,7 +78,7 @@ export default async function Home() {
 							</div>
 
 							{experience.descriptions.map((description, ii) => {
-								return <p key={ii}>{description}</p>;
+								return <p key={ii} className="mb-0">{description}</p>;
 							})}
 
 							<ul className="list-none p-0 m-0 flex flex-row flex-wrap">
