@@ -4,6 +4,7 @@ import RevealSection from "@/components/ui/reveal-section";
 import SocialLinks from "@/components/ui/social-links";
 import { EMAIL_ADDRESS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { JetBrains_Mono, Raleway } from "next/font/google";
@@ -64,7 +65,7 @@ export default function RootLayout({
 
 					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
 
-					<footer id="contact" className="my-20">
+					<footer id="contact" className="mt-20">
 						<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">
 							<RevealSection>
 								<h1 className="flex flex-row items-center justify-center">
@@ -106,6 +107,17 @@ export default function RootLayout({
 									<SocialLinks orientation="horizontal" />
 								</div>
 							</RevealSection>
+						</div>
+
+						<div className="w-full bg-secondary mt-20 py-4">
+							<article className="md:prose md:text-secondary-foreground text-secondary-foreground text-center w-full mx-auto">
+								<p>
+									Developed and designed with <Heart className="inline-block w-4 fill-red-500 stroke-red-500" /> Corbin Murray
+								</p>
+								<p>
+									Copyright <Copyright className="w-3 text-secondary-foreground inline-block" /> {new Date().getFullYear()} Corbin Murray
+								</p>
+							</article>
 						</div>
 					</footer>
 				</ThemeProvider>
