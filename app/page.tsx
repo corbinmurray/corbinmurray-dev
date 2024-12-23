@@ -8,7 +8,7 @@ import projects from "@/lib/projects.json";
 export default async function Home() {
 	return (
 		<main>
-			<RevealSection id="hero" className="min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center">
+			<RevealSection id="hero" className="relative min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center overflow-x-hidden">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110 leading-tight">
@@ -32,12 +32,7 @@ export default async function Home() {
 			</RevealSection>
 
 			<RevealSection id="about" className="mb-24 md:mb-48 scroll-mt-24">
-				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
-					<h3 className="font-mono flex">
-						0 <span className="text-accent">1</span>.
-					</h3>
-					<h1 className="text-nowrap">About Me</h1>
-				</div>
+				<SectionHeader sequence={1} title="About Me" />
 
 				<article>
 					<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
@@ -66,13 +61,8 @@ export default async function Home() {
 				</article>
 			</RevealSection>
 
-			<RevealSection id="experience" className="scroll-mt-24 max-w-screen-md mb-12 md:mb-20">
-				<div className="relative flex justify-start items-end space-x-2">
-					<h3 className="font-mono flex">
-						0 <span className="text-accent">2</span>.
-					</h3>
-					<h1 className="text-nowrap">Experience</h1>
-				</div>
+			<RevealSection id="experience" className="scroll-mt-24 mb-12 md:mb-20">
+				<SectionHeader sequence={2} title="Experience" />
 			</RevealSection>
 
 			{experiences.map((experience, i) => {
@@ -109,12 +99,7 @@ export default async function Home() {
 			<div className="mb-24 md:mb-48 h-px"></div>
 
 			<RevealSection id="projects" className="mb-24 md:mb-48 scroll-mt-24">
-				<div className="relative flex justify-start items-end space-x-2 mb-12 md:mb-20">
-					<h3 className="font-mono flex">
-						0 <span className="text-accent">3</span>.
-					</h3>
-					<h1 className="text-nowrap">Projects</h1>
-				</div>
+				<SectionHeader sequence={3} title="Projects" />
 
 				<ul className="flex flex-col gap-8 xl:flex-row">
 					{projects.map((project, i) => {
@@ -145,3 +130,15 @@ export default async function Home() {
 }
 
 const RECENT_TECHNOLOGIES = ["C#", "TypeScript", ".NET Core", "Docker", "MongoDB", "PostgreSQL", "Apache Kafka", "AWS", "Redis"];
+
+const SectionHeader = ({ sequence, title }: { sequence: number; title: string }) => {
+	return (
+		<div className="relative flex justify-start gap-2 items-end mb-12">
+			<h3 className="font-mono flex">
+				0 <span className="text-accent">{sequence}</span>.
+			</h3>
+
+			<h1 className="text-nowrap inline-block">{title}</h1>
+		</div>
+	);
+};
