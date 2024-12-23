@@ -122,7 +122,10 @@ export default function Navbar({ className }: { className: string }) {
 						return (
 							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
 								<div className="relative flex flex-col overflow-x-hidden group">
-									<Link href={navItem.href} className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium" onClick={closeMenu}>
+									<Link
+										href={navItem.href}
+										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium"
+										onClick={closeMenu}>
 										{navItem.name}
 									</Link>
 
@@ -143,7 +146,7 @@ export default function Navbar({ className }: { className: string }) {
 					</motion.div>
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Button asChild variant="outline">
+						<Button asChild variant="secondary">
 							<a href="/resume">Resume</a>
 						</Button>
 					</motion.div>
@@ -210,14 +213,14 @@ export default function Navbar({ className }: { className: string }) {
 								<motion.div
 									initial={{ scale: 1 }}
 									whileHover={{ scale: 1.1 }}
-									transition={{ duration: 0.1, ease: [0.33, 1, 0.68, 1] }}
+									transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
 									className="hover:text-primary">
 									<ThemeToggle />
 								</motion.div>
 							</motion.div>
 
 							<motion.div className="mt-14 w-full" variants={mobileNavMenuChildrenAnimationVariants}>
-								<Button asChild variant="outline" size="block">
+								<Button asChild variant="secondary" size="block">
 									<a href="/resume">Resume</a>
 								</Button>
 							</motion.div>
