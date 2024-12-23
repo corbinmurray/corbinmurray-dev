@@ -61,12 +61,12 @@ export default function RootLayout({
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-					<Navbar className="px-8 md:px-16 lg:px-32" />
+					<Navbar />
 
-					<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">{children}</div>
+					<div className="container">{children}</div>
 
 					<footer id="contact" className="mt-20">
-						<div className="container py-0 px-8 md:px-16 lg:px-32 mx-auto">
+						<div className="container">
 							<RevealSection>
 								<h1 className="flex flex-row items-center justify-center">
 									Contact Me

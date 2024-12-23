@@ -7,7 +7,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } fro
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-export default function Navbar({ className }: { className: string }) {
+export default function Navbar({ className }: { className?: string }) {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const closeMenu = useCallback(() => setMenuOpen(false), []);
 	const { scrollY } = useScroll();
