@@ -5,7 +5,7 @@ import SectionHeader from "@/components/ui/section-header";
 import SocialLinks from "@/components/ui/social-links";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import { Github } from "lucide-react";
+import { Github, SquareArrowOutUpRight } from "lucide-react";
 
 export default async function Home() {
 	return (
@@ -112,9 +112,12 @@ export default async function Home() {
 												<p>{project.description}</p>
 											</article>
 										</CardContent>
-										<CardFooter>
+										<CardFooter className="gap-6">
 											<a href={project.githubLink}>
 												<Github className="smooth-hover hover:text-primary" />
+											</a>
+											<a href={project.liveSiteLink}>
+												<SquareArrowOutUpRight className="smooth-hover hover:text-primary" />
 											</a>
 										</CardFooter>
 									</Card>
