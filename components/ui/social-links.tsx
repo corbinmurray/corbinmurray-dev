@@ -3,13 +3,17 @@ import { cn } from "@/lib/utils";
 import { Github, Linkedin, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
 
-const SocialLinks = ({ orientation }: { orientation: "horizontal" | "vertical" }) => {
+const SocialLinks = ({ orientation, className }: { orientation: "horizontal" | "vertical"; className?: string }) => {
 	return (
 		<ul
-			className={cn("flex gap-8", {
-				"flex-col": orientation === "vertical",
-				"flex-row": orientation === "horizontal",
-			})}>
+			className={cn(
+				"flex gap-8",
+				{
+					"flex-col": orientation === "vertical",
+					"flex-row": orientation === "horizontal",
+				},
+				className
+			)}>
 			{SOCIALS.map((social, i) => {
 				return (
 					<motion.li
