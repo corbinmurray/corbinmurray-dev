@@ -10,7 +10,7 @@ import { Github } from "lucide-react";
 export default async function Home() {
 	return (
 		<main>
-			<RevealSection id="hero" className="relative min-h-[calc(100vh-6rem)] mb-[12rem] flex flex-col justify-center overflow-hidden">
+			<RevealSection id="hero" className="relative min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center overflow-hidden">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110 leading-tight">
