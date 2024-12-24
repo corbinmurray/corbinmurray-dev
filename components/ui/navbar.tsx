@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import SocialLinks from "@/components/ui/social-links";
 import ThemeToggle from "@/components/ui/theme-toggle";
+import { INTERNAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
@@ -118,15 +119,15 @@ export default function Navbar({ className }: { className?: string }) {
 					initial="hidden"
 					exit="hidden"
 					animate="visible">
-					{navItems.map((navItem, i) => {
+					{Object.entries(INTERNAL_LINKS).map(([title, href], i) => {
 						return (
 							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
 								<div className="relative flex flex-col overflow-x-hidden group">
 									<Link
-										href={"/" + navItem.href}
-										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium"
+										href={href}
+										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize"
 										onClick={closeMenu}>
-										{navItem.name}
+										{title}
 									</Link>
 
 									<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
