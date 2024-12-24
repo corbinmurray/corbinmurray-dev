@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
+import SectionHeader from "@/components/ui/section-header";
 import SocialLinks from "@/components/ui/social-links";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
@@ -25,16 +26,12 @@ export default async function Home() {
 					</p>
 				</article>
 
-				{/* <Button variant="outline" size="blockToWide" className="mt-12">
-					Resume
-				</Button> */}
-
 				<div className="mt-12 flex items-center gap-x-12">
-					<SocialLinks orientation="horizontal" />
+					<SocialLinks orientation="horizontal" className="md:gap-12" />
 				</div>
 			</RevealSection>
 
-			<RevealSection id="about" className="relative mb-32 md:mb-64 scroll-mt-24">
+			<RevealSection id="about" className="relative mb-32 md:mb-64 scroll-mt-40">
 				<SectionHeader sequence={1} title="About Me" />
 
 				<article>
@@ -45,22 +42,21 @@ export default async function Home() {
 					<p>
 						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
 						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
-						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
-						new technologies, I thrive on the growth and innovation each opportunity brings.
+						motivated to continuously learn, improve, and push boundaries. Whether it&apos;s debugging intricate issues, architecting scalable systems, or
+						exploring new technologies, I thrive on the growth and innovation each opportunity brings.
 					</p>
 				</article>
 
 				<article>
 					<p>
-						I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
-						excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
-						motivated to continuously learn, improve, and push boundaries. Whether it's debugging intricate issues, architecting scalable systems, or exploring
-						new technologies, I thrive on the growth and innovation each opportunity brings.
+						When I&apos;m not working, I love spending time with my wife, our two dogs Pretzel and Ink, and hanging out with friends and family. I&apos;m
+						passionate about staying active, whether it&apos;s playing soccer, hitting the gym, or enjoying outdoor activities like fishing. When it&apos;s time
+						to relax, you&apos;ll often find me playing video games, reading, or exploring new hobbies.
 					</p>
 				</article>
 			</RevealSection>
 
-			<RevealSection id="experience" className="scroll-mt-24">
+			<RevealSection id="experience" className="scroll-mt-40">
 				<SectionHeader sequence={2} title="Experience" />
 			</RevealSection>
 
@@ -99,7 +95,7 @@ export default async function Home() {
 				);
 			})}
 
-			<RevealSection id="projects" className="mb-32 md:mb-64 scroll-mt-24 mt-32 md:mt-64">
+			<RevealSection id="projects" className="mb-32 md:mb-64 scroll-mt-40 mt-32 md:mt-64">
 				<SectionHeader sequence={3} title="Projects" />
 
 				<ul className="flex flex-col gap-8 xl:flex-row">
@@ -131,17 +127,3 @@ export default async function Home() {
 		</main>
 	);
 }
-
-const RECENT_TECHNOLOGIES = ["C#", "TypeScript", ".NET Core", "Docker", "MongoDB", "PostgreSQL", "Apache Kafka", "AWS", "Redis"];
-
-const SectionHeader = ({ sequence, title }: { sequence: number; title: string }) => {
-	return (
-		<div className="relative flex justify-start gap-2 items-end mb-12">
-			<h3 className="font-mono flex">
-				0 <span className="text-accent">{sequence}</span>.
-			</h3>
-
-			<h1 className="text-nowrap inline-block">{title}</h1>
-		</div>
-	);
-};
