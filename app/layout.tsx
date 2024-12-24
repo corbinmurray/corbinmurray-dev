@@ -65,22 +65,8 @@ export default function RootLayout({
 
 					<div className="container">{children}</div>
 
-					<footer id="contact" className="mt-20">
-						<div className="container">
-							<RevealSection id="contact" className="mb-32 md:mb-64 scroll-mt-24 mt-32 md:mt-64">
-								<SectionHeader sequence={4} title="Contact Me" />
-
-								<article>
-									<p>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam ab nulla nam corrupti fugiat inventore atque temporibus vero, ut unde
-										ratione sequi sit architecto dicta dolorem, praesentium recusandae cumque? Ex!
-									</p>
-								</article>
-
-								<SocialLinks orientation="horizontal" className="mt-16 md:gap-12" />
-							</RevealSection>
-						</div>
-
+					<footer  className="mt-20">
+			
 						<div className="w-full bg-secondary mt-20 py-4">
 							<div className="container mt-5 text-secondary-foreground">
 								<article className="prose-h3:text-secondary-foreground prose-a:text-secondary-foreground prose-a:no-underline">
