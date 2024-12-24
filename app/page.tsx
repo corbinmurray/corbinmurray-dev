@@ -127,6 +127,19 @@ export default async function Home() {
 					})}
 				</ul>
 			</RevealSection>
+
+			<RevealSection id="contact" className="mb-32 md:mb-64 scroll-mt-24 mt-32 md:mt-64">
+				<SectionHeader sequence={4} title="Contact Me" />
+
+				<article>
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam ab nulla nam corrupti fugiat inventore atque temporibus vero, ut unde ratione sequi
+						sit architecto dicta dolorem, praesentium recusandae cumque? Ex!
+					</p>
+				</article>
+
+				<SocialLinks orientation="horizontal" className="mt-16 md:gap-12" />
+			</RevealSection>
 		</main>
 	);
 }

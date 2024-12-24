@@ -123,7 +123,7 @@ export default function Navbar({ className }: { className?: string }) {
 							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
 								<div className="relative flex flex-col overflow-x-hidden group">
 									<Link
-										href={navItem.href}
+										href={"/" + navItem.href}
 										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium"
 										onClick={closeMenu}>
 										{navItem.name}
