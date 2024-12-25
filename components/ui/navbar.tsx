@@ -1,7 +1,7 @@
 "use client";
+import SocialLinks from "@/components/social-links";
+import ThemeToggle from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import SocialLinks from "@/components/ui/social-links";
-import ThemeToggle from "@/components/ui/theme-toggle";
 import { INTERNAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";

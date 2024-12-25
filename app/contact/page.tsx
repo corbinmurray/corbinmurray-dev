@@ -1,6 +1,6 @@
-import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
-import SocialLinks from "@/components/ui/social-links";
+import RevealSection from "@/components/reveal-section";
+import SectionHeader from "@/components/section-header";
+import SocialLinks from "@/components/social-links";
 
 export default async function Page() {
 	return (

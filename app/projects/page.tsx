@@ -1,6 +1,6 @@
+import RevealSection from "@/components/reveal-section";
+import SectionHeader from "@/components/section-header";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
 import projects from "@/lib/projects.json";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
 

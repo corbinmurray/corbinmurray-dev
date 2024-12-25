@@ -1,5 +1,5 @@
-import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
+import RevealSection from "@/components/reveal-section";
+import SectionHeader from "@/components/section-header";
 
 export default async function Page() {
 	return (

@@ -1,5 +1,5 @@
-import RevealSection from "@/components/ui/reveal-section";
-import SocialLinks from "@/components/ui/social-links";
+import RevealSection from "@/components/reveal-section";
+import SocialLinks from "@/components/social-links";
 
 export default async function Home() {
 	return (
