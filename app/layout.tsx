@@ -1,4 +1,5 @@
-import Navbar from "@/components/ui/navbar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
@@ -56,23 +57,32 @@ export default function RootLayout({
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-					<Navbar />
+					<SidebarProvider>
+						{/* <Navbar /> */}
 
-					{/* 5rem comes from the navbar's height of h-20 */}
-					<main className="container min-h-[calc(100vh-5rem)] pt-20">{children}</main>
+						<AppSidebar />
 
+						{/* 5rem comes from the navbar's height of h-20 */}
+						<main className="container min-h-[calc(100vh-5rem)] pt-20">
+							<SidebarTrigger />
+							{children}
+						</main>
+
+					
+
+					</SidebarProvider>
 					<footer>
-						<div className="w-full bg-secondary mt-20 py-2">
-							<article className="md:prose md:text-secondary-foreground text-secondary-foreground text-center w-full mx-auto">
-								<p>
-									Developed and designed with <Heart className="inline-block w-4 fill-red-500 stroke-red-500" /> Corbin Murray
-								</p>
-								<p>
-									Copyright <Copyright className="w-3 text-secondary-foreground inline-block" /> {new Date().getFullYear()} Corbin Murray
-								</p>
-							</article>
-						</div>
-					</footer>
+							<div className="w-full bg-secondary mt-20 py-2">
+								<article className="md:prose md:text-secondary-foreground text-secondary-foreground text-center w-full mx-auto">
+									<p>
+										Developed and designed with <Heart className="inline-block w-4 fill-red-500 stroke-red-500" /> Corbin Murray
+									</p>
+									<p>
+										Copyright <Copyright className="w-3 text-secondary-foreground inline-block" /> {new Date().getFullYear()} Corbin Murray
+									</p>
+								</article>
+							</div>
+						</footer>
 				</ThemeProvider>
 			</body>
 		</html>

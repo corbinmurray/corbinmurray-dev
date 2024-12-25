@@ -1,6 +1,6 @@
+import RevealSection from "@/components/reveal-section";
+import SectionHeader from "@/components/section-header";
 import { Badge } from "@/components/ui/badge";
-import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
 import experiences from "@/lib/experiences.json";
 
 export default async function Page() {
