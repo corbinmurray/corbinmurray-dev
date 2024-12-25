@@ -1,14 +1,9 @@
 import Navbar from "@/components/ui/navbar";
-import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
-import SocialLinks from "@/components/ui/social-links";
-import projects from "@/lib/projects.json";
 import { cn } from "@/lib/utils";
-import { Copyright, Heart, SquareArrowOutUpRight } from "lucide-react";
+import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { JetBrains_Mono, Raleway } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 const fontMono = JetBrains_Mono({
 	variable: "--font-mono",
@@ -63,34 +58,12 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar />
 
-					<div className="container">{children}</div>
+					{/* 5rem comes from the navbar's height of h-20 */}
+					<main className="container min-h-[calc(100vh-5rem)] pt-20">{children}</main>
 
-					<footer  className="mt-20">
-			
-						<div className="w-full bg-secondary mt-20 py-4">
-							<div className="container mt-5 text-secondary-foreground">
-								<article className="prose-h3:text-secondary-foreground prose-a:text-secondary-foreground prose-a:no-underline">
-									<h3>Projects</h3>
-									<div className="flex gap-6 md:gap-8">
-										{projects.map((project, i) => {
-											return (
-												<div key={i} className="relative flex flex-col overflow-x-hidden group max-w-fit">
-													<Link
-														href={project.liveSiteLink}
-														className="lg:text-lg group-hover:cursor-pointer text-secondary-foreground smooth-hover font-medium flex gap-1">
-														{project.title}
-														<SquareArrowOutUpRight className="w-3" />
-													</Link>
-
-													<div className="w-full h-px bg-secondary-foreground absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
-												</div>
-											);
-										})}
-									</div>
-								</article>
-							</div>
-
-							<article className="md:prose md:text-secondary-foreground text-secondary-foreground text-center w-full mx-auto mt-16">
+					<footer>
+						<div className="w-full bg-secondary mt-20 py-2">
+							<article className="md:prose md:text-secondary-foreground text-secondary-foreground text-center w-full mx-auto">
 								<p>
 									Developed and designed with <Heart className="inline-block w-4 fill-red-500 stroke-red-500" /> Corbin Murray
 								</p>
