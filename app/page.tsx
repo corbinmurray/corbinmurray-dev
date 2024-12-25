@@ -1,14 +1,10 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import RevealSection from "@/components/ui/reveal-section";
-import SectionHeader from "@/components/ui/section-header";
 import SocialLinks from "@/components/ui/social-links";
-import projects from "@/lib/projects.json";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
 
 export default async function Home() {
 	return (
-		<main>
-			<RevealSection id="hero" className="relative min-h-[calc(100vh-12rem)] mb-[12rem] flex flex-col justify-center overflow-hidden">
+		<>
+			<RevealSection className="h-full flex flex-col justify-center overflow-hidden">
 				<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 				<h2 className="text-[clamp(40px,8vw,80px)] font-semibold border-none bg-clip-text text-transparent bg-gradient-to-tr from-primary to-secondary brightness-110 leading-tight">
@@ -28,10 +24,6 @@ export default async function Home() {
 					<SocialLinks orientation="horizontal" className="md:gap-12" />
 				</div>
 			</RevealSection>
-
-		
-
-	
-		</main>
+		</>
 	);
 }
