@@ -6,6 +6,7 @@ import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className?: string }) {
@@ -13,6 +14,7 @@ export default function Navbar({ className }: { className?: string }) {
 	const closeMenu = useCallback(() => setMenuOpen(false), []);
 	const { scrollY } = useScroll();
 	const [scrollState, setScrollState] = useState({ direction: "up", atTop: true });
+	const pathname = usePathname();
 
 	// Prevent background scroll when the menu is open
 	useEffect(() => {
@@ -72,6 +74,7 @@ export default function Navbar({ className }: { className?: string }) {
 					},
 				}}
 				viewport={{ once: true, amount: "some" }}>
+					
 				{/* Brand */}
 				<motion.div className="text-xl font-bold text-primary">
 					<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
@@ -126,7 +129,8 @@ export default function Navbar({ className }: { className?: string }) {
 									<Link
 										href={href}
 										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize"
-										onClick={closeMenu}>
+										onClick={closeMenu}
+										scroll>
 										{title}
 									</Link>
 
@@ -177,7 +181,7 @@ export default function Navbar({ className }: { className?: string }) {
 							animate="visible"
 							exit="hidden">
 							{/* Brand */}
-							<motion.div className="text-xl font-bold text-primary mb-4">
+							<div className="text-xl font-bold text-primary mb-4">
 								<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
 									<g>
 										<g>
@@ -194,46 +198,47 @@ export default function Navbar({ className }: { className?: string }) {
 										<g id="SvgjsG1031"></g>
 									</g>
 								</svg>
-							</motion.div>
-
-							<div className="flex flex-col gap-8 mt-12">
-								{LINKS.internal.map((link, i) => {
-									return (
-										<motion.div key={i}>
-											<div className="relative flex flex-col overflow-x-hidden group">
-												<Link
-													href={link.href}
-													className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize flex flex-row gap-2 justify-start items-stretch"
-													onClick={closeMenu}>
-													{link.icon} {link.name}
-												</Link>
-
-												<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
-											</div>
-										</motion.div>
-									);
-								})}
 							</div>
 
-							<motion.div className="text-xl font-bold text-primary mt-8">
-								<motion.div
-									initial={{ scale: 1 }}
-									whileHover={{ scale: 1.1 }}
-									transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-									className="hover:text-primary">
-									<ThemeToggle />
-								</motion.div>
-							</motion.div>
+							<div className="flex flex-col items-start gap-16 w-full">
+								{/* Nav links */}
+								<div className="flex flex-col gap-8 mt-12">
+									{LINKS.internal.map((link, i) => {
+										return (
+											<div key={i}>
+												<div className="relative flex flex-col overflow-x-hidden group">
+													<Link
+														href={link.href}
+														className={cn(
+															"lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
+															{ "text-primary": pathname === link.href }
+														)}
+														onClick={closeMenu}>
+														{link.icon} {link.name}
+													</Link>
 
-							<motion.div className="mt-14 w-full">
+													{/* <div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div> */}
+												</div>
+											</div>
+										);
+									})}
+								</div>
+
+								{/* Theme toggle */}
+								<div className="flex justify-center w-full">
+									<ThemeToggle />
+								</div>
+
+								{/* CTA - resume button */}
 								<Button asChild variant="secondary" size="block">
 									<a href="/resume">Resume</a>
 								</Button>
-							</motion.div>
 
-							<motion.div className="mt-14 mx-auto">
-								<SocialLinks orientation="horizontal" />
-							</motion.div>
+								{/* Social links */}
+								<div className="flex justify-center w-full">
+									<SocialLinks orientation="horizontal" />
+								</div>
+							</div>
 						</motion.div>
 					</>
 				)}
@@ -251,7 +256,7 @@ const mobileNavMenuContainerAnimationVariants: Variants = {
 	hidden: {
 		x: "100%",
 		opacity: 0,
-		transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], staggerChildren: 0.15, delay: 0.15 },
+		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
 	},
 };
 
