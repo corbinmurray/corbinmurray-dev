@@ -1,6 +1,6 @@
 const SectionHeader = ({ sequence, title }: { sequence: number; title: string }) => {
 	return (
-		<div className="relative flex justify-start gap-2 items-end mb-12">
+		<div className="relative flex justify-start gap-2 items-end mt-6">
 			{/* <h3 className="font-mono flex">
 				0 <span className="text-accent">{sequence}</span>.
 			</h3> */}
