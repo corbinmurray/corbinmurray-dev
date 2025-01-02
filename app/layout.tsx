@@ -1,4 +1,4 @@
-import Navbar from "@/components/ui/navbar";
+import Sidebar from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
@@ -56,10 +56,13 @@ export default function RootLayout({
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-					<Navbar />
+					
+					<div className="flex flex-col md:flex-row">
+						<Sidebar />
+						<main className="container min-h-screen">{children}</main>
+					</div>
 
 					{/* 5rem comes from the navbar's height of h-20 */}
-					<main className="container min-h-[calc(100vh-5rem)] pt-20">{children}</main>
 
 					<footer>
 						<div className="w-full bg-secondary mt-20 py-2">
