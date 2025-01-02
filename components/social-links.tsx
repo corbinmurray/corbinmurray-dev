@@ -1,4 +1,4 @@
-import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
@@ -35,14 +35,14 @@ export default SocialLinks;
 const SOCIALS = [
 	{
 		icon: <Github />,
-		href: GITHUB_URL,
+		href: LINKS.external.github,
 	},
 	{
 		icon: <Linkedin />,
-		href: LINKEDIN_URL,
+		href: LINKS.external.linkedin,
 	},
 	{
 		icon: <Mail />,
-		href: "mailto:" + EMAIL_ADDRESS,
+		href: "mailto:" + LINKS.external.email,
 	},
 ];
