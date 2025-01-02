@@ -1,4 +1,4 @@
-import Navbar from "@/components/ui/navbar";
+import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";

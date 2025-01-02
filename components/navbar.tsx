@@ -2,7 +2,7 @@
 import SocialLinks from "@/components/social-links";
 import ThemeToggle from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { INTERNAL_LINKS } from "@/lib/constants";
+import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
@@ -119,7 +119,7 @@ export default function Navbar({ className }: { className?: string }) {
 					initial="hidden"
 					exit="hidden"
 					animate="visible">
-					{Object.entries(INTERNAL_LINKS).map(([title, href], i) => {
+					{Object.entries(LINKS.internal).map(([title, href], i) => {
 						return (
 							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
 								<div className="relative flex flex-col overflow-x-hidden group">
@@ -177,7 +177,7 @@ export default function Navbar({ className }: { className?: string }) {
 							animate="visible"
 							exit="hidden">
 							{/* Brand */}
-							<motion.div className="text-xl font-bold text-primary mb-4" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary mb-4">
 								<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
 									<g>
 										<g>
@@ -196,21 +196,26 @@ export default function Navbar({ className }: { className?: string }) {
 								</svg>
 							</motion.div>
 
-							{navItems.map((navItem, i) => {
-								return (
-									<motion.div key={i} variants={mobileNavMenuChildrenAnimationVariants}>
-										<div className="relative flex flex-col overflow-x-hidden group my-4">
-											<Link href={navItem.href} className="lg:text-lg hover:text-primary smooth-hover font-medium" onClick={closeMenu}>
-												{navItem.name}
-											</Link>
+							<div className="flex flex-col gap-8 mt-12">
+								{LINKS.internal.map((link, i) => {
+									return (
+										<motion.div key={i}>
+											<div className="relative flex flex-col overflow-x-hidden group">
+												<Link
+													href={link.href}
+													className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize flex flex-row gap-2 justify-start items-stretch"
+													onClick={closeMenu}>
+													{link.icon} {link.name}
+												</Link>
 
-											<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
-										</div>
-									</motion.div>
-								);
-							})}
+												<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+											</div>
+										</motion.div>
+									);
+								})}
+							</div>
 
-							<motion.div className="text-xl font-bold text-primary mt-8" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="text-xl font-bold text-primary mt-8">
 								<motion.div
 									initial={{ scale: 1 }}
 									whileHover={{ scale: 1.1 }}
@@ -220,13 +225,13 @@ export default function Navbar({ className }: { className?: string }) {
 								</motion.div>
 							</motion.div>
 
-							<motion.div className="mt-14 w-full" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="mt-14 w-full">
 								<Button asChild variant="secondary" size="block">
 									<a href="/resume">Resume</a>
 								</Button>
 							</motion.div>
 
-							<motion.div className="mt-14 mx-auto" variants={mobileNavMenuChildrenAnimationVariants}>
+							<motion.div className="mt-14 mx-auto">
 								<SocialLinks orientation="horizontal" />
 							</motion.div>
 						</motion.div>
@@ -277,22 +282,3 @@ const desktopNavMenuChildrenAnimationVariants: Variants = {
 	},
 	hidden: { y: -100 },
 };
-
-const navItems = [
-	{
-		name: "About",
-		href: "#about",
-	},
-	{
-		name: "Experience",
-		href: "#experience",
-	},
-	{
-		name: "Projects",
-		href: "#projects",
-	},
-	{
-		name: "Contact",
-		href: "#contact",
-	},
-];
