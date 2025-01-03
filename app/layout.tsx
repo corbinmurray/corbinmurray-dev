@@ -63,7 +63,7 @@ export default function RootLayout({
 					{/* 5rem comes from the navbar's height of h-20 */}
 					<main className="container min-h-[calc(100vh-5rem)]">{children}</main>
 
-					<footer className="w-full bg-secondary">
+					<footer className="w-full bg-secondary mt-12 md:mt-16">
 						<article className="prose-p:text-secondary-foreground text-center mx-auto py-1">
 							<p>
 								Developed and designed with <Heart className="inline-block w-4 fill-red-500 stroke-red-500" /> Corbin Murray

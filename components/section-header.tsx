@@ -1,6 +1,6 @@
 const SectionHeader = ({ title }: { title: string }) => {
 	return (
-		<div className="relative flex justify-start gap-2 items-end my-6 pb-5">
+		<div className="relative flex justify-start gap-2 items-end my-12 md:my-16 pb-5">
 			<h1 className="text-nowrap inline-block relative">
 				{title} <span className="absolute text-primary">.</span>
 			</h1>
