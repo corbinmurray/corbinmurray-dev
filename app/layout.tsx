@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { JetBrains_Mono, Raleway } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 const fontMono = JetBrains_Mono({
 	variable: "--font-mono",
@@ -12,7 +12,7 @@ const fontMono = JetBrains_Mono({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
-const fontSans = Raleway({
+const fontSans = Inter({
 	variable: "--font-sans",
 	subsets: ["latin"],
 	weight: ["100", "200", "300", "400", "500", "700", "800", "900"],
