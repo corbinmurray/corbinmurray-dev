@@ -2,7 +2,7 @@ import RevealSection from "@/components/reveal-section";
 
 export default async function Home() {
 	return (
-		<RevealSection className="mt-6">
+		<RevealSection className="mt-12 md:mt-16">
 			<h1 className="text-[clamp(14px,5vw,16px)] md:text-[clamp(14px,5vw,18px)] font-mono">Hi, my name is</h1>
 
 			<h2 className="text-[clamp(40px,8vw,60px)] font-semibold border-none leading-tight text-primary py-3">Corbin Murray</h2>

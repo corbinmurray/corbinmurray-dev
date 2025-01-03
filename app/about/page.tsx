@@ -4,7 +4,7 @@ import SectionHeader from "@/components/section-header";
 export default async function Page() {
 	return (
 		<RevealSection>
-			<SectionHeader title="About Me" />
+			<SectionHeader title="About me" />
 
 			<article>
 				<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
