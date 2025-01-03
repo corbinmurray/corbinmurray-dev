@@ -88,28 +88,18 @@
 	}
 
 	h1 {
-		@apply scroll-m-20 text-3xl md:text-4xl font-bold tracking-tight lg:text-5xl font-sans;
+		@apply text-3xl md:text-4xl font-bold tracking-tight lg:text-5xl font-sans;
 	}
 
 	h2 {
-		@apply scroll-m-20 border-b pb-2 text-2xl md:text-3xl font-semibold tracking-tight first:mt-0 font-sans;
+		@apply border-b pb-2 text-2xl md:text-3xl font-semibold tracking-tight first:mt-0 font-sans;
 	}
 
 	h3 {
-		@apply scroll-m-20 text-xl md:text-2xl font-semibold tracking-tight font-sans;
+		@apply text-xl md:text-2xl font-semibold tracking-tight font-sans;
 	}
 
 	article {
 		@apply prose dark:prose-invert md:prose-lg;
-	}
-}
-
-@layer utilities {
-	.transition-transform-and-color {
-		transition-property: transform, color, background-color, border-color, text-decoration-color, fill, stroke;
-	}
-
-	.smooth-hover {
-		@apply hover:cursor-pointer transition-transform-and-color ease-smooth-cubic duration-500;
 	}
 }

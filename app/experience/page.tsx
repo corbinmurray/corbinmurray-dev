@@ -6,7 +6,7 @@ import experiences from "@/lib/experiences.json";
 export default async function Page() {
 	return (
 		<>
-			<RevealSection id="experience" className="scroll-mt-40">
+			<RevealSection id="experience">
 				<SectionHeader sequence={2} title="Experience" />
 			</RevealSection>
 
@@ -25,7 +25,7 @@ export default async function Page() {
 
 							{experience.descriptions.map((description, ii) => {
 								return (
-									<p key={ii} className="mb-0">
+									<p key={ii} className="m-0">
 										{description}
 									</p>
 								);
