@@ -6,8 +6,8 @@ import experiences from "@/lib/experiences.json";
 export default async function Page() {
 	return (
 		<>
-			<RevealSection id="experience">
-				<SectionHeader sequence={2} title="Experience" />
+			<RevealSection>
+				<SectionHeader title="My work experience" />
 			</RevealSection>
 
 			{experiences.map((experience, i) => {

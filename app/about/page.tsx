@@ -3,8 +3,8 @@ import SectionHeader from "@/components/section-header";
 
 export default async function Page() {
 	return (
-		<RevealSection id="about" className="relative mb-32 md:mb-64 scroll-mt-40">
-			<SectionHeader sequence={1} title="About Me" />
+		<RevealSection>
+			<SectionHeader title="About Me" />
 
 			<article>
 				<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>

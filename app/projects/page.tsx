@@ -7,7 +7,7 @@ import { Github, SquareArrowOutUpRight } from "lucide-react";
 export default async function Page() {
 	return (
 		<RevealSection id="projects" className="">
-			<SectionHeader sequence={3} title="Projects" />
+			<SectionHeader title="Projects I've worked on" />
 
 			<ul className="flex flex-col gap-8 xl:flex-row">
 				{projects.map((project, i) => {

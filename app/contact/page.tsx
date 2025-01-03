@@ -5,7 +5,7 @@ import SocialLinks from "@/components/social-links";
 export default async function Page() {
 	return (
 		<RevealSection>
-			<SectionHeader sequence={4} title="Contact Me" />
+			<SectionHeader title="Contact Me" />
 
 			<article>
 				<p>
