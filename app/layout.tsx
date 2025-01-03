@@ -19,7 +19,7 @@ const fontSans = Raleway({
 });
 
 export const metadata: Metadata = {
-	title: "Corbin Murray | Hello 👋",
+	title: "Corbin Murray | Software Engineer",
 	description: "Portfolio website for Corbin Murray Software Engineer",
 };
 

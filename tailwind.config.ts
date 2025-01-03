@@ -62,7 +62,7 @@ export default {
 			container: {
 				center: true,
 				padding: {
-					DEFAULT: "1rem", // Default padding
+					DEFAULT: "1.5rem", // Default padding
 					sm: "2rem", // Padding for small screens and above
 					md: "3rem", // Padding for medium screens and above
 					lg: "4rem", // Padding for large screens and above

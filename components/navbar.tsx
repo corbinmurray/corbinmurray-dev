@@ -229,11 +229,6 @@ export default function Navbar({ className }: { className?: string }) {
 									<ThemeToggle />
 								</div>
 
-								{/* CTA - resume button */}
-								<Button asChild variant="secondary" size="block">
-									<a href="/resume">Resume</a>
-								</Button>
-
 								{/* Social links */}
 								<div className="flex justify-center w-full">
 									<SocialLinks orientation="horizontal" />
