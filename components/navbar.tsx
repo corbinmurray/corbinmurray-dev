@@ -235,7 +235,7 @@ const NavLinks = ({
 							{link.name}
 						</Link>
 
-						<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+						<div className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
 					</li>
 				);
 			})}
