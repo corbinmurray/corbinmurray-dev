@@ -7,23 +7,25 @@ export default async function Page() {
 			<SectionHeader title="About me" />
 
 			<article>
-				<p>Hello! My name is Corbin, and I enjoy solving tough technical problems and creating impactful software.</p>
-			</article>
-
-			<article>
 				<p>
-					I have a deep passion for bringing ideas to life through software development. Tackling challenges that require creativity and critical thinking
-					excites me, and I find immense satisfaction in uncovering solutions that drive meaningful outcomes. The ever-evolving nature of technology keeps me
-					motivated to continuously learn, improve, and push boundaries. Whether it&apos;s debugging intricate issues, architecting scalable systems, or
-					exploring new technologies, I thrive on the growth and innovation each opportunity brings.
+					Time to dig into the good stuff -- as a software engineer passionate about creating innovative solutions and tackling complex challenges. My
+					professional interests include backend development, event-driven architecture, and building systems that are both scalable and efficient. I thrive in
+					collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.
 				</p>
 			</article>
 
 			<article>
 				<p>
-					When I&apos;m not working, I love spending time with my wife, our two dogs Pretzel and Ink, and hanging out with friends and family. I&apos;m
-					passionate about staying active, whether it&apos;s playing soccer, hitting the gym, or enjoying outdoor activities like fishing. When it&apos;s time
-					to relax, you&apos;ll often find me playing video games, reading, or exploring new hobbies.
+					When I&apos;m not coding, you&apos;ll often find me spending time with my wife and our two dogs, Pretzel and Ink. I&apos;m also a huge fan of
+					weightlifting, soccer, and the occasional DIY project. Whether it&apos;s exploring local coffee shops, getting lost in nature, or diving into a good
+					video game, I try to find balance between my professional and personal passions.
+				</p>
+			</article>
+
+			<article>
+				<p>
+					This site is a reflection of all those facets—my love for software development, my curiosity for learning, and the things that make life fun along the
+					way.
 				</p>
 			</article>
 		</RevealSection>
