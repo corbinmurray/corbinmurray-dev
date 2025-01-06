@@ -152,13 +152,13 @@ export default function Navbar({ className }: { className?: string }) {
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
-							className="fixed top-0 right-0 h-full w-3/4 bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
+							className="fixed top-0 right-0 h-full w-full bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
 							variants={mobileNavMenuContainerAnimationVariants}
 							initial="hidden"
 							animate="visible"
 							exit="hidden">
 							{/* Brand */}
-							<div className="text-xl font-bold text-primary mb-4">
+							{/* <div className="text-xl font-bold text-primary mb-4">
 								<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
 									<g>
 										<g>
@@ -175,11 +175,13 @@ export default function Navbar({ className }: { className?: string }) {
 										<g id="SvgjsG1031"></g>
 									</g>
 								</svg>
-							</div>
+							</div> */}
 
-							<div className="flex flex-col items-start gap-8 w-full">
+							<div className="flex flex-col items-start gap-16 w-full">
 								{/* Nav links */}
-								<NavLinks pathname={pathname} onClick={closeMenu} orientation="vertical" className="mt-8 gap-8"/>
+								<div className="flex justify-center w-full">
+									<NavLinks pathname={pathname} onClick={closeMenu} orientation="vertical" className="mt-8 gap-8 items-center text-lg" />
+								</div>
 
 								{/* Theme toggle */}
 								<div className="flex justify-center w-full">
