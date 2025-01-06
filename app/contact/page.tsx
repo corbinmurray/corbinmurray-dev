@@ -9,8 +9,8 @@ export default async function Page() {
 
 			<article>
 				<p>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam ab nulla nam corrupti fugiat inventore atque temporibus vero, ut unde ratione sequi
-					sit architecto dicta dolorem, praesentium recusandae cumque? Ex!
+					I&apos;d love to hear from you! Whether you want to collaborate on a project, discuss software development, or just say hello, feel free to reach out using
+					one of the options below.
 				</p>
 			</article>
 
