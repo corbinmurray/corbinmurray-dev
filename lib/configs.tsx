@@ -1,9 +1,5 @@
 import { BriefcaseBusiness, FolderDot, Home, Send, User } from "lucide-react";
 
-export const THEME_NAME = "sunfire";
-export const LIGHT_THEME = THEME_NAME + "-light";
-export const DARK_THEME = THEME_NAME + "-dark";
-
 export const LINKS = {
 	internal: [
 		{
