@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className?: string }) {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -121,27 +121,7 @@ export default function Navbar({ className }: { className?: string }) {
 					exit="hidden"
 					animate="visible">
 					{/* Nav links */}
-					<div className="flex gap-8">
-						{LINKS.internal.map((link, i) => {
-							return (
-								<div key={i}>
-									<div className="relative flex flex-col overflow-x-hidden group">
-										<Link
-											href={link.href}
-											className={cn(
-												"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-center flex-nowrap text-nowrap",
-												{ "text-secondary": pathname === link.href }
-											)}
-											onClick={closeMenu}>
-											<span className="md:hidden lg:block">{link.icon}</span> {link.name}
-										</Link>
-
-										{/* <div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div> */}
-									</div>
-								</div>
-							);
-						})}
-					</div>
+					<NavLinks pathname={pathname} orientation="horizontal" />
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<motion.div
@@ -197,29 +177,9 @@ export default function Navbar({ className }: { className?: string }) {
 								</svg>
 							</div>
 
-							<div className="flex flex-col items-start gap-16 w-full">
+							<div className="flex flex-col items-start gap-8 w-full">
 								{/* Nav links */}
-								<div className="flex flex-col gap-8 mt-12">
-									{LINKS.internal.map((link, i) => {
-										return (
-											<div key={i}>
-												<div className="relative flex flex-col overflow-x-hidden group">
-													<Link
-														href={link.href}
-														className={cn(
-															"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
-															{ "text-secondary": pathname === link.href }
-														)}
-														onClick={closeMenu}>
-														{link.icon} {link.name}
-													</Link>
-
-													{/* <div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div> */}
-												</div>
-											</div>
-										);
-									})}
-								</div>
+								<NavLinks pathname={pathname} onClick={closeMenu} orientation="vertical" className="mt-8 gap-8"/>
 
 								{/* Theme toggle */}
 								<div className="flex justify-center w-full">
@@ -238,6 +198,48 @@ export default function Navbar({ className }: { className?: string }) {
 		</motion.nav>
 	);
 }
+
+const NavLinks = ({
+	onClick,
+	pathname,
+	orientation,
+	className,
+}: {
+	onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
+	pathname: string;
+	orientation: "horizontal" | "vertical";
+	className?: string;
+}) => {
+	return (
+		<ul
+			className={cn(
+				"flex gap-4 md:gap-8",
+				{
+					"flex-col": orientation === "vertical",
+					"flex-row": orientation === "horizontal",
+				},
+				className
+			)}>
+			{LINKS.internal.map((link, i) => {
+				return (
+					<li key={i} className="relative flex overflow-x-hidden group">
+						<Link
+							href={link.href}
+							className={cn(
+								"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
+								{ "text-secondary": pathname === link.href }
+							)}
+							onClick={onClick}>
+							{link.name}
+						</Link>
+
+						<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+					</li>
+				);
+			})}
+		</ul>
+	);
+};
 
 const mobileNavMenuContainerAnimationVariants: Variants = {
 	visible: {
