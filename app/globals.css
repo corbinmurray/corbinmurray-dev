@@ -100,6 +100,6 @@
 	}
 
 	article {
-		@apply prose dark:prose-invert md:prose-lg;
+		@apply prose dark:prose-invert md:prose-lg lg:prose-xl;
 	}
 }

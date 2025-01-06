@@ -1,12 +1,25 @@
-const SectionHeader = ({ title }: { title: string }) => {
+const SectionHeader = ({ title, punctuation }: { title: string; punctuation?: "period" | "question mark" | "exclamation mark" }) => {
 	return (
-		<div className="relative flex justify-start gap-2 items-end my-12 md:my-16 pb-5">
-			<h1 className="text-nowrap inline-block relative">
-				{title} <span className="absolute text-primary">.</span>
+		<div className="relative my-12 md:my-24 pb-6 md:pb-12">
+			<h1 className="relative">
+				{title} <span className="absolute text-accent">{getPunctuation(punctuation)}</span>
 			</h1>
-			<div className="absolute h-[2px] bg-primary left-0 bottom-0 w-12 border-r-0"></div>
+			<div className="absolute h-1 bg-primary left-0 bottom-0 w-16 md:w-20 lg:w-24"></div>
 		</div>
 	);
 };
 
 export default SectionHeader;
+
+function getPunctuation(punctuation?: string): string {
+	switch (punctuation) {
+		case "period":
+			return ".";
+		case "question mark":
+			return "?";
+		case "exclamation mark":
+			return "!";
+		default:
+			return ".";
+	}
+}

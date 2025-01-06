@@ -1,7 +1,6 @@
 "use client";
 import SocialLinks from "@/components/social-links";
 import ThemeToggle from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
 import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
@@ -74,7 +73,6 @@ export default function Navbar({ className }: { className?: string }) {
 					},
 				}}
 				viewport={{ once: true, amount: "some" }}>
-					
 				{/* Brand */}
 				<motion.div className="text-xl font-bold text-primary">
 					<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
@@ -122,23 +120,28 @@ export default function Navbar({ className }: { className?: string }) {
 					initial="hidden"
 					exit="hidden"
 					animate="visible">
-					{Object.entries(LINKS.internal).map(([title, href], i) => {
-						return (
-							<motion.div key={i} variants={desktopNavMenuChildrenAnimationVariants}>
-								<div className="relative flex flex-col overflow-x-hidden group">
-									<Link
-										href={href}
-										className="lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize"
-										onClick={closeMenu}
-										scroll>
-										{title}
-									</Link>
+					{/* Nav links */}
+					<div className="flex gap-8">
+						{LINKS.internal.map((link, i) => {
+							return (
+								<div key={i}>
+									<div className="relative flex flex-col overflow-x-hidden group">
+										<Link
+											href={link.href}
+											className={cn(
+												"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-center flex-nowrap text-nowrap",
+												{ "text-secondary": pathname === link.href }
+											)}
+											onClick={closeMenu}>
+											<span className="md:hidden lg:block">{link.icon}</span> {link.name}
+										</Link>
 
-									<div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
+										{/* <div className="w-full h-px bg-primary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div> */}
+									</div>
 								</div>
-							</motion.div>
-						);
-					})}
+							);
+						})}
+					</div>
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<motion.div
@@ -148,12 +151,6 @@ export default function Navbar({ className }: { className?: string }) {
 							className="hover:text-primary">
 							<ThemeToggle />
 						</motion.div>
-					</motion.div>
-
-					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
-						<Button asChild variant="secondary">
-							<a href="/resume">Resume</a>
-						</Button>
 					</motion.div>
 				</motion.div>
 			</motion.div>
@@ -175,7 +172,7 @@ export default function Navbar({ className }: { className?: string }) {
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
-							className="fixed top-0 right-0 h-full w-64 bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
+							className="fixed top-0 right-0 h-full w-3/4 bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
 							variants={mobileNavMenuContainerAnimationVariants}
 							initial="hidden"
 							animate="visible"
@@ -210,8 +207,8 @@ export default function Navbar({ className }: { className?: string }) {
 													<Link
 														href={link.href}
 														className={cn(
-															"lg:text-lg group-hover:text-primary group-hover:cursor-pointer smooth-hover font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
-															{ "text-primary": pathname === link.href }
+															"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
+															{ "text-secondary": pathname === link.href }
 														)}
 														onClick={closeMenu}>
 														{link.icon} {link.name}
