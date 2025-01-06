@@ -8,7 +8,7 @@ export default async function Page() {
 
 			<article>
 				<p>
-					Time to dig into the good stuff -- as a software engineer passionate about creating innovative solutions and tackling complex challenges. My
+					Time to dig into the good stuff — as a software engineer passionate about creating innovative solutions and tackling complex challenges. My
 					professional interests include backend development, event-driven architecture, and building systems that are both scalable and efficient. I thrive in
 					collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.
 				</p>
@@ -24,8 +24,8 @@ export default async function Page() {
 
 			<article>
 				<p>
-					This site is a reflection of all those facets—my love for software development, my curiosity for learning, and the things that make life fun along the
-					way.
+					This site is a reflection of all those facets — my love for software development, my curiosity for learning, and the things that make life fun along
+					the way.
 				</p>
 			</article>
 		</RevealSection>

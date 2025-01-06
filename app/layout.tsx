@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
 const fontMono = JetBrains_Mono({
 	variable: "--font-mono",
 	subsets: ["latin"],
