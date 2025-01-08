@@ -10,7 +10,7 @@ import { ChevronDown, Github, SquareArrowOutUpRight } from "lucide-react";
 export default async function Home() {
 	return (
 		<>
-			<RevealSection id="home" className="min-h-[calc(100vh-10rem)] py-12 md:py-24 relative">
+			<RevealSection id="home" className="min-h-[calc(100vh-10rem)] py-12 md:py-24 scroll-m-24">
 				<SectionHeader title="Welcome to my digital garden" punctuation="!" />
 
 				<article>
