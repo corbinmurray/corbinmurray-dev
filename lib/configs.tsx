@@ -4,27 +4,27 @@ export const LINKS = {
 	internal: [
 		{
 			name: "Home",
-			href: "/",
+			href: "#home",
 			icon: <Home />,
 		},
 		{
 			name: "About Me",
-			href: "/about",
+			href: "#about",
 			icon: <User />,
 		},
 		{
 			name: "Experience",
-			href: "/experience",
+			href: "#experience",
 			icon: <BriefcaseBusiness />,
 		},
 		{
 			name: "Projects",
-			href: "/projects",
+			href: "#projects",
 			icon: <FolderDot />,
 		},
 		{
 			name: "Contact",
-			href: "/contact",
+			href: "#contact",
 			icon: <Send />,
 		},
 	],
