@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
+import { ChevronDown, Github, SquareArrowOutUpRight } from "lucide-react";
 
 export default async function Home() {
 	return (
 		<>
-			<RevealSection id="home" className="mt-12 md:mt-16">
+			<RevealSection id="home" className="min-h-[calc(100vh-10rem)] py-12 md:py-24 relative">
 				<SectionHeader title="Welcome to my digital garden" punctuation="!" />
 
 				<article>
@@ -30,7 +30,11 @@ export default async function Home() {
 				</article>
 			</RevealSection>
 
-			<RevealSection id="about" className="mt-12 md:mt-16">
+			<RevealSection>
+				<ChevronDown className="mx-auto h-8 animate-bounce" />
+			</RevealSection>
+
+			<RevealSection id="about" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="About me" />
 
 				<article>
@@ -57,7 +61,7 @@ export default async function Home() {
 				</article>
 			</RevealSection>
 
-			<RevealSection id="experience">
+			<RevealSection id="experience" className="mt-36 md:mt-72 scroll-m-24">
 				<SectionHeader title="My work experience" />
 			</RevealSection>
 
@@ -96,7 +100,7 @@ export default async function Home() {
 				);
 			})}
 
-			<RevealSection id="projects" className="">
+			<RevealSection id="projects" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Projects I've worked on" />
 
 				<ul className="flex flex-col gap-8 xl:flex-row">
@@ -129,7 +133,7 @@ export default async function Home() {
 				</ul>
 			</RevealSection>
 
-			<RevealSection id="contact">
+			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Contact Me" />
 
 				<article>
