@@ -5,7 +5,6 @@ import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className?: string }) {
@@ -13,7 +12,6 @@ export default function Navbar({ className }: { className?: string }) {
 	const closeMenu = useCallback(() => setMenuOpen(false), []);
 	const { scrollY } = useScroll();
 	const [scrollState, setScrollState] = useState({ direction: "up", atTop: true });
-	const pathname = usePathname();
 
 	// Prevent background scroll when the menu is open
 	useEffect(() => {
@@ -121,7 +119,7 @@ export default function Navbar({ className }: { className?: string }) {
 					exit="hidden"
 					animate="visible">
 					{/* Nav links */}
-					<NavLinks pathname={pathname} orientation="horizontal" />
+					<NavLinks orientation="horizontal" />
 
 					<motion.div variants={desktopNavMenuChildrenAnimationVariants}>
 						<motion.div
@@ -180,7 +178,7 @@ export default function Navbar({ className }: { className?: string }) {
 							<div className="flex flex-col items-start gap-16 w-full">
 								{/* Nav links */}
 								<div className="flex justify-center w-full">
-									<NavLinks pathname={pathname} onClick={closeMenu} orientation="vertical" className="mt-8 gap-8 items-center text-lg" />
+									<NavLinks onClick={closeMenu} orientation="vertical" className="mt-8 gap-8 items-center text-lg" />
 								</div>
 
 								{/* Theme toggle */}
@@ -203,12 +201,10 @@ export default function Navbar({ className }: { className?: string }) {
 
 const NavLinks = ({
 	onClick,
-	pathname,
 	orientation,
 	className,
 }: {
 	onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
-	pathname: string;
 	orientation: "horizontal" | "vertical";
 	className?: string;
 }) => {
@@ -228,8 +224,7 @@ const NavLinks = ({
 						<Link
 							href={link.href}
 							className={cn(
-								"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch",
-								{ "text-secondary": pathname === link.href }
+								"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch"
 							)}
 							onClick={onClick}>
 							{link.name}
@@ -254,15 +249,6 @@ const mobileNavMenuContainerAnimationVariants: Variants = {
 		opacity: 0,
 		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
 	},
-};
-
-const mobileNavMenuChildrenAnimationVariants: Variants = {
-	visible: {
-		x: 0,
-		opacity: 1,
-		transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
-	},
-	hidden: { x: 150, opacity: 0, transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] } },
 };
 
 const desktopNavMenuContainerAnimationVariants: Variants = {
