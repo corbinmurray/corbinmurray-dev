@@ -21,7 +21,7 @@ export function solveMaze(graph: Record<string, Cell[]>, start: Cell, goal: Cell
 
 	while (openSet.size > 0) {
 		// Get the node in openSet with the lowest fScore
-		let currentKey = Array.from(openSet).reduce((a, b) => (fScore[a] < fScore[b] ? a : b));
+		const currentKey = Array.from(openSet).reduce((a, b) => (fScore[a] < fScore[b] ? a : b));
 		const currentCell = keyToCell(currentKey);
 
 		visitedNodes.push({
