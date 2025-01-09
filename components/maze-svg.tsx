@@ -108,7 +108,10 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 
 		console.log("Min Intensity:", minIntensity, "Max Intensity:", maxIntensity);
 
-		const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-destructive", "fill-success"]);
+		const colorScale = d3
+			.scaleLinear<string>()
+			.domain([minIntensity, minIntensity + (maxIntensity - minIntensity) / 2, maxIntensity])
+			.range(["fill-destructive", "fill-warning", "fill-success"]);
 
 		const svg = d3.select(svgRef.current);
 		svg.selectAll(".fill-warning").remove();
@@ -126,8 +129,7 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 				.attr("cy", y * cellSize + cellSize / 2)
 				.attr("r", cellSize / 6)
 				.attr("fill", "currentColor")
-				.classed("marker-class-visited", true)
-				.classed(`${intensity ? colorScale(intensity) : "fill-warning"}`, true)
+				.attr("class", "marker-class-visited fill-warning")
 				.attr("opacity", 0)
 				.transition()
 				.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each node for sequential animation
