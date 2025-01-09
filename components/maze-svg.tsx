@@ -1,11 +1,12 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { generateMaze } from "@/lib/generateMaze";
 import { getRandomStartAndGoal, parseMazeToGraph } from "@/lib/mazeUtils";
 import { Cell, Direction, Maze } from "@/lib/shared";
 import { solveMaze } from "@/lib/solveMaze";
 import useWindowSize from "@/lib/useWindowSize";
 import * as d3 from "d3";
-import { ChangeEvent, MutableRefObject, useEffect, useRef, useState } from "react";
+import { ChangeEvent, RefObject, useEffect, useRef, useState } from "react";
 
 interface MazeSvgProps {
 	className: string;
@@ -29,12 +30,12 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 	const config = {
 		sm: { rows: 10, cols: 10, cellSize: 50 },
 		md: { rows: 20, cols: 20, cellSize: 25 },
-		lg: { rows: 30, cols: 30, cellSize: 18.75 },
-		xl: { rows: 30, cols: 30, cellSize: 18.75 },
+		// lg: { rows: 30, cols: 30, cellSize: 18.75 },
+		// xl: { rows: 30, cols: 30, cellSize: 18.75 },
 	};
 
 	// Determine the current configuration
-	const { rows, cols, cellSize } = width < 640 ? config.sm : width < 768 ? config.md : width < 1024 ? config.lg : config.xl;
+	const { rows, cols, cellSize } = width < 640 ? config.sm : width < 768 ? config.md : config.md;
 
 	const svgRef = useRef<SVGSVGElement | null>(null);
 
@@ -76,15 +77,15 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 				cellSize,
 				directions,
 				{
-					currentCellClassName: "stroke-base-content",
-					goalCellClassName: "fill-error",
-					startCellClassName: "fill-success",
+					currentCellClassName: "stroke-foreground",
+					goalCellClassName: "fill-destructive",
+					startCellClassName: "fill-creative",
 				},
 				startingCell,
 				goalCell
 			);
 		});
-	}, [maze, cellSize]);
+	}, [maze, cellSize, goalCell, startingCell]);
 
 	// Track solve animation time
 	useEffect(() => {
@@ -103,15 +104,20 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 		const minIntensity = Math.min(...intensities);
 		const maxIntensity = Math.max(...intensities);
 
-		const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-error", "fill-success"]);
+		// const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-destructive", "fill-creative"]);
+
+		const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-creative", "fill-destructive"]);
+
+		console.log(intensities);
 
 		const svg = d3.select(svgRef.current);
-		svg.selectAll(".fill-warning").remove();
-		svg.selectAll(".fill-accent").remove();
+		svg.selectAll(".fill-primary").remove();
 
 		// Animate visited nodes
 		visitedNodes.forEach((node, index) => {
 			const { x, y, intensity } = node;
+
+			console.log("Color scale", colorScale(intensity ?? 0));
 
 			svg
 				.append("circle")
@@ -119,7 +125,7 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 				.attr("cy", y * cellSize + cellSize / 2)
 				.attr("r", cellSize / 6)
 				.attr("fill", "currentColor")
-				.attr("class", `${intensity ? colorScale(intensity) : "fill-warning"} marker-class-visited`)
+				.attr("class", `${intensity ? colorScale(intensity) : "fill-destructive"} marker-class-visited`)
 				.attr("opacity", 0)
 				.transition()
 				.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each node for sequential animation
@@ -142,11 +148,11 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 					.attr("cy", y * cellSize + cellSize / 2)
 					.attr("r", cellSize / 6)
 					.attr("fill", "currentColor")
-					.attr("class", "fill-accent shadow")
+					.attr("class", "fill-primary")
 					.attr("opacity", 0)
 					.transition()
 					.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each path node for sequential animation
-					.duration(150)
+					.duration(200)
 					.attr("opacity", 1);
 			});
 		}, totalVisitedTime);
@@ -186,15 +192,15 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 	};
 
 	return (
-		<div className="flex flex-col gap-6 w-full h-full">
+		<div className="flex flex-col gap-12 w-full h-full">
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-success" aria-label="Start"></div>
+					<div className="w-4 h-4 rounded-full bg-creative" aria-label="Start"></div>
 					<span className="text-sm md:text-lg">Start</span>
 				</div>
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-error" aria-label="Goal"></div>
+					<div className="w-4 h-4 rounded-full bg-destructive" aria-label="Goal"></div>
 					<span className="text-sm md:text-lg">Goal</span>
 				</div>
 			</div>
@@ -202,15 +208,12 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 			<svg ref={svgRef} className={className} viewBox="0 0 500 500" />
 
 			<div className="flex flex-row justify-center gap-12">
-				<button className="btn btn-outline btn-secondary md:btn-wide capitalize" disabled={isLoading} onClick={handleGenerateNewMaze}>
-					generate new maze
-				</button>
-				<button
-					className="btn btn-outline btn-primary md:btn-wide capitalize"
-					disabled={isLoading || !maze || !visitedNodes || !solutionPath}
-					onClick={handleSolveMaze}>
-					solve maze
-				</button>
+				<Button variant="secondary" disabled={isLoading} onClick={handleGenerateNewMaze}>
+					Generate New Maze
+				</Button>
+				<Button disabled={isLoading || !maze || !visitedNodes || !solutionPath} onClick={handleSolveMaze}>
+					Solve Maze
+				</Button>
 			</div>
 
 			<div className="flex flex-col justify-start gap-y-2">
@@ -227,7 +230,7 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 export default MazeSvg;
 
 const drawMazeCell = (
-	svgRef: MutableRefObject<SVGSVGElement | null>,
+	svgRef: RefObject<SVGSVGElement | null>,
 	currentCell: Cell,
 	cellSize: number,
 	directions: Set<Direction>,
