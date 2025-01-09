@@ -1,10 +1,10 @@
 "use client";
+import Link from "@/components/link";
 import SocialLinks from "@/components/social-links";
 import ThemeToggle from "@/components/theme-toggle";
 import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, Variants } from "motion/react";
-import Link from "next/link";
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className?: string }) {
@@ -221,16 +221,9 @@ const NavLinks = ({
 			{LINKS.internal.map((link, i) => {
 				return (
 					<li key={i} className="relative flex overflow-x-hidden group">
-						<Link
-							href={link.href}
-							className={cn(
-								"lg:text-lg group-hover:text-secondary group-hover:cursor-pointer font-medium capitalize flex flex-row gap-2 justify-start items-stretch"
-							)}
-							onClick={onClick}>
+						<Link href={link.href} onClick={onClick}>
 							{link.name}
 						</Link>
-
-						<div className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0"></div>
 					</li>
 				);
 			})}
