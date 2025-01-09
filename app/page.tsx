@@ -119,10 +119,10 @@ export default async function Home() {
 										</CardContent>
 										<CardFooter className="gap-6">
 											<a href={project.githubLink}>
-												<Github className="smooth-hover hover:text-primary" />
+												<Github className="smooth-hover hover:text-secondary" />
 											</a>
 											<a href={project.liveSiteLink}>
-												<SquareArrowOutUpRight className="smooth-hover hover:text-primary" />
+												<SquareArrowOutUpRight className="smooth-hover hover:text-secondary" />
 											</a>
 										</CardFooter>
 									</Card>
