@@ -2,14 +2,15 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { ArrowUpRightFromSquare } from "lucide-react";
 import NextLink from "next/link";
+import { MouseEventHandler } from "react";
 
 const linkVariants = cva(
-	"inline-flex items-start gap-1 group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary capitalize sm:text-sm md:text-base lg:text-lg underline-none",
+	"inline-flex items-start group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary capitalize text-md lg:text-lg underline-none gap-1",
 	{
 		variants: {
 			variant: {
-				internal: "font-medium",
-				external: "font-semibold",
+				internal: "font-semibold",
+				external: "font-bold",
 			},
 		},
 		defaultVariants: {
@@ -20,19 +21,25 @@ const linkVariants = cva(
 
 interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof linkVariants> {
 	href: string;
+	onClick?: MouseEventHandler<HTMLAnchorElement> | undefined;
 }
 
-const Link = ({ href, variant, children, className }: LinkProps) => {
+const Link = ({ href, variant, children, className, onClick }: LinkProps) => {
 	const isExternal = variant === "external";
 
 	return isExternal ? (
-		<a href={href} target="_blank" rel="noopener noreferrer" className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))}>
+		<a
+			href={href}
+			target="_blank"
+			rel="noopener noreferrer"
+			className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))}
+			onClick={onClick}>
 			{children}
 			<ArrowUpRightFromSquare className="w-3 group-hover:text-secondary" />
 			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0 hover:left-0" />
 		</a>
 	) : (
-		<NextLink href={href} className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))}>
+		<NextLink href={href} className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))} onClick={onClick}>
 			{children}
 
 			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0 hover:left-0" />
