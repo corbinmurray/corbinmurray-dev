@@ -28,8 +28,11 @@
 		--destructive: 348 73% 50%;
 		--destructive-foreground: 15 20% 96.08%;
 
-		--creative: 139 86% 45%;
-		--creative-foreground: 0 0% 7.84%;
+		--success: 139 86% 45%;
+		--success-foreground: 0 0% 7.84%;
+
+		--warning: 60 100% 75%;
+		--warning-foreground: 0 0% 7.84%;
 
 		--border: 0 0% 7.84%;
 		--input: #e7ddda;
@@ -66,8 +69,11 @@
 		--destructive: 0 62.8% 70%;
 		--destructive-foreground: 15 20% 96.08%;
 
-		--creative: 139 86% 70%;
-		--creative-foreground: 0 0% 7.84%;
+		--success: 139 86% 70%;
+		--success-foreground: 0 0% 7.84%;
+
+		--warning: 60 100% 75%;
+		--warning-foreground: 0 0% 7.84%;
 
 		--border: 0 0% 14.9%;
 		--input: 205.91 43.14% 20%;
