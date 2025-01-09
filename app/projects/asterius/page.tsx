@@ -1,7 +1,7 @@
+import Link from "@/components/link";
 import MazeSvg from "@/components/maze-svg";
 import RevealSection from "@/components/reveal-section";
 import SectionHeader from "@/components/section-header";
-import { Github } from "lucide-react";
 
 export default function Page() {
 	return (
@@ -11,12 +11,15 @@ export default function Page() {
 
 				<article>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dignissimos vitae ad praesentium, ullam, quam dicta veritatis voluptate, nihil est
-						maiores consectetur perferendis minus omnis illo rem error voluptates molestiae?
+						Asterius is a project I built to bring the{" "}
+						<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external">
+							A*
+						</Link>{" "}
+						pathfinding algorithm to life through visualization. As someone who has been captivated by video games since childhood, I&apos;ve always been
+						intrigued by the mechanics of how characters and objects navigate their environments. This project combines my passion for gaming with my interest
+						in solving practical computational problems.
 					</p>
 				</article>
-
-				<Github />
 
 				<div className="max-w-screen-sm mx-auto my-12 md:my-24">
 					<MazeSvg className="mx-auto" />
