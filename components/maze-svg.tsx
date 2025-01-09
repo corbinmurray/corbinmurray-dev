@@ -79,7 +79,7 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 				{
 					currentCellClassName: "stroke-foreground",
 					goalCellClassName: "fill-destructive",
-					startCellClassName: "fill-creative",
+					startCellClassName: "fill-success",
 				},
 				startingCell,
 				goalCell
@@ -104,20 +104,21 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 		const minIntensity = Math.min(...intensities);
 		const maxIntensity = Math.max(...intensities);
 
-		// const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-destructive", "fill-creative"]);
-
-		const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-creative", "fill-destructive"]);
-
 		console.log(intensities);
 
+		console.log("Min Intensity:", minIntensity, "Max Intensity:", maxIntensity);
+
+		const colorScale = d3.scaleLinear<string>().domain([minIntensity, maxIntensity]).range(["fill-destructive", "fill-success"]);
+
 		const svg = d3.select(svgRef.current);
-		svg.selectAll(".fill-primary").remove();
+		svg.selectAll(".fill-warning").remove();
+		svg.selectAll(".fill-secondary").remove();
 
 		// Animate visited nodes
 		visitedNodes.forEach((node, index) => {
 			const { x, y, intensity } = node;
 
-			console.log("Color scale", colorScale(intensity ?? 0));
+			console.log(`Node at (${node.x}, ${node.y}), Intensity: ${node.intensity}, Class: ${colorScale(node.intensity ?? 0)}`);
 
 			svg
 				.append("circle")
@@ -125,7 +126,8 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 				.attr("cy", y * cellSize + cellSize / 2)
 				.attr("r", cellSize / 6)
 				.attr("fill", "currentColor")
-				.attr("class", `${intensity ? colorScale(intensity) : "fill-destructive"} marker-class-visited`)
+				.classed("marker-class-visited", true)
+				.classed(`${intensity ? colorScale(intensity) : "fill-warning"}`, true)
 				.attr("opacity", 0)
 				.transition()
 				.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each node for sequential animation
@@ -148,11 +150,11 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 					.attr("cy", y * cellSize + cellSize / 2)
 					.attr("r", cellSize / 6)
 					.attr("fill", "currentColor")
-					.attr("class", "fill-primary")
+					.attr("class", "fill-secondary shadow")
 					.attr("opacity", 0)
 					.transition()
 					.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each path node for sequential animation
-					.duration(200)
+					.duration(150)
 					.attr("opacity", 1);
 			});
 		}, totalVisitedTime);
@@ -196,7 +198,7 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-creative" aria-label="Start"></div>
+					<div className="w-4 h-4 rounded-full bg-success" aria-label="Start"></div>
 					<span className="text-sm md:text-lg">Start</span>
 				</div>
 				<div className="flex items-center gap-2">
@@ -208,18 +210,18 @@ const MazeSvg = ({ className }: MazeSvgProps) => {
 			<svg ref={svgRef} className={className} viewBox="0 0 500 500" />
 
 			<div className="flex flex-row justify-center gap-12">
-				<Button variant="secondary" disabled={isLoading} onClick={handleGenerateNewMaze}>
+				<Button disabled={isLoading} onClick={handleGenerateNewMaze}>
 					Generate New Maze
 				</Button>
-				<Button disabled={isLoading || !maze || !visitedNodes || !solutionPath} onClick={handleSolveMaze}>
+				<Button variant="secondary" disabled={isLoading || !maze || !visitedNodes || !solutionPath} onClick={handleSolveMaze}>
 					Solve Maze
 				</Button>
 			</div>
 
 			<div className="flex flex-col justify-start gap-y-2">
-				<label htmlFor="delaySlider" className="capitalize">
-					Solve speed ({solveAnimationTimeInSeconds < 1 ? "<1" : solveAnimationTimeInSeconds}
-					{solveAnimationTimeInSeconds === 1 ? " second" : " seconds"})
+				<label htmlFor="delaySlider">
+					Solve animation speed ({solveAnimationTimeInSeconds < 1 ? "<1" : solveAnimationTimeInSeconds}
+					{solveAnimationTimeInSeconds <= 1 ? " second" : " seconds"})
 				</label>
 				<input name="delaySlider" type="range" min={1} max="100" className="range" onChange={handleDelayChange} value={solveSpeed} disabled={isLoading} />
 			</div>
