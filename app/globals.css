@@ -112,6 +112,6 @@
 	}
 
 	article {
-		@apply prose dark:prose-invert md:prose-lg lg:prose-xl;
+		@apply prose dark:prose-invert md:prose-lg lg:prose-xl prose-a:no-underline prose-a:decoration-inherit prose-a:text-inherit;
 	}
 }
