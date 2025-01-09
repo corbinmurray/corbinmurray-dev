@@ -1,5 +1,4 @@
 import Navbar from "@/components/navbar";
-import Scroll from "@/components/scroll";
 import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
@@ -57,7 +56,6 @@ export default function RootLayout({
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
-				<Scroll />
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
 					<Navbar />
 
