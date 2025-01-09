@@ -220,7 +220,7 @@ const NavLinks = ({
 			)}>
 			{LINKS.internal.map((link, i) => {
 				return (
-					<li key={i} className="relative flex overflow-x-hidden group">
+					<li key={i}>
 						<Link href={link.href} onClick={onClick}>
 							{link.name}
 						</Link>
