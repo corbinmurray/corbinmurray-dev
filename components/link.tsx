@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { MouseEventHandler } from "react";
 
 const linkVariants = cva(
-	"inline-flex items-start group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary capitalize text-md lg:text-lg underline-none gap-1",
+	"inline-flex items-baseline group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary capitalize text-md lg:text-lg underline-none gap-1",
 	{
 		variants: {
 			variant: {
