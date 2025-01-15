@@ -1,13 +1,11 @@
 import "@repo/ui/globals.css";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const geistSans = localFont({
-	src: "./fonts/GeistVF.woff",
+const geistSans = Geist({
 	variable: "--font-geist-sans",
 });
-const geistMono = localFont({
-	src: "./fonts/GeistMonoVF.woff",
+const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 });
 
