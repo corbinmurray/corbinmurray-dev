@@ -60,7 +60,7 @@ export default function PageLayout({
 					<Navbar />
 
 					{/* 5rem comes from the navbar's height of h-20 */}
-					<main className="container min-h-[calc(100vh-5rem)]">{children}</main>
+					<main className="container min-h-[calc(100vh-5rem)] py-12 md:py-24">{children}</main>
 
 					<footer className="w-full bg-secondary mt-12 md:mt-16">
 						<article className="prose-p:text-secondary-foreground prose-p:text-sm text-center mx-auto py-1">
