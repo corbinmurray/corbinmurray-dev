@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 	description: "Portfolio website for Corbin Murray Software Engineer",
 };
 
-export default function RootLayout({
+export default function PageLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
