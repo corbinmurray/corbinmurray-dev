@@ -1,11 +1,9 @@
+import experiences from "@/lib/experiences.json";
+import { Badge } from "@repo/ui/components/badge";
 import RevealSection from "@repo/ui/components/reveal-section";
 import SectionHeader from "@repo/ui/components/section-header";
 import SocialLinks from "@repo/ui/components/social-links";
-import { Badge } from "@repo/ui/components/badge";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@repo/ui/components/card";
-import experiences from "@/lib/experiences.json";
-import projects from "@/lib/projects.json";
-import { ChevronDown, Github, SquareArrowOutUpRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default async function Home() {
 	return (
@@ -23,10 +21,6 @@ export default async function Home() {
 						experiment. Like any good garden, it&apos;s a work in progress — growing, evolving, and sometimes sprouting unexpected ideas. Take a look around,
 						and maybe you&apos;ll find something inspiring — or at least worth chatting about!
 					</p>
-					{/* <p>
-					I&apos;ve always been fascinated by the art and logic of software development. There&apos;s something incredibly rewarding about reigning in the chaos and crafting something meaningful, whether it&apos;s a tool to solve a tricky problem or a seamless experience for users. This space is my way of
-					combining that passion with a little creativity and curiosity. 
-				</p> */}
 				</article>
 			</RevealSection>
 
@@ -99,39 +93,6 @@ export default async function Home() {
 					</RevealSection>
 				);
 			})}
-
-			<RevealSection id="projects" className="my-36 md:my-72 scroll-m-24">
-				<SectionHeader title="Projects I've worked on" />
-
-				<ul className="flex flex-col gap-8 xl:flex-row">
-					{projects.map((project, i) => {
-						return (
-							<RevealSection key={i}>
-								<li>
-									<Card className="shadow max-w-md">
-										<CardHeader>
-											<CardTitle className="text-secondary">{project.title}</CardTitle>
-										</CardHeader>
-										<CardContent>
-											<article>
-												<p>{project.description}</p>
-											</article>
-										</CardContent>
-										<CardFooter className="gap-6">
-											<a href={project.githubLink}>
-												<Github className="smooth-hover hover:text-secondary" />
-											</a>
-											<a href={project.liveSiteLink}>
-												<SquareArrowOutUpRight className="smooth-hover hover:text-secondary" />
-											</a>
-										</CardFooter>
-									</Card>
-								</li>
-							</RevealSection>
-						);
-					})}
-				</ul>
-			</RevealSection>
 
 			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Contact Me" />
