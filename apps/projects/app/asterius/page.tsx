@@ -1,12 +1,12 @@
-import Link from "@repo/ui/components/link";
 import MazeSvg from "@/components/maze-svg";
+import Link from "@repo/ui/components/link";
 import RevealSection from "@repo/ui/components/reveal-section";
 import SectionHeader from "@repo/ui/components/section-header";
 
 export default function Page() {
 	return (
 		<>
-			<RevealSection className="mt-12 md:mt-24">
+			<RevealSection>
 				<SectionHeader title="Asterius" />
 
 				<article>
