@@ -1,5 +1,5 @@
 import Link from "@repo/ui/components/link";
-import MazeSvg from "@components/maze-svg";
+import MazeSvg from "@/components/maze-svg";
 import RevealSection from "@repo/ui/components/reveal-section";
 import SectionHeader from "@repo/ui/components/section-header";
 
