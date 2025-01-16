@@ -5,11 +5,11 @@ const nextConfig = {
 		return [
 			{
 				source: "/projects",
-				destination: `http://localhost:3001`,
+				destination: `${[process.env.PROJECTS_DOMAIN]}`,
 			},
 			{
 				source: "/projects/:path*",
-				destination: `http://localhost:3001/:path*`,
+				destination: `${[process.env.PROJECTS_DOMAIN]}/:path*`,
 			},
 		];
 	},
