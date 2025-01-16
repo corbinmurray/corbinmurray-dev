@@ -35,7 +35,7 @@ export const LINKS = {
 	internal: [
 		{
 			name: "Home",
-			href: "/#home",
+			href: "/",
 			icon: <Home />,
 		},
 		{
@@ -50,12 +50,12 @@ export const LINKS = {
 		},
 		{
 			name: "Projects",
-			href: "/#projects",
+			href: "/projects",
 			icon: <FolderDot />,
 		},
 		{
 			name: "Contact",
-			href: "#contact",
+			href: "/#contact",
 			icon: <Send />,
 		},
 	],
