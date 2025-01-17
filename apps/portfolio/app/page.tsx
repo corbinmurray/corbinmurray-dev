@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react";
 export default async function Home() {
 	return (
 		<>
-			<RevealSection className="min-h-[calc(100vh-10rem)]">
+			<RevealSection className="min-h-[calc(100vh-18rem)]">
 				<SectionHeader title="Welcome to my digital garden" punctuation="!" />
 
 				<article>
