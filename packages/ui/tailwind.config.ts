@@ -5,9 +5,11 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 const config = {
 	darkMode: ["class"],
 	content: [
-		"app/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,svelte,ts,tsx,vue}",
-		"components/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,svelte,ts,tsx,vue}",
-		"../../packages/ui/src/components/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,svelte,ts,tsx,vue}",
+		// Paths for Astro project files
+		"./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,svelte,vue}",
+
+		// Paths for UI package components (ensure the paths are correct)
+		"../../packages/ui/src/components/**/*.{astro,html,js,jsx,ts,tsx,md,mdx,svelte,vue}",
 	],
 	theme: {
 		extend: {
