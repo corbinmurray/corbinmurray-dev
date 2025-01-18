@@ -9,7 +9,8 @@ const config = {
 		"./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
 
 		// UI library
-		"../../packages/ui/src/components/**/*.{ts,tsx}"],
+		"../../packages/ui/src/components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+	],
 	theme: {
 		extend: {
 			fontFamily: {
