@@ -2,6 +2,8 @@
 const { title } = Astro.props;
 import { Copyright, Heart } from "lucide-react";
 
+import Navbar from "@repo/ui/components/navbar";
+
 // Supports weights 100-800
 import "@fontsource-variable/jetbrains-mono";
 
@@ -15,9 +17,25 @@ import "@fontsource-variable/inter";
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" href="/favicon.svg" sizes="any" />
 		<title>{title}</title>
+
+		<script>
+			(function () {
+				const theme = localStorage.getItem("theme");
+				if (theme) {
+					document.documentElement.className = theme;
+					document.documentElement.style.colorScheme = theme;
+				} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					document.documentElement.className = "dark";
+					document.documentElement.style.colorScheme = "dark";
+				} else {
+					document.documentElement.className = "light";
+					document.documentElement.style.colorScheme = "light";
+				}
+			})();
+		</script>
 	</head>
 	<body>
-		<nav class="container h-20 py-4 md:py-8">nav</nav>
+		<Navbar client:load />
 
 		{/* 5rem comes from the navbar's height of h-20 */}
 		<main class="container min-h-[calc(100vh-5rem)] py-12 md:py-24">
