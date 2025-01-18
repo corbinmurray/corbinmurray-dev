@@ -1,9 +1,11 @@
 ---
-import BasePageLayout from "@repo/ui/components/page-layout.astro"
+import BasePageLayout from "@repo/ui/components/page-layout.astro";
 
-import "@repo/ui/globals.css"
+const { title } = Astro.props;
+
+import "@repo/ui/globals.css";
 ---
 
-<BasePageLayout title="Corbin Murray | Software Engineer">
-	<slot/>
+<BasePageLayout title={title}>
+	<slot />
 </BasePageLayout>
