@@ -1,4 +1,5 @@
 import Link from "@repo/ui/components/link";
+import ThemeToggle from "@repo/ui/components/theme-toggle";
 import { cn } from "@repo/ui/lib/utils";
 import { BriefcaseBusiness, FolderDot, Home, Send, User } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, type Variants } from "motion/react";
@@ -124,7 +125,7 @@ export default function Navbar({ className }: { className?: string }) {
 							whileHover={{ scale: 1.1 }}
 							transition={{ duration: 0.1, ease: [0.33, 1, 0.68, 1] }}
 							className="hover:text-primary">
-							{/* <ThemeToggle /> */}
+							<ThemeToggle />
 						</motion.div>
 					</motion.div>
 				</motion.div>
@@ -179,7 +180,9 @@ export default function Navbar({ className }: { className?: string }) {
 								</div>
 
 								{/* Theme toggle */}
-								<div className="flex justify-center w-full">{/* <ThemeToggle /> */}</div>
+								<div className="flex justify-center w-full">
+									<ThemeToggle />
+								</div>
 
 								{/* Social links */}
 								<div className="flex justify-center w-full">{/* <SocialLinks orientation="horizontal" /> */}</div>
