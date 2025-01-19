@@ -194,7 +194,7 @@ export default function Navbar({ className }: { className?: string }) {
 		</motion.nav>
 	);
 }
-const LINKS = {
+export const LINKS = {
 	internal: [
 		{
 			name: "Home",
