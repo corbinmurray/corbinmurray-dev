@@ -9,7 +9,7 @@ import { ChevronDown } from "lucide-react";
 
 <PageLayout title="Corbin Murray | Software Engineer">
 	<RevealSection client:visible className="min-h-[calc(100vh-10rem)]">
-		<SectionHeader title="Welcome to my digital garden" punctuation="!" />
+		<SectionHeader client:visible title="Welcome to my digital garden" punctuation="!" />
 
 		<article>
 			<p>
@@ -23,14 +23,12 @@ import { ChevronDown } from "lucide-react";
 				you&apos;ll find something inspiring — or at least worth chatting about!
 			</p>
 		</article>
-	</RevealSection>
 
-	<RevealSection client:visible>
-		<ChevronDown className="mx-auto h-8 animate-bounce" />
+		<ChevronDown className="mx-auto h-8 animate-bounce mt-20 lg:mt-40" />
 	</RevealSection>
 
 	<RevealSection client:visible id="about" className="my-36 md:my-72 scroll-m-24">
-		<SectionHeader title="About me" />
+		<SectionHeader client:visible title="About me" />
 
 		<article>
 			<p>
@@ -57,7 +55,7 @@ import { ChevronDown } from "lucide-react";
 	</RevealSection>
 
 	<RevealSection client:visible id="experience" className="mt-36 md:mt-72 scroll-m-24">
-		<SectionHeader title="My work experience" />
+		<SectionHeader client:visible title="My work experience" />
 	</RevealSection>
 
 	{
@@ -94,7 +92,7 @@ import { ChevronDown } from "lucide-react";
 	}
 
 	<RevealSection client:visible id="contact" className="my-36 md:my-72 scroll-m-24">
-		<SectionHeader title="Contact Me" />
+		<SectionHeader client:visible title="Contact Me" />
 
 		<article>
 			<p>
