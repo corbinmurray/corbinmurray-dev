@@ -7,25 +7,22 @@ export default function ThemeToggle() {
 
 	const toggleTheme = () => {
 		if (isDarkMode) {
-			localStorage.theme = "light";
+			localStorage.setItem("theme", "light");
 			document.documentElement.classList.remove("dark");
+			document.documentElement.style.colorScheme = "light";
 			setIsDarkMode(false);
 		} else {
-			localStorage.theme = "dark";
+			localStorage.setItem("theme", "dark");
 			document.documentElement.classList.add("dark");
+			document.documentElement.style.colorScheme = "dark";
 			setIsDarkMode(true);
 		}
 	};
 
-	// Ensure the initial theme is applied on mount
 	useEffect(() => {
-		if (localStorage.theme === "dark") {
-			setIsDarkMode(true);
-			document.documentElement.classList.add("dark");
-		} else {
-			setIsDarkMode(false);
-			document.documentElement.classList.remove("dark");
-		}
+		// Sync state with the theme set by the layout script
+		const theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+		setIsDarkMode(theme === "dark");
 	}, []);
 
 	return (

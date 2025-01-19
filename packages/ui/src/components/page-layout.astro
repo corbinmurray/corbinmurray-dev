@@ -13,12 +13,7 @@ import "@fontsource-variable/inter";
 
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" href="/favicon.svg" sizes="any" />
-		<title>{title}</title>
-
-		<script>
+		<script is:inline>
 			(function () {
 				const theme = localStorage.getItem("theme");
 				if (theme) {
@@ -33,6 +28,10 @@ import "@fontsource-variable/inter";
 				}
 			})();
 		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/favicon.svg" sizes="any" />
+		<title>{title}</title>
 	</head>
 	<body>
 		<Navbar client:load />
