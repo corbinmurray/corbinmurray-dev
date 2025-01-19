@@ -23,6 +23,7 @@
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"@repo/ui": "workspace:*"
+		"@repo/ui": "workspace:*",
+		"lucide-react": "0.456.0"
 	}
 }
