@@ -1,7 +1,8 @@
 import Link from "@repo/ui/components/link";
+import SocialLinks from "@repo/ui/components/social-links";
 import ThemeToggle from "@repo/ui/components/theme-toggle";
+import { LINKS } from "@repo/ui/lib/configs";
 import { cn } from "@repo/ui/lib/utils";
-import { BriefcaseBusiness, FolderDot, Home, Send, User } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, type Variants } from "motion/react";
 import { type MouseEventHandler, useCallback, useEffect, useState } from "react";
 
@@ -71,22 +72,7 @@ export default function Navbar({ className }: { className?: string }) {
 				viewport={{ once: true, amount: "some" }}>
 				{/* Brand */}
 				<motion.div className="text-xl font-bold text-primary">
-					<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
-						<g>
-							<g>
-								<path
-									d="M34.408,10.246L23.48,10.367l-5.359,9.527l5.572,9.402l10.928-0.123l5.359-9.525L34.408,10.246z M33.661,27.551
-			l-9.043,0.104l-4.61-7.781l4.434-7.883l9.043-0.102l4.609,7.779L33.661,27.551z"></path>
-								<path
-									d="M16.549,18.932l5.357-9.527L16.334,0L5.406,0.125L0.049,9.65l5.57,9.402L16.549,18.932z M6.365,1.746l9.047-0.102
-			l4.607,7.781l-4.432,7.883l-9.044,0.104L1.936,9.629L6.365,1.746z"></path>
-								<path
-									d="M5.644,21.098l-5.358,9.525l5.57,9.406l10.93-0.123l5.357-9.527l-5.571-9.406L5.644,21.098z M15.823,38.283l-9.044,0.104
-			L2.17,30.602l4.433-7.881l9.046-0.105l4.607,7.783L15.823,38.283z"></path>
-							</g>
-							<g id="SvgjsG1031"></g>
-						</g>
-					</svg>
+					<Logo />
 				</motion.div>
 
 				{/* Hamburger Menu (Mobile) */}
@@ -148,44 +134,31 @@ export default function Navbar({ className }: { className?: string }) {
 
 						{/* Sliding Mobile Menu */}
 						<motion.div
-							className="fixed top-0 right-0 h-full w-full bg-background shadow-lg z-50 px-6 flex flex-col items-start pt-20"
+							className="fixed inset-0 bg-background shadow-lg z-50 px-6 flex flex-col items-start"
 							variants={mobileNavMenuContainerAnimationVariants}
 							initial="hidden"
 							animate="visible"
 							exit="hidden">
-							{/* Brand */}
-							{/* <div className="text-xl font-bold text-primary mb-4">
-								<svg fill="currentColor" viewBox="0 0 40.029 40.029" className="text-primary w-8">
-									<g>
-										<g>
-											<path
-												d="M34.408,10.246L23.48,10.367l-5.359,9.527l5.572,9.402l10.928-0.123l5.359-9.525L34.408,10.246z M33.661,27.551
-			l-9.043,0.104l-4.61-7.781l4.434-7.883l9.043-0.102l4.609,7.779L33.661,27.551z"></path>
-											<path
-												d="M16.549,18.932l5.357-9.527L16.334,0L5.406,0.125L0.049,9.65l5.57,9.402L16.549,18.932z M6.365,1.746l9.047-0.102
-			l4.607,7.781l-4.432,7.883l-9.044,0.104L1.936,9.629L6.365,1.746z"></path>
-											<path
-												d="M5.644,21.098l-5.358,9.525l5.57,9.406l10.93-0.123l5.357-9.527l-5.571-9.406L5.644,21.098z M15.823,38.283l-9.044,0.104
-			L2.17,30.602l4.433-7.881l9.046-0.105l4.607,7.783L15.823,38.283z"></path>
-										</g>
-										<g id="SvgjsG1031"></g>
-									</g>
-								</svg>
-							</div> */}
+							<div className="flex flex-col items-start w-full mt-20">
+								{/* Brand */}
+								<div className="flex justify-center w-full">
+									<Logo />
+								</div>
 
-							<div className="flex flex-col items-start gap-16 w-full">
 								{/* Nav links */}
 								<div className="flex justify-center w-full">
 									<NavLinks onClick={closeMenu} orientation="vertical" className="mt-8 gap-8 items-center text-lg" />
 								</div>
 
 								{/* Theme toggle */}
-								<div className="flex justify-center w-full">
+								<div className="flex justify-center w-full mt-16">
 									<ThemeToggle />
 								</div>
 
 								{/* Social links */}
-								<div className="flex justify-center w-full">{/* <SocialLinks orientation="horizontal" /> */}</div>
+								<div className="flex justify-center w-full mt-16">
+									<SocialLinks orientation="horizontal" />
+								</div>
 							</div>
 						</motion.div>
 					</>
@@ -194,39 +167,13 @@ export default function Navbar({ className }: { className?: string }) {
 		</motion.nav>
 	);
 }
-export const LINKS = {
-	internal: [
-		{
-			name: "Home",
-			href: "/",
-			icon: <Home />,
-		},
-		{
-			name: "About Me",
-			href: "/#about",
-			icon: <User />,
-		},
-		{
-			name: "Experience",
-			href: "/#experience",
-			icon: <BriefcaseBusiness />,
-		},
-		{
-			name: "Projects",
-			href: "/projects",
-			icon: <FolderDot />,
-		},
-		{
-			name: "Contact",
-			href: "/#contact",
-			icon: <Send />,
-		},
-	],
-	external: {
-		github: "https://github.com/corbinmurray",
-		email: "corbin.murray63@gmail.com",
-		linkedin: "www.linkedin.com/in/corbin-murray-16a485182",
-	},
+
+const Logo = () => {
+	return (
+		<a href="/" className="hover:cursor-pointer">
+			<span className="font-sans text-primary font-semibold text-xl md:text-2xl lg:text-3xl">cm</span>
+		</a>
+	);
 };
 
 const NavLinks = ({
