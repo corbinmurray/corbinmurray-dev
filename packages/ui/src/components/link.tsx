@@ -35,7 +35,7 @@ const Link = ({ href, variant, children, className, onClick }: LinkProps) => {
 			onClick={onClick}>
 			{children}
 			<ArrowUpRightFromSquare className="w-3 group-hover:text-secondary" />
-			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0 hover:left-0" />
+			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-[-0.75rem] hover:left-[-0.75rem]" />
 		</a>
 	) : (
 		<a href={href} className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))} onClick={onClick}>
