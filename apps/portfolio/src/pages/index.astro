@@ -100,33 +100,35 @@ import { ChevronDown, Github } from "lucide-react";
 
 		<ul class="flex flex-col gap-8 xl:flex-row">
 			{
-				projects.map((project, i) => {
-					return (
-						<RevealSection client:visible key={i}>
-							<li>
-								<Card client:visible className="shadow max-w-md">
-									<CardHeader>
-										<CardTitle className="text-secondary">
-											<Link href={project.liveSiteLink} variant="external">
-												{project.title}
-											</Link>
-										</CardTitle>
-									</CardHeader>
-									<CardContent>
-										<article>
-											<p>{project.description}</p>
-										</article>
-									</CardContent>
-									<CardFooter className="gap-6">
-										<a href={project.githubLink}>
-											<Github className="smooth-hover hover:text-primary" />
-										</a>
-									</CardFooter>
-								</Card>
-							</li>
-						</RevealSection>
-					);
-				})
+				projects
+					.sort((a, b) => (a.title < b.title ? -1 : 1))
+					.map((project, i) => {
+						return (
+							<RevealSection client:visible>
+								<li>
+									<Card client:visible className="shadow max-w-prose">
+										<CardHeader>
+											<CardTitle>
+												<Link href={project.liveSiteLink} variant="external" className="text-secondary text-lg md:text-xl lg:text-2xl">
+													{project.title}
+												</Link>
+											</CardTitle>
+										</CardHeader>
+										<CardContent>
+											<article>
+												<p>{project.description}</p>
+											</article>
+										</CardContent>
+										<CardFooter className="gap-6">
+											<a href={project.githubLink}>
+												<Github className="hover:text-secondary hover:cursor-pointer" />
+											</a>
+										</CardFooter>
+									</Card>
+								</li> 
+							</RevealSection>
+						);
+					})
 			}
 		</ul>
 	</RevealSection>
