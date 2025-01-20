@@ -1,11 +1,14 @@
 ---
 import experiences from "@/assets/experiences.json";
+import projects from "@/assets/projects.json";
 import PageLayout from "@/layouts/layout.astro";
 import { Badge } from "@repo/ui/components/badge";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@repo/ui/components/card";
+import Link from "@repo/ui/components/link";
 import RevealSection from "@repo/ui/components/reveal-section";
 import SectionHeader from "@repo/ui/components/section-header";
 import SocialLinks from "@repo/ui/components/social-links";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Github } from "lucide-react";
 ---
 
 <PageLayout title="Corbin Murray | Software Engineer">
@@ -91,6 +94,42 @@ import { ChevronDown } from "lucide-react";
 			);
 		})
 	}
+
+	<RevealSection client:visible id="projects" className="my-36 md:my-72 scroll-m-24">
+		<SectionHeader client:visible title="Projects I've worked on" />
+
+		<ul class="flex flex-col gap-8 xl:flex-row">
+			{
+				projects.map((project, i) => {
+					return (
+						<RevealSection client:visible key={i}>
+							<li>
+								<Card client:visible className="shadow max-w-md">
+									<CardHeader>
+										<CardTitle className="text-secondary">
+											<Link href={project.liveSiteLink} variant="external">
+												{project.title}
+											</Link>
+										</CardTitle>
+									</CardHeader>
+									<CardContent>
+										<article>
+											<p>{project.description}</p>
+										</article>
+									</CardContent>
+									<CardFooter className="gap-6">
+										<a href={project.githubLink}>
+											<Github className="smooth-hover hover:text-primary" />
+										</a>
+									</CardFooter>
+								</Card>
+							</li>
+						</RevealSection>
+					);
+				})
+			}
+		</ul>
+	</RevealSection>
 
 	<RevealSection client:visible id="contact" className="my-36 md:my-72 scroll-m-24">
 		<SectionHeader client:visible title="Contact Me" />
