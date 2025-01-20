@@ -1,4 +1,4 @@
-import { LINKS } from "@repo/ui/components/navbar";
+import { LINKS } from "@repo/ui/lib/configs";
 import { cn } from "@repo/ui/lib/utils";
 import { Github, Linkedin, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
