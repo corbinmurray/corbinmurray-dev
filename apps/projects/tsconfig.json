@@ -1,0 +1,12 @@
+{
+	"extends": ["@repo/typescript-config/astrojs.json", "astro/tsconfigs/strict"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@repo/ui/*": ["../../packages/ui/src/*"]
+		}
+	},
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"]
+}
