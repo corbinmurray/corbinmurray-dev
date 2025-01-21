@@ -101,7 +101,7 @@ import { ChevronDown, Github } from "lucide-react";
 		<ul class="flex flex-col gap-8 xl:flex-row">
 			{
 				projects
-					.sort((a, b) => (a.title < b.title ? -1 : 1))
+					.sort((a, b) => (a.name < b.name ? -1 : 1))
 					.map((project, i) => {
 						return (
 							<RevealSection client:visible>
@@ -110,7 +110,7 @@ import { ChevronDown, Github } from "lucide-react";
 										<CardHeader>
 											<CardTitle>
 												<Link href={project.liveSiteLink} variant="external" className="text-secondary text-lg md:text-xl lg:text-2xl">
-													{project.title}
+													{project.name}
 												</Link>
 											</CardTitle>
 										</CardHeader>
@@ -120,12 +120,12 @@ import { ChevronDown, Github } from "lucide-react";
 											</article>
 										</CardContent>
 										<CardFooter className="gap-6">
-											<a href={project.githubLink}>
+											<a href={project.githubHtmlUrl}>
 												<Github className="hover:text-secondary hover:cursor-pointer" />
 											</a>
 										</CardFooter>
 									</Card>
-								</li> 
+								</li>
 							</RevealSection>
 						);
 					})

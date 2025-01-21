@@ -1,23 +1,14 @@
 [
 	{
-		"title": "Tekton",
-		"description": "A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-		"skills": ["VS Code", "Sublime Text", "Atom", "iTerm2", "Hyper"],
-		"githubLink": "https://github.com/corbinmurray/Tekton",
-		"liveSiteLink": "/projects/Tekton"
+		"name": "corbinmurray-dev",
+		"githubHtmlUrl": "https://api.github.com/repos/corbinmurray/corbinmurray-dev",
+		"liveSiteLink": "/",
+		"description": "My entry point into the web. This project aims to centralize my thoughts, projects, and experiments."
 	},
 	{
-		"title": "Asterius",
-		"description": "A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-		"skills": ["VS Code", "Sublime Text", "Atom", "iTerm2", "Hyper"],
-		"githubLink": "https://github.com/corbinmurray/Tekton",
-		"liveSiteLink": "/projects/asterius"
-	},
-	{
-		"title": "Tekton",
-		"description": "A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-		"skills": ["VS Code", "Sublime Text", "Atom", "iTerm2", "Hyper"],
-		"githubLink": "https://github.com/corbinmurray/Tekton",
-		"liveSiteLink": "/projects/Tekton"
+		"name": "Asterius",
+		"githubHtmlUrl": "https://github.com/corbinmurray/corbinmurray-dev/tree/main/app/projects/asterius",
+		"liveSiteLink": "/projects/asterius",
+		"description": "Asterius is a project that showcases the A* pathfinding algorithm by visualizing its problem-solving process in real time."
 	}
 ]

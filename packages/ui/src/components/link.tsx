@@ -4,7 +4,7 @@ import { ArrowUpRightFromSquare } from "lucide-react";
 import { type MouseEventHandler } from "react";
 
 const linkVariants = cva(
-	"inline-flex items-baseline group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary capitalize text-md lg:text-lg underline-none gap-1",
+	"inline-flex items-baseline group-hover:text-secondary group-hover:cursor-pointer hover:text-secondary hover:cursor-pointer capitalize text-md lg:text-lg underline-none gap-1",
 	{
 		variants: {
 			variant: {
