@@ -11,6 +11,7 @@ import SocialLinks from "@repo/ui/components/social-links";
 import { ChevronDown, Github } from "lucide-react";
 ---
 
+<!-- Scroll margin needs to take into consideration the height of the navbar and any animation -->
 <PageLayout title="Corbin Murray | Software Engineer">
 	<RevealSection client:visible className="min-h-[calc(100vh-10rem)]">
 		<SectionHeader client:visible title="Welcome to my digital garden" punctuation="!" />
@@ -31,7 +32,7 @@ import { ChevronDown, Github } from "lucide-react";
 		<ChevronDown className="mx-auto h-8 animate-bounce mt-20 lg:mt-40" />
 	</RevealSection>
 
-	<RevealSection client:visible id="about" className="my-36 md:my-72 scroll-m-24">
+	<RevealSection client:visible id="about" className="my-36 md:my-72 scroll-m-[calc(5rem+75px)]">
 		<SectionHeader client:visible title="About me" />
 
 		<article>
@@ -58,7 +59,7 @@ import { ChevronDown, Github } from "lucide-react";
 		</article>
 	</RevealSection>
 
-	<RevealSection client:visible id="experience" className="mt-36 md:mt-72 scroll-m-24">
+	<RevealSection client:visible id="experience" className="mt-36 md:mt-72 scroll-m-[calc(5rem+75px)]">
 		<SectionHeader client:visible title="My work experience" />
 	</RevealSection>
 
@@ -95,7 +96,7 @@ import { ChevronDown, Github } from "lucide-react";
 		})
 	}
 
-	<RevealSection client:visible id="projects" className="my-36 md:my-72 scroll-m-24">
+	<RevealSection client:visible id="projects" className="my-36 md:my-72 scroll-m-[calc(5rem+75px)]">
 		<SectionHeader client:visible title="Projects I've worked on" />
 
 		<ul class="flex flex-col gap-8 xl:flex-row">
@@ -133,7 +134,7 @@ import { ChevronDown, Github } from "lucide-react";
 		</ul>
 	</RevealSection>
 
-	<RevealSection client:visible id="contact" className="my-36 md:my-72 scroll-m-24">
+	<RevealSection client:visible id="contact" className="my-36 md:my-72 scroll-m-[calc(5rem+75px)]">
 		<SectionHeader client:visible title="Contact Me" />
 
 		<article>

@@ -2,19 +2,19 @@ export const LINKS = {
 	internal: [
 		{
 			name: "About Me",
-			href: "/#about",
+			href: "http://localhost:3000/#about",
 		},
 		{
 			name: "Experience",
-			href: "/#experience",
+			href: "http://localhost:3000/#experience",
 		},
 		{
 			name: "Projects",
-			href: "/#projects",
+			href: "http://localhost:3000/#projects",
 		},
 		{
 			name: "Contact",
-			href: "/#contact",
+			href: "http://localhost:3000/#contact",
 		},
 	],
 	external: {

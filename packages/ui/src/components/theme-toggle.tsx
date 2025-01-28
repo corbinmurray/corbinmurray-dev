@@ -1,9 +1,12 @@
 import { Button } from "@repo/ui/components/button";
+import { useLocalStorage } from "@repo/ui/hooks/useLocalStorage";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
 	const [isDarkMode, setIsDarkMode] = useState(false);
+
+	const theme = useLocalStorage("theme");
 
 	const toggleTheme = () => {
 		if (isDarkMode) {
@@ -23,7 +26,7 @@ export default function ThemeToggle() {
 		// Sync state with the theme set by the layout script
 		const theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 		setIsDarkMode(theme === "dark");
-	}, []);
+	}, [theme]);
 
 	return (
 		<Button variant="outline" size="icon" onClick={toggleTheme}>
