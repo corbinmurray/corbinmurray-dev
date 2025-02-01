@@ -5,15 +5,19 @@ import PageLayout from "@/layouts/layout.astro";
 import { Badge } from "@repo/ui/components/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@repo/ui/components/card";
 import Link from "@repo/ui/components/link";
-import RevealSection from "@repo/ui/components/reveal-section";
-import SectionHeader from "@repo/ui/components/section-header";
+import RevealSection from "@repo/ui/components/reveal-section.astro";
+import SectionHeader from "@repo/ui/components/section-header.astro";
 import SocialLinks from "@repo/ui/components/social-links";
 import { ChevronDown, Github } from "lucide-react";
 ---
 
 <PageLayout title="Corbin Murray | Software Engineer">
-	<RevealSection client:visible className="min-h-[calc(100vh-10rem)]">
-		<SectionHeader client:visible title="Welcome to my digital garden" punctuation="!" />
+	<RevealSection>
+		<SectionHeader title="Test Header" />
+	</RevealSection>
+
+	<RevealSection className="min-h-[calc(100vh-10rem)]">
+		<SectionHeader title="Welcome to my digital garden" punctuation="!" />
 
 		<article>
 			<p>
@@ -31,8 +35,8 @@ import { ChevronDown, Github } from "lucide-react";
 		<ChevronDown className="mx-auto h-8 animate-bounce mt-20 lg:mt-40" />
 	</RevealSection>
 
-	<RevealSection client:visible id="about" className="my-36 md:my-72 scroll-m-24">
-		<SectionHeader client:visible title="About me" />
+	<RevealSection id="about" className="my-36 md:my-72 scroll-m-24">
+		<SectionHeader title="About me" />
 
 		<article>
 			<p>
@@ -58,14 +62,14 @@ import { ChevronDown, Github } from "lucide-react";
 		</article>
 	</RevealSection>
 
-	<RevealSection client:visible id="experience" className="mt-36 md:mt-72 scroll-m-24">
-		<SectionHeader client:visible title="My work experience" />
+	<RevealSection id="experience" className="mt-36 md:mt-72 scroll-m-24">
+		<SectionHeader title="My work experience" />
 	</RevealSection>
 
 	{
 		experiences.map((experience, i) => {
 			return (
-				<RevealSection client:visible key={i}>
+				<RevealSection key={i}>
 					<article class="flex flex-col gap-y-3 mb-16 border-b">
 						<div class="flex justify-start items-baseline">
 							<h3 class="m-0">{experience.companyName}</h3>
@@ -95,8 +99,8 @@ import { ChevronDown, Github } from "lucide-react";
 		})
 	}
 
-	<RevealSection client:visible id="projects" className="my-36 md:my-72 scroll-m-24">
-		<SectionHeader client:visible title="Projects I've worked on" />
+	<RevealSection id="projects" className="my-36 md:my-72 scroll-m-24">
+		<SectionHeader title="Projects I've worked on" />
 
 		<ul class="flex flex-col gap-8 xl:flex-row">
 			{
@@ -104,9 +108,9 @@ import { ChevronDown, Github } from "lucide-react";
 					.sort((a, b) => (a.name < b.name ? -1 : 1))
 					.map((project, i) => {
 						return (
-							<RevealSection client:visible>
+							<RevealSection>
 								<li>
-									<Card client:visible className="shadow max-w-prose">
+									<Card className="shadow max-w-prose">
 										<CardHeader>
 											<CardTitle>
 												<Link href={project.liveSiteLink} variant="external" className="text-secondary text-lg md:text-xl lg:text-2xl">
@@ -133,8 +137,8 @@ import { ChevronDown, Github } from "lucide-react";
 		</ul>
 	</RevealSection>
 
-	<RevealSection client:visible id="contact" className="my-36 md:my-72 scroll-m-24">
-		<SectionHeader client:visible title="Contact Me" />
+	<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
+		<SectionHeader title="Contact Me" />
 
 		<article>
 			<p>
