@@ -1,4 +1,9 @@
-<section class="relative flex flex-col items-center">
+---
+const { id, className } = Astro.props;
+import { cn } from "@repo/ui/lib/utils";
+---
+
+<section id={id} class={cn(className)}>
 	<div
 		id="reveal-content"
 		data-in-view="false"
