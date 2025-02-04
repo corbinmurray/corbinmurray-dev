@@ -332,5 +332,5 @@ const calculateDelay = (rows: number, cols: number, solveSpeed: number): number 
 	const baseDelay = 100000;
 
 	// Calculate initial delay
-	return baseDelay / (Math.sqrt(area) * solveSpeed * 10);
+	return baseDelay / (Math.sqrt(area) * solveSpeed * 2);
 };
