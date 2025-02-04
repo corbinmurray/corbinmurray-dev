@@ -191,7 +191,7 @@ const Maze = ({ className }: { className?: string }) => {
 	};
 
 	return (
-		<div className="flex flex-col gap-12 w-full h-full">
+		<div className="flex flex-col gap-6 md:gap-8 w-full h-full">
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
