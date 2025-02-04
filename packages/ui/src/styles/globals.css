@@ -75,7 +75,7 @@
 		--warning: 60 100% 75%;
 		--warning-foreground: 0 0% 7%;
 
-		--border: 0 0% 14%;
+		--border: 0 0% 45%;
 		--input: 205 43% 20%;
 		--ring: 0 0% 83%;
 		--chart-1: 220 70% 50%;
@@ -104,7 +104,7 @@
 	}
 
 	h2 {
-		@apply border-b pb-2 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight first:mt-0 font-sans;
+		@apply border-b pb-6 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight first:mt-0 font-sans;
 	}
 
 	h3 {
