@@ -3,7 +3,17 @@ import { cn } from "@repo/ui/lib/utils";
 import { Github, Linkedin, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
 
-const SocialLinks = ({ orientation, className }: { orientation: "horizontal" | "vertical"; className?: string }) => {
+type Socials = "GitHub" | "LinkedIn" | "Email";
+
+const SocialLinks = ({
+	orientation,
+	className,
+	linksToDisplay = ["GitHub", "LinkedIn", "Email"],
+}: {
+	orientation: "horizontal" | "vertical";
+	className?: string;
+	linksToDisplay?: Socials[];
+}) => {
 	return (
 		<ul
 			className={cn(
@@ -14,7 +24,7 @@ const SocialLinks = ({ orientation, className }: { orientation: "horizontal" | "
 				},
 				className
 			)}>
-			{SOCIALS.map((social, i) => {
+			{SOCIALS.filter((x) => linksToDisplay.includes(x.name as Socials)).map((social, i) => {
 				return (
 					<motion.li
 						key={i}
@@ -36,13 +46,16 @@ const SOCIALS = [
 	{
 		icon: <Github />,
 		href: LINKS.external.github,
+		name: "GitHub",
 	},
 	{
 		icon: <Linkedin />,
 		href: LINKS.external.linkedin,
+		name: "LinkedIn",
 	},
 	{
 		icon: <Mail />,
 		href: "mailto:" + LINKS.external.email,
+		name: "Email",
 	},
 ];
