@@ -92,42 +92,42 @@ const Maze = ({ className }: { className?: string }) => {
 	const handleSolveMaze = () => {
 		setIsLoading(true);
 
-		const intensities = visitedNodes.map((x) => x.intensity ?? 0);
-		const minIntensity = Math.min(...intensities);
-		const maxIntensity = Math.max(...intensities);
-
-		console.log(intensities);
-
-		console.log("Min Intensity:", minIntensity, "Max Intensity:", maxIntensity);
-
-		const colorScale = d3
-			.scaleLinear<string>()
-			.domain([minIntensity, minIntensity + (maxIntensity - minIntensity) / 2, maxIntensity])
-			.range(["fill-destructive", "fill-warning", "fill-success"]);
-
 		const svg = d3.select(svgRef.current);
 		svg.selectAll(".fill-warning").remove();
 		svg.selectAll(".fill-secondary").remove();
 
 		// Animate visited nodes
-		visitedNodes.forEach((node, index) => {
-			const { x, y, intensity } = node;
+		visitedNodes
+			.filter(
+				(node) =>
+					!(node.x === startingCell?.x && node.y === startingCell?.y) && // Remove start cell
+					!(node.x === goalCell?.x && node.y === goalCell?.y) // Remove goal cell
+			)
+			.forEach((node, index) => {
+				const { x, y } = node;
 
-			console.log(`Node at (${node.x}, ${node.y}), Intensity: ${node.intensity}, Class: ${colorScale(node.intensity ?? 0)}`);
-
-			svg
-				.append("circle")
-				.attr("cx", x * cellSize + cellSize / 2)
-				.attr("cy", y * cellSize + cellSize / 2)
-				.attr("r", cellSize / 6)
-				.attr("fill", "currentColor")
-				.attr("class", "marker-class-visited fill-warning")
-				.attr("opacity", 0)
-				.transition()
-				.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each node for sequential animation
-				.duration(200)
-				.attr("opacity", 1);
-		});
+				svg
+					.append("rect")
+					.attr("x", x * cellSize + cellSize / 2) // Center the cube
+					.attr("y", y * cellSize + cellSize / 2)
+					.attr("width", 0) // Start from 0 width
+					.attr("height", 0) // Start from 0 height
+					.attr("fill", "currentColor") // Inherits Tailwind color
+					.attr("class", "marker-class-visited fill-warning transition-all duration-200 ease-out") // Tailwind classes
+					.attr("opacity", 0)
+					.transition()
+					.delay(index * calculateDelay(rows, cols, solveSpeed)) // Sequential animation delay
+					.duration(200) // Fast initial pop
+					.transition()
+					.ease(d3.easeBackOut) // Approximates cubic-bezier(0.33, 1, 0.68, 1)
+					.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center horizontally
+					.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center vertically
+					.attr("width", cellSize * 0.5) // Cube size
+					.attr("height", cellSize * 0.5)
+					.attr("rx", cellSize * 0.15) // Horizontal border radius
+					.attr("ry", cellSize * 0.15) // Vertical border radius
+					.attr("opacity", 1);
+			});
 
 		// Erase visited nodes and animate solution path after delay
 		const totalVisitedTime = visitedNodes.length * calculateDelay(rows, cols, solveSpeed);
@@ -135,22 +135,37 @@ const Maze = ({ className }: { className?: string }) => {
 		setTimeout(() => {
 			svg.selectAll(".marker-class-visited").remove();
 
-			solutionPath.forEach((node, index) => {
-				const { x, y } = node;
+			solutionPath
+				.filter(
+					(node) =>
+						!(node.x === startingCell?.x && node.y === startingCell?.y) && // Remove start cell
+						!(node.x === goalCell?.x && node.y === goalCell?.y) // Remove goal cell
+				)
+				.forEach((node, index) => {
+					const { x, y } = node;
 
-				svg
-					.append("circle")
-					.attr("cx", x * cellSize + cellSize / 2)
-					.attr("cy", y * cellSize + cellSize / 2)
-					.attr("r", cellSize / 6)
-					.attr("fill", "currentColor")
-					.attr("class", "fill-secondary shadow")
-					.attr("opacity", 0)
-					.transition()
-					.delay(index * calculateDelay(rows, cols, solveSpeed)) // Delay each path node for sequential animation
-					.duration(150)
-					.attr("opacity", 1);
-			});
+					svg
+						.append("rect")
+						.attr("x", x * cellSize + cellSize / 2) // Center the cube
+						.attr("y", y * cellSize + cellSize / 2)
+						.attr("width", 0) // Start from 0 width
+						.attr("height", 0) // Start from 0 height
+						.attr("fill", "currentColor") // Inherits Tailwind color
+						.attr("class", "marker-class-visited fill-secondary transition-all duration-200 ease-out") // Tailwind classes
+						.attr("opacity", 0)
+						.transition()
+						.delay(index * calculateDelay(rows, cols, solveSpeed)) // Sequential animation delay
+						.duration(200) // Fast initial pop
+						.transition()
+						.ease(d3.easeBackOut) // Approximates cubic-bezier(0.33, 1, 0.68, 1)
+						.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center horizontally
+						.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center vertically
+						.attr("width", cellSize * 0.5) // Cube size
+						.attr("height", cellSize * 0.5)
+						.attr("rx", cellSize * 0.15) // Horizontal border radius
+						.attr("ry", cellSize * 0.15) // Vertical border radius
+						.attr("opacity", 1);
+				});
 		}, totalVisitedTime);
 
 		setTimeout(
@@ -210,7 +225,7 @@ const Maze = ({ className }: { className?: string }) => {
 				<Button disabled={isLoading} onClick={handleGenerateNewMaze}>
 					Generate New Maze
 				</Button>
-				<Button variant="secondary" disabled={isLoading || !maze || !visitedNodes || !solutionPath} onClick={handleSolveMaze}>
+				<Button variant="secondary" disabled={isLoading} onClick={handleSolveMaze}>
 					Solve Maze
 				</Button>
 			</div>
