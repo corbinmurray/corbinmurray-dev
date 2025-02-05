@@ -63,19 +63,7 @@ const Maze = ({ className }: { className?: string }) => {
 		maze?.forEach((directions, cellKey) => {
 			const [x, y] = cellKey.split(",").map(Number);
 
-			drawMazeCell(
-				svgRef,
-				{ x, y } as Cell,
-				cellSize,
-				directions,
-				{
-					currentCellClassName: "stroke-foreground",
-					goalCellClassName: "fill-destructive",
-					startCellClassName: "fill-success",
-				},
-				startingCell,
-				goalCell
-			);
+			drawMazeCell(svgRef, { x, y } as Cell, cellSize, directions, startingCell, goalCell);
 		});
 	}, [maze, cellSize, goalCell, startingCell]);
 
@@ -93,39 +81,43 @@ const Maze = ({ className }: { className?: string }) => {
 		setIsLoading(true);
 
 		const svg = d3.select(svgRef.current);
-		svg.selectAll(".fill-warning").remove();
-		svg.selectAll(".fill-secondary").remove();
+		svg.selectAll(".marker-class-solution").remove();
+
+		const intensityValues = visitedNodes.map((x) => x.intensity).filter((i): i is number => i !== undefined); // TypeScript narrowing
+
+		const minIntensity = Math.min(...intensityValues);
+		const maxIntensity = Math.max(...intensityValues);
+
+		const colorScale = d3
+			.scaleQuantize<string>()
+			.domain([minIntensity, minIntensity + (maxIntensity - minIntensity) / 2, maxIntensity])
+			.range(["fill-destructive", "fill-warning", "fill-success"]);
 
 		// Animate visited nodes
 		visitedNodes
-			.filter(
-				(node) =>
-					!(node.x === startingCell?.x && node.y === startingCell?.y) && // Remove start cell
-					!(node.x === goalCell?.x && node.y === goalCell?.y) // Remove goal cell
-			)
+			.filter((node) => !(node.x === startingCell?.x && node.y === startingCell?.y) && !(node.x === goalCell?.x && node.y === goalCell?.y))
 			.forEach((node, index) => {
-				const { x, y } = node;
+				const { x, y, intensity } = node;
 
 				svg
 					.append("rect")
-					.attr("x", x * cellSize + cellSize / 2) // Center the cube
+					.attr("x", x * cellSize + cellSize / 2)
 					.attr("y", y * cellSize + cellSize / 2)
-					.attr("width", 0) // Start from 0 width
-					.attr("height", 0) // Start from 0 height
-					.attr("fill", "currentColor") // Inherits Tailwind color
-					.attr("class", "marker-class-visited fill-warning transition-all duration-200 ease-out") // Tailwind classes
+					.attr("width", 0)
+					.attr("height", 0)
+					.attr("class", cn("marker-class-visited transition-all duration-200 ease-out", colorScale(intensity ?? minIntensity)))
 					.attr("opacity", 0)
 					.transition()
-					.delay(index * calculateDelay(rows, cols, solveSpeed)) // Sequential animation delay
-					.duration(200) // Fast initial pop
+					.delay(index * calculateDelay(rows, cols, solveSpeed))
+					.duration(200)
 					.transition()
-					.ease(d3.easeBackOut) // Approximates cubic-bezier(0.33, 1, 0.68, 1)
-					.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center horizontally
-					.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center vertically
-					.attr("width", cellSize * 0.5) // Cube size
+					.ease(d3.easeBackOut)
+					.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
+					.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
+					.attr("width", cellSize * 0.5)
 					.attr("height", cellSize * 0.5)
-					.attr("rx", cellSize * 0.15) // Horizontal border radius
-					.attr("ry", cellSize * 0.15) // Vertical border radius
+					.attr("rx", cellSize * 0.15)
+					.attr("ry", cellSize * 0.15)
 					.attr("opacity", 1);
 			});
 
@@ -136,34 +128,30 @@ const Maze = ({ className }: { className?: string }) => {
 			svg.selectAll(".marker-class-visited").remove();
 
 			solutionPath
-				.filter(
-					(node) =>
-						!(node.x === startingCell?.x && node.y === startingCell?.y) && // Remove start cell
-						!(node.x === goalCell?.x && node.y === goalCell?.y) // Remove goal cell
-				)
+				.filter((node) => !(node.x === startingCell?.x && node.y === startingCell?.y) && !(node.x === goalCell?.x && node.y === goalCell?.y))
 				.forEach((node, index) => {
 					const { x, y } = node;
 
 					svg
 						.append("rect")
-						.attr("x", x * cellSize + cellSize / 2) // Center the cube
+						.attr("x", x * cellSize + cellSize / 2)
 						.attr("y", y * cellSize + cellSize / 2)
-						.attr("width", 0) // Start from 0 width
-						.attr("height", 0) // Start from 0 height
-						.attr("fill", "currentColor") // Inherits Tailwind color
-						.attr("class", "marker-class-visited fill-secondary transition-all duration-200 ease-out") // Tailwind classes
+						.attr("width", 0)
+						.attr("height", 0)
+						.attr("fill", "currentColor")
+						.attr("class", "marker-class-solution fill-success transition-all duration-200 ease-out")
 						.attr("opacity", 0)
 						.transition()
-						.delay(index * calculateDelay(rows, cols, solveSpeed)) // Sequential animation delay
-						.duration(200) // Fast initial pop
+						.delay(index * calculateDelay(rows, cols, solveSpeed))
+						.duration(200)
 						.transition()
-						.ease(d3.easeBackOut) // Approximates cubic-bezier(0.33, 1, 0.68, 1)
-						.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center horizontally
-						.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2) // Center vertically
-						.attr("width", cellSize * 0.5) // Cube size
+						.ease(d3.easeBackOut)
+						.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
+						.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
+						.attr("width", cellSize * 0.5)
 						.attr("height", cellSize * 0.5)
-						.attr("rx", cellSize * 0.15) // Horizontal border radius
-						.attr("ry", cellSize * 0.15) // Vertical border radius
+						.attr("rx", cellSize * 0.15)
+						.attr("ry", cellSize * 0.15)
 						.attr("opacity", 1);
 				});
 		}, totalVisitedTime);
@@ -210,11 +198,11 @@ const Maze = ({ className }: { className?: string }) => {
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-success" aria-label="Start"></div>
+					<div className="w-4 h-4 rounded-full bg-primary" aria-label="Start"></div>
 					<span className="text-sm md:text-lg">Start</span>
 				</div>
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-destructive" aria-label="Goal"></div>
+					<div className="w-4 h-4 rounded-full bg-secondary" aria-label="Goal"></div>
 					<span className="text-sm md:text-lg">Goal</span>
 				</div>
 			</div>
@@ -248,7 +236,6 @@ const drawMazeCell = (
 	currentCell: Cell,
 	cellSize: number,
 	directions: Set<Direction>,
-	{ currentCellClassName, startCellClassName, goalCellClassName }: { currentCellClassName: string; startCellClassName: string; goalCellClassName: string },
 	startCell: Cell | null = null,
 	goalCell: Cell | null = null
 ): void => {
@@ -256,40 +243,38 @@ const drawMazeCell = (
 		return;
 	}
 
+	const emptyCellClass = cn("stroke-foreground");
+
 	const svg = d3.select(svgRef.current);
 	const { x, y } = currentCell;
 
 	// start and goal cells
 	if (x === startCell?.x && y === startCell?.y) {
 		const circleSize = cellSize * 0.6;
-		const offset = (cellSize - circleSize) / 2;
+		const centerX = startCell.x * cellSize + cellSize / 2;
+		const centerY = startCell.y * cellSize + cellSize / 2;
 
 		svg
-			.append("rect")
-			.attr("x", startCell.x * cellSize + offset)
-			.attr("y", startCell.y * cellSize + offset)
-			.attr("width", circleSize)
-			.attr("height", circleSize)
-			.attr("rx", circleSize / 2)
-			.attr("ry", circleSize / 2)
+			.append("circle")
+			.attr("cx", centerX)
+			.attr("cy", centerY)
+			.attr("r", circleSize / 2)
 			.attr("fill", "currentColor")
-			.attr("class", startCellClassName);
+			.attr("class", "fill-primary");
 	}
 
 	if (x === goalCell?.x && y === goalCell?.y) {
 		const circleSize = cellSize * 0.6;
-		const offset = (cellSize - circleSize) / 2;
+		const centerX = goalCell.x * cellSize + cellSize / 2;
+		const centerY = goalCell.y * cellSize + cellSize / 2;
 
 		svg
-			.append("rect")
-			.attr("x", goalCell.x * cellSize + offset)
-			.attr("y", goalCell.y * cellSize + offset)
-			.attr("width", circleSize)
-			.attr("height", circleSize)
-			.attr("rx", circleSize / 2)
-			.attr("ry", circleSize / 2)
+			.append("circle")
+			.attr("cx", centerX)
+			.attr("cy", centerY)
+			.attr("r", circleSize / 2)
 			.attr("fill", "currentColor")
-			.attr("class", goalCellClassName);
+			.attr("class", "fill-secondary");
 	}
 
 	if (!directions.has("North")) {
@@ -299,7 +284,7 @@ const drawMazeCell = (
 			.attr("y1", y * cellSize)
 			.attr("x2", (x + 1) * cellSize)
 			.attr("y2", y * cellSize)
-			.attr("class", currentCellClassName);
+			.attr("class", emptyCellClass);
 	}
 
 	if (!directions.has("South")) {
@@ -309,7 +294,7 @@ const drawMazeCell = (
 			.attr("y1", (y + 1) * cellSize)
 			.attr("x2", (x + 1) * cellSize)
 			.attr("y2", (y + 1) * cellSize)
-			.attr("class", currentCellClassName);
+			.attr("class", emptyCellClass);
 	}
 
 	if (!directions.has("East")) {
@@ -319,7 +304,7 @@ const drawMazeCell = (
 			.attr("y1", y * cellSize)
 			.attr("x2", (x + 1) * cellSize)
 			.attr("y2", (y + 1) * cellSize)
-			.attr("class", currentCellClassName);
+			.attr("class", emptyCellClass);
 	}
 
 	if (!directions.has("West")) {
@@ -329,7 +314,7 @@ const drawMazeCell = (
 			.attr("y1", y * cellSize)
 			.attr("x2", x * cellSize)
 			.attr("y2", (y + 1) * cellSize)
-			.attr("class", currentCellClassName);
+			.attr("class", emptyCellClass);
 	}
 };
 
