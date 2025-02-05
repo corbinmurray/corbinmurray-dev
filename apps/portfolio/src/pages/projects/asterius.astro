@@ -1,6 +1,5 @@
 ---
 import Maze from "@/components/projects/asterius/maze";
-import { Content as AsteriusDoc } from "@/components/projects/asterius/README.md";
 import PageLayout from "@/layouts/layout.astro";
 import Link from "@repo/ui/components/link";
 import RevealSection from "@repo/ui/components/reveal-section.astro";
@@ -30,6 +29,17 @@ import SectionHeader from "@repo/ui/components/section-header.astro";
 	</RevealSection>
 
 	<RevealSection className="mt-48">
-		<AsteriusDoc />
+		<article>
+			<h2>Generating the Maze</h2>
+
+			<p>Generating an unbiased, random maze can be challenging. Thankfully, there is an algorithm that is good for this specific task.</p>
+			<p>
+				Wilson&apos;s algorithm uses <Link href="https://en.wikipedia.org/wiki/Loop-erased_random_walk" variant="external">Loop-erased random walks</Link> to generate
+				a uniform spanning tree — an unbiased sample of all possible spanning trees. Most other maze generation algorithms, such as Prim&apos;s, random traversal
+				and randomized depth-first traversal, do not have this beautiful property.
+			</p>
+
+			<h2>Solving the Maze</h2>
+		</article>
 	</RevealSection>
 </PageLayout>
