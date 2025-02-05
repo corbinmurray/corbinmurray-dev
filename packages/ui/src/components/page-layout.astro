@@ -11,21 +11,18 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/inter";
 ---
 
+<!-- TODO: Move head to be app specific -->
 <html lang="en">
 	<head>
 		<script is:inline>
 			(function () {
 				const theme = localStorage.getItem("theme");
-				if (theme) {
-					document.documentElement.className = theme;
-					document.documentElement.style.colorScheme = theme;
-				} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					document.documentElement.className = "dark";
-					document.documentElement.style.colorScheme = "dark";
-				} else {
-					document.documentElement.className = "light";
-					document.documentElement.style.colorScheme = "light";
-				}
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				const appliedTheme = theme || (prefersDark ? "dark" : "light");
+
+				// Apply theme
+				document.documentElement.className = appliedTheme;
+				document.documentElement.style.colorScheme = appliedTheme;
 			})();
 		</script>
 		<meta charset="UTF-8" />
