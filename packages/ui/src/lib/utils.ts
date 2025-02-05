@@ -196,7 +196,7 @@ export function solveMaze(graph: Record<string, Cell[]>, start: Cell, goal: Cell
 
 		visitedNodes.push({
 			...currentCell,
-			intensity: fScore[currentKey],
+			intensity: gScore[currentKey],
 		});
 
 		// If the goal is reached
