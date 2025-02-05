@@ -209,6 +209,14 @@ const Maze = ({ className }: { className?: string }) => {
 
 			<svg ref={svgRef} className={cn(className)} viewBox="0 0 500 500" />
 
+			<div className="flex flex-col justify-start gap-y-2">
+				<label htmlFor="delaySlider">
+					Solve animation speed ({solveAnimationTimeInSeconds < 1 ? "<1" : solveAnimationTimeInSeconds}
+					{solveAnimationTimeInSeconds <= 1 ? " second" : " seconds"})
+				</label>
+				<input name="delaySlider" type="range" min={1} max="100" className="range" onChange={handleDelayChange} value={solveSpeed} disabled={isLoading} />
+			</div>
+			
 			<div className="flex flex-row justify-center gap-12">
 				<Button disabled={isLoading} onClick={handleGenerateNewMaze}>
 					Generate New Maze
@@ -216,14 +224,6 @@ const Maze = ({ className }: { className?: string }) => {
 				<Button variant="secondary" disabled={isLoading} onClick={handleSolveMaze}>
 					Solve Maze
 				</Button>
-			</div>
-
-			<div className="flex flex-col justify-start gap-y-2">
-				<label htmlFor="delaySlider">
-					Solve animation speed ({solveAnimationTimeInSeconds < 1 ? "<1" : solveAnimationTimeInSeconds}
-					{solveAnimationTimeInSeconds <= 1 ? " second" : " seconds"})
-				</label>
-				<input name="delaySlider" type="range" min={1} max="100" className="range" onChange={handleDelayChange} value={solveSpeed} disabled={isLoading} />
 			</div>
 		</div>
 	);
