@@ -7,7 +7,7 @@
 	},
 	{
 		"name": "Asterius",
-		"githubHtmlUrl": "https://github.com/corbinmurray/corbinmurray-dev/tree/main/app/projects/asterius",
+		"githubHtmlUrl": "https://github.com/corbinmurray/corbinmurray-dev",
 		"liveSiteLink": "/projects/asterius",
 		"description": "Asterius is a project that showcases the A* pathfinding algorithm by visualizing its problem-solving process in real time."
 	}
