@@ -1,5 +1,4 @@
 {
-	"extends": ["@repo/typescript-config/astrojs.json", "astro/tsconfigs/strict"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
@@ -7,6 +6,7 @@
 			"@repo/ui/*": ["../../packages/ui/src/*"]
 		}
 	},
+	"extends": "astro/tsconfigs/base",
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"]
 }
