@@ -1,0 +1,3 @@
+[nixpacks]
+package_manager = "pnpm"
+path = "apps/portfolio"
