@@ -1,10 +1,12 @@
+"use client";
+
 import Navbar from "@repo/ui/components/navbar";
 import { cn } from "@repo/ui/lib/utils";
 import { Copyright, Heart } from "lucide-react";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 
 const fontMono = JetBrains_Mono({
 	variable: "--font-mono",
