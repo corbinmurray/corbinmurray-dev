@@ -10,7 +10,8 @@ export default defineConfig({
 	vite: {
 		resolve: {
 			alias: {
-				"@": path.resolve("./src"),
+				"@": path.resolve(__dirname, "./src"),
+				"@repo/ui": path.resolve("../", "../", "packages", "ui"),
 			},
 		},
 	},
