@@ -24,9 +24,9 @@
 		"typescript": "^5"
 	},
 	"devDependencies": {
-		"@repo/eslint-config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
-		"@repo/ui": "workspace:*",
+		"@repo/eslint-config": "workspace:^",
+		"@repo/typescript-config": "workspace:^",
+		"@repo/ui": "workspace:^",
 		"lucide-react": "0.475.0"
 	}
 }
