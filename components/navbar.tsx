@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/theme-toggle";
 import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, type Variants } from "motion/react";
+import NextLink from "next/link";
 import { type MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 export default function Navbar({ className }: { className?: string }) {
@@ -172,9 +173,9 @@ export default function Navbar({ className }: { className?: string }) {
 
 const Logo = () => {
 	return (
-		<a href="/" className="hover:cursor-pointer">
+		<NextLink href="/" className="hover:cursor-pointer">
 			<span className="font-sans text-primary font-semibold text-xl md:text-2xl lg:text-3xl">cm</span>
-		</a>
+		</NextLink>
 	);
 };
 
