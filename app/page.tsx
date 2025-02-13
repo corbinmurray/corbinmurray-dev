@@ -43,8 +43,7 @@ export default function Home() {
 				<article>
 					<p>
 						When I&apos;m not coding, you&apos;ll often find me spending time with my wife and our two dogs, Pretzel and Ink. If we are not taking walks,
-						playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, weightlifting, or working on DIY projects. Whether it&apos;s
-						exploring local coffee shops, getting lost in nature, or diving into a good video game, I try to find balance between my professional and personal
+						playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, at the gym, or working on DIY projects. Whether it&apos;s getting lost in nature or diving into a good video game, I try to find balance between my professional and personal
 						passions.
 					</p>
 				</article>
