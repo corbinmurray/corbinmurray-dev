@@ -20,6 +20,6 @@ export const LINKS = {
 	external: {
 		github: "https://github.com/corbinmurray",
 		email: "corbin.murray63@gmail.com",
-		linkedin: "www.linkedin.com/in/corbin-murray-16a485182",
+		linkedin: "https://linkedin.com/in/corbin-murray-16a485182",
 	},
 };
