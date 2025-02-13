@@ -15,6 +15,19 @@ export default function Navbar({ className }: { className?: string }) {
 	const { scrollY } = useScroll();
 	const [scrollState, setScrollState] = useState({ direction: "up", atTop: true });
 
+	// Sync initial scroll position after mount
+	useEffect(() => {
+		const checkAtTop = () => {
+			const currentY = window.scrollY;
+			setScrollState((prev) => ({
+				...prev,
+				atTop: currentY <= 0,
+			}));
+		};
+
+		checkAtTop();
+	}, []);
+
 	// Prevent background scroll when the menu is open
 	useEffect(() => {
 		if (menuOpen) {
@@ -144,7 +157,7 @@ export default function Navbar({ className }: { className?: string }) {
 							exit="hidden">
 							<div className="flex flex-col items-start w-full mt-20">
 								{/* Brand */}
-								<div className="flex justify-center w-full">
+								<div className="flex justify-center w-full" onClick={closeMenu}>
 									<Logo />
 								</div>
 
