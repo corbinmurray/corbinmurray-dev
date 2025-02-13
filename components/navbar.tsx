@@ -33,7 +33,7 @@ export default function Navbar({ className }: { className?: string }) {
 		const diff = current - (scrollY.getPrevious() || 0);
 		const newScrollState = {
 			direction: diff > 0 ? "down" : "up",
-			atTop: scrollY.get() === 0,
+			atTop: scrollY.get() <= 0,
 		};
 
 		if (scrollState.atTop === newScrollState.atTop && scrollState.direction === newScrollState.direction) {
@@ -49,8 +49,8 @@ export default function Navbar({ className }: { className?: string }) {
 			className={cn("sticky top-0 w-full z-50 h-20 bg-background")}
 			initial={{ y: 0 }}
 			animate={{
-				y: scrollState.direction === "down" ? "-100%" : 0,
-				opacity: scrollState.direction === "down" ? 0 : 1,
+				y: scrollState.atTop ? 0 : scrollState.direction === "down" ? "-100%" : 0,
+				opacity: scrollState.atTop ? 1 : scrollState.direction === "down" ? 0 : 1,
 			}}
 			transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}>
 			<motion.div
