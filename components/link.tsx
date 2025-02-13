@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ArrowUpRightFromSquare } from "lucide-react";
+import NextLink from "next/link";
 import { type MouseEventHandler } from "react";
 
 const linkVariants = cva(
@@ -38,11 +39,11 @@ const Link = ({ href, variant, children, className, onClick }: LinkProps) => {
 			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-[-0.75rem] hover:left-[-0.75rem]" />
 		</a>
 	) : (
-		<a href={href} className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))} onClick={onClick}>
+		<NextLink href={href} className={cn("relative flex overflow-x-hidden group", linkVariants({ variant, className }))} onClick={onClick}>
 			{children}
 
 			<span className="w-full h-px bg-secondary absolute bottom-0 left-[-100%] transition-all duration-500 group-hover:left-0 hover:left-0" />
-		</a>
+		</NextLink>
 	);
 };
 
