@@ -137,7 +137,7 @@ export const getRandomStartAndGoal = (maze: Maze | null, rows: number, cols: num
 		throw new Error("The maze must have at least two cells to select a start and goal");
 	}
 
-	let startKey = keys[Math.floor(Math.random() * keys.length)];
+	const startKey = keys[Math.floor(Math.random() * keys.length)];
 	let goalKey = keys[Math.floor(Math.random() * keys.length)];
 
 	while (startKey === goalKey) {

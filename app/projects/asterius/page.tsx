@@ -33,15 +33,17 @@ export default async function Page() {
 				<article>
 					<h2>Generating the Maze</h2>
 
-					<p>Generating a truly random and unbiased maze can be a complex task. Fortunately, there's an algorithm designed specifically for this challenge.</p>
+					<p>
+						Generating a truly random and unbiased maze can be a complex task. Fortunately, there&apos;s an algorithm designed specifically for this challenge.
+					</p>
 
 					<p>
-						Wilson's algorithm leverages{" "}
+						Wilson&apos;s algorithm leverages{" "}
 						<Link href="https://en.wikipedia.org/wiki/Loop-erased_random_walk" variant="external">
 							Loop-erased random walks
 						</Link>{" "}
 						to construct a uniform spanning tree — an unbiased representation of all possible spanning trees. Unlike other common maze generation methods, such
-						as Prim's algorithm, random traversal, or randomized depth-first traversal.
+						as Prim&apos;s algorithm, random traversal, or randomized depth-first traversal.
 					</p>
 
 					<h2>Solving the Maze</h2>
@@ -66,7 +68,7 @@ export default async function Page() {
 						As the algorithm proceeds, it explores neighboring nodes, updating their f-scores and determining the optimal route by considering both the actual
 						distance traveled and the predicted cost to the goal. Nodes are sorted based on their f-scores, with the algorithm always expanding the node with
 						the lowest f-score. This allows A* to efficiently navigate complex mazes, guaranteeing an optimal solution while avoiding unnecessary exploration of
-						less promising paths. The A* algorithm's{" "}
+						less promising paths. The A* algorithm&apos;s{" "}
 						<Link href="https://en.wikipedia.org/wiki/Heuristic" variant="external">
 							heuristic
 						</Link>{" "}
