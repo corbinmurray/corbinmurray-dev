@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import { ChevronDown, Github } from "lucide-react";
+import { ArrowUpRightFromSquare, ChevronDown, Github } from "lucide-react";
+import NextLink from "next/link";
 
 export default function Home() {
 	return (
@@ -43,8 +44,8 @@ export default function Home() {
 				<article>
 					<p>
 						When I&apos;m not coding, you&apos;ll often find me spending time with my wife and our two dogs, Pretzel and Ink. If we are not taking walks,
-						playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, at the gym, or working on DIY projects. Whether it&apos;s getting lost in nature or diving into a good video game, I try to find balance between my professional and personal
-						passions.
+						playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, at the gym, or working on DIY projects. Whether it&apos;s
+						getting lost in nature or diving into a good video game, I try to find balance between my professional and personal passions.
 					</p>
 				</article>
 
@@ -108,7 +109,7 @@ export default function Home() {
 										<Card className="shadow max-w-prose">
 											<CardHeader>
 												<CardTitle>
-													<Link href={project.liveSiteLink} variant="internal" className="text-secondary text-lg md:text-xl lg:text-2xl">
+													<Link href={project.liveSiteLink} variant="internal" className="text-lg md:text-xl lg:text-2xl">
 														{project.name}
 													</Link>
 												</CardTitle>
@@ -119,6 +120,9 @@ export default function Home() {
 												</article>
 											</CardContent>
 											<CardFooter className="gap-6">
+												<NextLink href={project.liveSiteLink} className="hover:text-secondary">
+													<ArrowUpRightFromSquare />
+												</NextLink>
 												<a href={project.githubHtmlUrl}>
 													<Github className="hover:text-secondary hover:cursor-pointer" />
 												</a>
@@ -141,7 +145,7 @@ export default function Home() {
 					</p>
 				</article>
 
-				<SocialLinks linksToDisplay={["LinkedIn", "Email"]} orientation="horizontal" className="md:gap-12" />
+				<SocialLinks linksToDisplay={["LinkedIn", "Email"]} orientation="horizontal" className="mt-12 md:gap-12" />
 			</RevealSection>
 		</>
 	);
