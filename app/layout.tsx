@@ -54,6 +54,9 @@ export default function RootLayout({
 
 				{/* Inject the theme initializer script */}
 				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
+				
+				{/* If you're a file inspector and reading this, no worries this is a completely private analytics alternative that allows me to see a simple page count for this website :) */}
+				<script defer src="https://umami.corbinmurray.dev/script.js" data-website-id="bbf88294-76ec-4a43-958c-eea82893445e"></script>
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
 				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
