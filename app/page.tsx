@@ -101,7 +101,7 @@ export default function Home() {
 
 				<ul className="flex flex-col gap-8 xl:flex-row">
 					{projects
-						.sort((a, b) => (a.name < b.name ? -1 : 1))
+						.sort((a, b) => (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase() ? -1 : 1))
 						.map((project, i) => {
 							return (
 								<RevealSection key={i}>
@@ -135,6 +135,27 @@ export default function Home() {
 				</ul>
 			</RevealSection>
 
+			<RevealSection id="skills" className="my-36 md:my-72 scroll-m-24">
+				<SectionHeader title="Technical Skills" />
+
+				<article>
+					<ul className="list-disc pl-5">
+						<li>
+							<strong>Programming Languages:</strong> C#, Python, TypeScript/JavaScript
+						</li>
+						<li>
+							<strong>Frameworks/Tools:</strong> .NET Core, React, Redux, Docker, AWS, gRPC
+						</li>
+						<li>
+							<strong>Databases:</strong> MongoDB, PostgreSQL, SQL Server, Redis
+						</li>
+						<li>
+							<strong>Other:</strong> RESTful APIs, Apache Kafka, OpenAPI, Power BI
+						</li>
+					</ul>
+				</article>
+			</RevealSection>
+
 			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Contact Me" />
 
@@ -146,6 +167,17 @@ export default function Home() {
 				</article>
 
 				<SocialLinks linksToDisplay={["LinkedIn", "Email"]} orientation="horizontal" className="mt-12 md:gap-12" />
+			</RevealSection>
+
+			<RevealSection id="blog" className="my-36 md:my-72 scroll-m-24">
+				<SectionHeader title="Blog" />
+
+				<article>
+					<p>
+						Welcome to my blog! Here, I share my thoughts on technology, software development, and the latest trends in the industry. Stay tuned for insightful
+						articles and discussions.
+					</p>
+				</article>
 			</RevealSection>
 		</>
 	);

@@ -10,5 +10,23 @@
 		"githubHtmlUrl": "https://github.com/corbinmurray/corbinmurray-dev",
 		"liveSiteLink": "/projects/asterius",
 		"description": "Asterius is a project that showcases the A* pathfinding algorithm by visualizing its problem-solving process in real time."
+	},
+	{
+		"name": "Hermes",
+		"githubHtmlUrl": "https://github.com/corbinmurray/kbx-logistics",
+		"liveSiteLink": "/projects/kbx-logistics",
+		"description": "Led development of an integration framework for microservices, using .NET Core and Docker, reducing deployment time by 20%."
+	},
+	{
+		"name": "Hygieia",
+		"githubHtmlUrl": "https://github.com/corbinmurray/pharmacy-app",
+		"liveSiteLink": "/projects/pharmacy-app",
+		"description": "Developed a Windows desktop app for pharmacy workflows, including patient prescriptions and inventory management."
+	},
+	{
+		"name": "Athena",
+		"githubHtmlUrl": "https://github.com/corbinmurray/qa-website",
+		"liveSiteLink": "/projects/qa-website",
+		"description": "Created a QA website for candidate screening using React and Redux."
 	}
 ]
