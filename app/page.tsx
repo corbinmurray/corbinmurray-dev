@@ -194,99 +194,7 @@ export default function Home() {
 						})}
 				</div>
 			</RevealSection>
-
-			<RevealSection id="skills" className="my-36 md:my-72 scroll-m-24">
-				<SectionHeader title="Technical Skills" />
-
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<Card className="hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur">
-						<CardHeader>
-							<CardTitle className="text-xl text-primary">Programming Languages</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-2">
-							<Badge variant="outline" className="me-2">
-								C#
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Python
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								TypeScript
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								JavaScript
-							</Badge>
-						</CardContent>
-					</Card>
-
-					<Card className="hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur">
-						<CardHeader>
-							<CardTitle className="text-xl text-primary">Frameworks & Tools</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-2">
-							<Badge variant="outline" className="me-2">
-								.NET Core
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								React
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Redux
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Docker
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								AWS
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								gRPC
-							</Badge>
-						</CardContent>
-					</Card>
-
-					<Card className="hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur">
-						<CardHeader>
-							<CardTitle className="text-xl text-primary">Databases</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-2">
-							<Badge variant="outline" className="me-2">
-								MongoDB
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								PostgreSQL
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								SQL Server
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Redis
-							</Badge>
-						</CardContent>
-					</Card>
-
-					<Card className="hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur">
-						<CardHeader>
-							<CardTitle className="text-xl text-primary">Other Technologies</CardTitle>
-						</CardHeader>
-						<CardContent className="space-y-2">
-							<Badge variant="outline" className="me-2">
-								RESTful APIs
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Apache Kafka
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								OpenAPI
-							</Badge>
-							<Badge variant="outline" className="me-2">
-								Power BI
-							</Badge>
-						</CardContent>
-					</Card>
-				</div>
-			</RevealSection>
-
+			
 			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Contact Me" />
 
@@ -298,19 +206,6 @@ export default function Home() {
 						</p>
 
 						<SocialLinks linksToDisplay={["LinkedIn", "Email"]} orientation="horizontal" className="justify-center md:gap-12" />
-					</CardContent>
-				</Card>
-			</RevealSection>
-
-			<RevealSection id="blog" className="my-36 md:my-72 scroll-m-24">
-				<SectionHeader title="Blog" />
-
-				<Card className="hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur">
-					<CardContent className="p-8 text-center">
-						<p className="text-lg leading-relaxed">
-							Welcome to my blog! Here, I share my thoughts on technology, software development, and the latest trends in the industry. Stay tuned for
-							insightful articles and discussions.
-						</p>
 					</CardContent>
 				</Card>
 			</RevealSection>
