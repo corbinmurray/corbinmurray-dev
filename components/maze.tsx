@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { type Cell, cn, type Direction, generateMaze, getRandomStartAndGoal, type Maze as MazeType, parseMazeToGraph, solveMaze } from "@/lib/utils";
 import * as d3 from "d3";
-import { Flag, Target } from "lucide-react";
+import { Home, MapPin } from "lucide-react";
 import { type ChangeEvent, type RefObject, useEffect, useRef, useState } from "react";
 
 /**
@@ -78,90 +78,177 @@ const Maze = ({ className }: { className?: string }) => {
 	}, [solveSpeed, rows, cols, visitedNodes, solutionPath]);
 
 	/**
-	 * Handles showing the solved maze. Starts with showing the algorithm's 'thought process' (steps taken to find the 	solution path), then shows the solution path.
+	 * Handles showing the solved maze. Starts with showing the algorithm's 'thought process' (steps taken to find the solution path), then shows the solution path.
 	 */
 	const handleSolveMaze = () => {
 		setIsLoading(true);
 
 		const svg = d3.select(svgRef.current);
-		svg.selectAll(".marker-class-solution").remove();
+		svg.selectAll(".marker-class-solution, .marker-class-visited").remove();
 
-		const intensityValues = visitedNodes.map((x) => x.intensity).filter((i): i is number => i !== undefined); // TypeScript narrowing
-
+		const intensityValues = visitedNodes.map((x) => x.intensity).filter((i): i is number => i !== undefined);
 		const minIntensity = Math.min(...intensityValues);
 		const maxIntensity = Math.max(...intensityValues);
 
+		// Enhanced color scale for visited nodes
 		const colorScale = d3
-			.scaleQuantize<string>()
+			.scaleLinear<string>()
 			.domain([minIntensity, minIntensity + (maxIntensity - minIntensity) / 2, maxIntensity])
-			.range(["fill-destructive", "fill-warning", "fill-success"]);
+			.range(["fill-destructive/40", "fill-warning/40", "fill-success/40"]);
 
-		// Animate visited nodes
-		visitedNodes
-			.filter((node) => !(node.x === startingCell?.x && node.y === startingCell?.y) && !(node.x === goalCell?.x && node.y === goalCell?.y))
-			.forEach((node, index) => {
-				const { x, y, intensity } = node;
+		// Animate visited nodes one at a time
+		const animateVisitedNode = (index: number) => {
+			if (index >= visitedNodes.length) {
+				// Start solution path animation after all nodes are visited
+				animateSolutionPath();
+				return;
+			}
 
+			const node = visitedNodes[index];
+			if ((node.x === startingCell?.x && node.y === startingCell?.y) || (node.x === goalCell?.x && node.y === goalCell?.y)) {
+				animateVisitedNode(index + 1);
+				return;
+			}
+
+			const { x, y, intensity } = node;
+			const nodeDelay = calculateDelay(rows, cols, solveSpeed);
+
+			// Create expanding ring effect
+			svg
+				.append("circle")
+				.attr("cx", x * cellSize + cellSize / 2)
+				.attr("cy", y * cellSize + cellSize / 2)
+				.attr("r", cellSize * 0.1)
+				.attr("class", cn("marker-class-visited", colorScale(intensity ?? minIntensity)))
+				.attr("opacity", 0)
+				.transition()
+				.duration(200)
+				.attr("r", cellSize * 0.4)
+				.attr("opacity", 1)
+				.transition()
+				.duration(200)
+				.attr("r", cellSize * 0.3);
+
+			// Create node marker
+			svg
+				.append("rect")
+				.attr("x", x * cellSize + cellSize / 2)
+				.attr("y", y * cellSize + cellSize / 2)
+				.attr("width", 0)
+				.attr("height", 0)
+				.attr("class", cn("marker-class-visited", colorScale(intensity ?? minIntensity)))
+				.transition()
+				.duration(300)
+				.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.3) / 2)
+				.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.3) / 2)
+				.attr("width", cellSize * 0.3)
+				.attr("height", cellSize * 0.3)
+				.attr("rx", cellSize * 0.15)
+				.attr("opacity", 1);
+
+			// Schedule next node animation
+			setTimeout(() => animateVisitedNode(index + 1), nodeDelay);
+		};
+
+		// Function to animate the solution path
+		const animateSolutionPath = () => {
+			// Fade out visited nodes gradually
+			svg.selectAll(".marker-class-visited").transition().duration(1000).attr("opacity", 0.2);
+
+			// Animate solution path nodes one at a time
+			const animateSolutionNode = (index: number) => {
+				if (index >= solutionPath.length) {
+					// Clean up and finish animation
+					svg.selectAll(".marker-class-visited").transition().duration(500).attr("opacity", 0).remove();
+					setIsLoading(false);
+					return;
+				}
+
+				const node = solutionPath[index];
+				if ((node.x === startingCell?.x && node.y === startingCell?.y) || (node.x === goalCell?.x && node.y === goalCell?.y)) {
+					animateSolutionNode(index + 1);
+					return;
+				}
+
+				const { x, y } = node;
+				const nodeDelay = calculateDelay(rows, cols, solveSpeed);
+
+				// Create trailing glow effect
+				svg
+					.append("circle")
+					.attr("cx", x * cellSize + cellSize / 2)
+					.attr("cy", y * cellSize + cellSize / 2)
+					.attr("r", cellSize * 0.4)
+					.attr("class", "marker-class-solution fill-success/10 blur-sm")
+					.attr("opacity", 0)
+					.transition()
+					.duration(300)
+					.attr("opacity", 1);
+
+				// Create solution node
 				svg
 					.append("rect")
 					.attr("x", x * cellSize + cellSize / 2)
 					.attr("y", y * cellSize + cellSize / 2)
 					.attr("width", 0)
 					.attr("height", 0)
-					.attr("class", cn("marker-class-visited transition-all duration-200 ease-out", colorScale(intensity ?? minIntensity)))
-					.attr("opacity", 0)
+					.attr("class", "marker-class-solution fill-success")
 					.transition()
-					.delay(index * calculateDelay(rows, cols, solveSpeed))
-					.duration(200)
-					.transition()
-					.ease(d3.easeBackOut)
-					.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
-					.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
-					.attr("width", cellSize * 0.5)
-					.attr("height", cellSize * 0.5)
+					.duration(300)
+					.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.3) / 2)
+					.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.3) / 2)
+					.attr("width", cellSize * 0.3)
+					.attr("height", cellSize * 0.3)
 					.attr("rx", cellSize * 0.15)
-					.attr("ry", cellSize * 0.15)
-					.attr("opacity", 1);
-			});
+					.attr("opacity", 0.6)
+					.transition()
+					.duration(200)
+					.attr("opacity", 0.8);
 
-		// Erase visited nodes and animate solution path after delay
-		const totalVisitedTime = visitedNodes.length * calculateDelay(rows, cols, solveSpeed);
-
-		setTimeout(() => {
-			svg.selectAll(".marker-class-visited").remove();
-
-			solutionPath
-				.filter((node) => !(node.x === startingCell?.x && node.y === startingCell?.y) && !(node.x === goalCell?.x && node.y === goalCell?.y))
-				.forEach((node, index) => {
-					const { x, y } = node;
-
+				// Add connecting line to previous node if not first node
+				if (index > 0) {
+					const prevNode = solutionPath[index - 1];
 					svg
-						.append("rect")
-						.attr("x", x * cellSize + cellSize / 2)
-						.attr("y", y * cellSize + cellSize / 2)
-						.attr("width", 0)
-						.attr("height", 0)
-						.attr("fill", "currentColor")
-						.attr("class", "marker-class-solution fill-success transition-all duration-200 ease-out")
+						.append("line")
+						.attr("x1", prevNode.x * cellSize + cellSize / 2)
+						.attr("y1", prevNode.y * cellSize + cellSize / 2)
+						.attr("x2", x * cellSize + cellSize / 2)
+						.attr("y2", y * cellSize + cellSize / 2)
+						.attr("class", "marker-class-solution stroke-success/40")
+						.attr("stroke-width", 2)
 						.attr("opacity", 0)
+						.attr("stroke-dasharray", cellSize)
+						.attr("stroke-dashoffset", cellSize)
 						.transition()
-						.delay(index * calculateDelay(rows, cols, solveSpeed))
-						.duration(200)
-						.transition()
-						.ease(d3.easeBackOut)
-						.attr("x", x * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
-						.attr("y", y * cellSize + cellSize / 2 - (cellSize * 0.5) / 2)
-						.attr("width", cellSize * 0.5)
-						.attr("height", cellSize * 0.5)
-						.attr("rx", cellSize * 0.15)
-						.attr("ry", cellSize * 0.15)
-						.attr("opacity", 1);
-				});
-		}, totalVisitedTime);
+						.duration(300)
+						.attr("opacity", 1)
+						.attr("stroke-dashoffset", 0);
 
-		setTimeout(() => {
-			setIsLoading(false);
-		}, totalVisitedTime + solutionPath.length * calculateDelay(rows, cols, solveSpeed));
+					// Remove visited nodes that are part of the solution path
+					svg
+						.selectAll(".marker-class-visited")
+						.filter(function () {
+							const element = d3.select(this);
+							const nodeX = (parseFloat(element.attr("x")) + (cellSize * 0.3) / 2) / cellSize;
+							const nodeY = (parseFloat(element.attr("y")) + (cellSize * 0.3) / 2) / cellSize;
+							return Math.abs(nodeX - x) < 0.1 && Math.abs(nodeY - y) < 0.1;
+						})
+						.transition()
+						.duration(300)
+						.attr("opacity", 0)
+						.remove();
+				}
+
+				// Schedule next solution node animation
+				setTimeout(() => animateSolutionNode(index + 1), nodeDelay);
+			};
+
+			// Start solution path animation
+			animateSolutionNode(0);
+		};
+
+		// Start the visited nodes animation
+		animateVisitedNode(0);
 	};
 
 	/**
@@ -198,11 +285,11 @@ const Maze = ({ className }: { className?: string }) => {
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
-					<Flag className="w-4 h-4 text-primary" aria-label="Start" />
+					<Home className="w-4 h-4 text-primary" aria-label="Start" />
 					<span className="text-sm md:text-lg">Start</span>
 				</div>
 				<div className="flex items-center gap-2">
-					<Target className="w-4 h-4 text-secondary" aria-label="Goal" />
+					<MapPin className="w-4 h-4 text-secondary" aria-label="Goal" />
 					<span className="text-sm md:text-lg">Goal</span>
 				</div>
 			</div>
@@ -268,10 +355,10 @@ const drawMazeCell = (
 			.attr("class", "fill-primary/10 dark:fill-primary/20")
 			.attr("filter", "blur(4px)");
 
-		// Flag icon path data
+		// Home icon path data
 		group
 			.append("path")
-			.attr("d", "M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7")
+			.attr("d", "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10")
 			.attr("stroke", "currentColor")
 			.attr("stroke-width", "2")
 			.attr("stroke-linecap", "round")
@@ -302,13 +389,10 @@ const drawMazeCell = (
 			.attr("class", "fill-secondary/10 dark:fill-secondary/20")
 			.attr("filter", "blur(4px)");
 
-		// Target icon path data
+		// MapPin icon path data
 		group
 			.append("path")
-			.attr(
-				"d",
-				"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 18c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z M12 14c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"
-			)
+			.attr("d", "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z")
 			.attr("stroke", "currentColor")
 			.attr("stroke-width", "2")
 			.attr("stroke-linecap", "round")
