@@ -1,6 +1,5 @@
 import RevealSection from "@/components/reveal-section";
 import SectionHeader from "@/components/section-header";
-import SocialLinks from "@/components/social-links";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
@@ -17,6 +16,8 @@ import {
 	Globe,
 	Layers,
 	LineChart,
+	Linkedin,
+	Mail,
 	Server,
 	Workflow,
 	type LucideIcon,
@@ -248,7 +249,9 @@ export default function Home() {
 											<div className="relative flex items-center gap-2 text-primary mb-4 overflow-hidden max-w-fit">
 												<Code2 className="w-4 h-4" />
 												<article>
-													<h5 className="uppercase tracking-wider font-medium m-0 group-hover:text-primary transition-colors duration-500">{project.name}</h5>
+													<h5 className="uppercase font-medium m-0 group-hover:text-primary transition-colors duration-500 text-foreground">
+														{project.name}
+													</h5>
 												</article>
 												<div className="absolute w-full -translate-x-full h-0.5 bottom-0 group-hover:translate-x-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 transition-transform duration-500 ease-out" />
 											</div>
@@ -268,14 +271,14 @@ export default function Home() {
 													<span>View Site</span>
 													<ArrowUpRightFromSquare className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
 												</NextLink>
-												<NextLink
+												<a
 													href={project.githubHtmlUrl}
 													className="flex items-center gap-2 text-sm font-medium text-primary/80 hover:text-primary transition-colors duration-300 group/link"
 													target="_blank"
 													rel="noopener noreferrer">
 													<span>View Code</span>
 													<Github className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
-												</NextLink>
+												</a>
 											</div>
 										</div>
 									</Card>
@@ -286,18 +289,49 @@ export default function Home() {
 			</RevealSection>
 
 			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
-				<SectionHeader title="Contact Me" />
+				<div className="space-y-12">
+					<SectionHeader title="Let's Connect" punctuation="!" />
 
-				<Card className="hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur">
-					<CardContent className="p-8 text-center space-y-8">
-						<p className="text-lg leading-relaxed">
-							I&apos;d love to hear from you! Whether you want to collaborate on a project, discuss software development, or just say hello, feel free to reach
-							out using one of the options below.
-						</p>
+					<div className="relative max-w-2xl mx-auto text-center">
+						{/* Decorative Elements */}
+						<div className="absolute top-1/2 -translate-y-1/2 left-0 w-32 h-32 bg-gradient-radial from-primary/5 via-primary/5 to-transparent dark:from-primary/10 dark:to-transparent rounded-full blur-2xl" />
+						<div className="absolute top-1/2 -translate-y-1/2 right-0 w-32 h-32 bg-gradient-radial from-secondary/5 via-secondary/5 to-transparent dark:from-secondary/10 dark:to-transparent rounded-full blur-2xl" />
 
-						<SocialLinks linksToDisplay={["LinkedIn", "Email"]} orientation="horizontal" className="justify-center md:gap-12" />
-					</CardContent>
-				</Card>
+						{/* Content */}
+						<div className="relative space-y-12">
+							<p className="text-lg md:text-xl leading-relaxed text-muted/80">
+								Have an interesting project or opportunity in mind <br className="hidden md:block" />
+								or just want to say hello?
+							</p>
+
+							<div className="flex items-center justify-center gap-12 md:gap-20">
+								<NextLink
+									href="https://linkedin.com/in/corbin-murray-16a485182"
+									className="group flex flex-col items-center gap-3 hover:-translate-y-1 transition-all duration-300"
+									target="_blank"
+									rel="noopener noreferrer">
+									<div className="relative p-4 rounded-full border border-primary/10 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5 transition-all duration-300">
+										<div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+										<Linkedin className="w-6 h-6 text-primary/80 group-hover:text-primary relative z-10" />
+									</div>
+									<span className="text-sm font-medium text-muted group-hover:text-primary transition-colors duration-300">LinkedIn</span>
+								</NextLink>
+
+								<NextLink
+									href="mailto:corbin.murray63@gmail.com"
+									className="group flex flex-col items-center gap-3 hover:-translate-y-1 transition-all duration-300"
+									target="_blank"
+									rel="noopener noreferrer">
+									<div className="relative p-4 rounded-full border border-primary/10 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5 transition-all duration-300">
+										<div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+										<Mail className="w-6 h-6 text-primary/80 group-hover:text-primary relative z-10" />
+									</div>
+									<span className="text-sm font-medium text-muted group-hover:text-primary transition-colors duration-300">Email</span>
+								</NextLink>
+							</div>
+						</div>
+					</div>
+				</div>
 			</RevealSection>
 		</>
 	);
