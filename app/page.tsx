@@ -236,28 +236,26 @@ export default function Home() {
 						.map((project, i) => {
 							return (
 								<RevealSection key={i}>
-									<Card className="group relative h-[350px] overflow-hidden border border-primary/10 bg-gradient-to-br from-card/50 via-card/30 to-card/10 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500">
+									<Card className="group relative h-[350px] overflow-hidden border border-primary/10 bg-gradient-to-br from-card/50 via-card/30 to-card/10 hover:border-primary/20 dark:hover:shadow-2xl dark:hover:shadow-primary/5 hover:bg-gradient-to-br hover:from-card/80 hover:via-card/60 hover:to-card/40 dark:hover:from-card/50 dark:hover:via-card/30 dark:hover:to-card/10 transition-all duration-500">
 										{/* Decorative Elements */}
 										<div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50" />
-										<div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-primary/10 to-transparent rounded-full blur-2xl group-hover:from-primary/20 transition-all duration-500" />
-										<div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-radial from-secondary/10 to-transparent rounded-full blur-2xl group-hover:from-secondary/20 transition-all duration-500" />
+										<div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-primary/5 via-primary/5 to-transparent dark:from-primary/10 dark:to-transparent rounded-full blur-2xl group-hover:from-primary/10 group-hover:via-primary/10 dark:group-hover:from-primary/20 transition-all duration-500" />
+										<div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-radial from-secondary/5 via-secondary/5 to-transparent dark:from-secondary/10 dark:to-transparent rounded-full blur-2xl group-hover:from-secondary/10 group-hover:via-secondary/10 dark:group-hover:from-secondary/20 transition-all duration-500" />
 
 										{/* Content Layer */}
 										<div className="relative h-full z-30 p-8 flex flex-col">
 											{/* Project Type Indicator */}
-											<div className="flex items-center gap-2 text-sm text-primary mb-4 overflow-hidden">
+											<div className="relative flex items-center gap-2 text-primary mb-4 overflow-hidden max-w-fit">
 												<Code2 className="w-4 h-4" />
 												<article>
-													<h4 className="uppercase tracking-wider font-medium">{project.name}</h4>
+													<h5 className="uppercase tracking-wider font-medium m-0 group-hover:text-primary transition-colors duration-500">{project.name}</h5>
 												</article>
-												<div className="w-full" />
+												<div className="absolute w-full -translate-x-full h-0.5 bottom-0 group-hover:translate-x-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 transition-transform duration-500 ease-out" />
 											</div>
 
 											{/* Description - Slides up on hover */}
 											<div className="mt-6 flex-1">
-												<p className="text-muted-foreground leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
-													{project.description}
-												</p>
+												<p className="text-muted leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all duration-500">{project.description}</p>
 											</div>
 
 											{/* Links - Fade in and slide up on hover */}
