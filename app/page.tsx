@@ -245,16 +245,13 @@ export default function Home() {
 										{/* Content Layer */}
 										<div className="relative h-full z-30 p-8 flex flex-col">
 											{/* Project Type Indicator */}
-											<div className="flex items-center gap-2 text-sm text-primary/60 mb-4">
+											<div className="flex items-center gap-2 text-sm text-primary mb-4 overflow-hidden">
 												<Code2 className="w-4 h-4" />
-												<span className="uppercase tracking-wider font-medium">Project</span>
+												<article>
+													<h4 className="uppercase tracking-wider font-medium">{project.name}</h4>
+												</article>
+												<div className="w-full" />
 											</div>
-
-											{/* Project Name with Animated Underline */}
-											<h3 className="text-2xl font-bold text-foreground relative inline-flex flex-col group/title">
-												<span>{project.name}</span>
-												<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent group-hover/title:w-full transition-all duration-500" />
-											</h3>
 
 											{/* Description - Slides up on hover */}
 											<div className="mt-6 flex-1">
