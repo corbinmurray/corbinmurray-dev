@@ -8,7 +8,12 @@
 
 			"As a Senior Software Engineer, I mentored junior developers, championed coding standards, and drove improvements to build microservices and integration solutions that supported the organization's evolving demands. I also held a leadership role, focusing on aligning cross-functional team efforts with business objectives, maintaining coding standards, and enhancing team productivity and code quality.",
 
-			"I played a pivotal role in designing, developing, and maintaining a robust integrations framework that streamlined business-to-business interactions. This framework served as a workflow engine, enabling seamless integration with internal and external services through APIs, gRPC, and Kafka. I focused on enhancing the platform’s scalability, reliability, and developer experience, ensuring every iteration improved usability and alignment with the company’s vision."
+			"I played a pivotal role in designing, developing, and maintaining a robust integrations framework that streamlined business-to-business interactions. This framework served as a workflow engine, enabling seamless integration with internal and external services through various system-to-system communication styles (ex: RESTful API's, SFTP, SOAP, etc.). I focused on enhancing the platform's scalability, reliability, and developer experience, ensuring every iteration improved usability and alignment with the company's vision."
+		],
+		"highlights": [
+			"Reduced integration deployment time by 40% and improved system reliability by implementing automated testing and deployment pipelines",
+			"",
+			"Processed over 500,000+ daily transactions with high availability through the new integration framework"
 		],
 		"skills": [
 			".NET Core",
@@ -35,6 +40,10 @@
 			"During my time as a developer at a pharmaceutical management system company, I focused on both client and server aspects of our Windows desktop application. This role involved handling complex requirements related to managing patient prescriptions, inventory, and overall pharmacy workflows. I leveraged SQL Server and .NET extensively to ensure the application met the industry's rigorous standards for data accuracy, reliability, and compliance, providing users with a seamless, efficient interface.",
 			"In addition to my work on the main application, I took the initiative to develop a QA website to streamline the process of candidate screening for technical roles. Built with React and Redux, this platform enabled faster assessments of coding skills and technical expertise. Using JavaScript and TypeScript, I was able to deliver a responsive, user-friendly web solution that enhanced our recruitment pipeline and helped bring in top talent more efficiently."
 		],
+		"highlights": [
+			"Increased application reliability by 35% and reduced bug reports by 40% through modern design patterns and 300+ unit tests",
+			"Reduced technical hiring time by 33% and improved candidate quality assessment through the new QA platform"
+		],
 		"skills": ["React", "Redux", ".NET Framework", "C#", "TypeScript/JavaScript", "SQL Server", "RESTful APIs", "OpenAPI", "Memory Cache"]
 	},
 	{
@@ -44,7 +53,11 @@
 		"descriptions": [
 			"During my data science internship, I conducted a comprehensive data governance examination for the City of Wichita. This effort involved assessing existing data practices across various departments and providing actionable guidance to improve data management and usage. I collaborated with department leaders to establish consistent standards, ensuring data reliability and accessibility while aligning practices with organizational goals. This process not only enhanced transparency but also set a foundation for improved decision-making.",
 
-			"In addition to governance, I developed several data-visual dashboards for the city council, showcasing key performance indicators (KPIs) and metrics critical to municipal operations. These dashboards provided intuitive, real-time insights into city-wide progress, enabling more informed policy discussions. I also created a web integration for the city’s website, allowing residents to report non-emergency maintenance requests seamlessly. This tool improved public engagement and streamlined service response workflows, showcasing the impact of data-driven solutions on community services."
+			"In addition to governance, I developed several data-visual dashboards for the city council, showcasing key performance indicators (KPIs) and metrics critical to municipal operations. These dashboards provided intuitive, real-time insights into city-wide progress, enabling more informed policy discussions. I also created a web integration for the city's website, allowing residents to report non-emergency maintenance requests seamlessly. This tool improved public engagement and streamlined service response workflows, showcasing the impact of data-driven solutions on community services."
+		],
+		"highlights": [
+			"Standardized data practices across 18 city departments, improving cross-department data sharing by 60%",
+			"Accelerated city council budget allocation decisions by 65% through real-time KPI dashboards and data visualization"
 		],
 		"skills": ["Power BI", "Python", "Flask", "SQL Server", "SQL", "Integrations", "Data Governance", "Data Analysis", "Optimization", "Visualization"]
 	}
