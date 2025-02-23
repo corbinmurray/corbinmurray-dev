@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { type Cell, cn, type Direction, generateMaze, getRandomStartAndGoal, type Maze as MazeType, parseMazeToGraph, solveMaze } from "@/lib/utils";
 import * as d3 from "d3";
+import { Flag, Target } from "lucide-react";
 import { type ChangeEvent, type RefObject, useEffect, useRef, useState } from "react";
 
 /**
@@ -197,11 +198,11 @@ const Maze = ({ className }: { className?: string }) => {
 			{/* Legend */}
 			<div className="flex flex-row justify-center items-center gap-4 md:gap-8">
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-primary" aria-label="Start"></div>
+					<Flag className="w-4 h-4 text-primary" aria-label="Start" />
 					<span className="text-sm md:text-lg">Start</span>
 				</div>
 				<div className="flex items-center gap-2">
-					<div className="w-4 h-4 rounded-full bg-secondary" aria-label="Goal"></div>
+					<Target className="w-4 h-4 text-secondary" aria-label="Goal" />
 					<span className="text-sm md:text-lg">Goal</span>
 				</div>
 			</div>
@@ -243,37 +244,79 @@ const drawMazeCell = (
 	}
 
 	const emptyCellClass = cn("stroke-foreground");
-
 	const svg = d3.select(svgRef.current);
 	const { x, y } = currentCell;
 
 	// start and goal cells
 	if (x === startCell?.x && y === startCell?.y) {
-		const circleSize = cellSize * 0.6;
+		const iconSize = cellSize * 0.7; // Slightly larger
 		const centerX = startCell.x * cellSize + cellSize / 2;
 		const centerY = startCell.y * cellSize + cellSize / 2;
 
-		svg
+		// Create a group for the icon
+		const group = svg
+			.append("g")
+			.attr("transform", `translate(${centerX - iconSize / 2}, ${centerY - iconSize / 2})`)
+			.attr("class", "transition-colors duration-300");
+
+		// Add glow effect
+		group
 			.append("circle")
-			.attr("cx", centerX)
-			.attr("cy", centerY)
-			.attr("r", circleSize / 2)
-			.attr("fill", "currentColor")
-			.attr("class", "fill-primary");
+			.attr("cx", iconSize / 2)
+			.attr("cy", iconSize / 2)
+			.attr("r", iconSize / 2)
+			.attr("class", "fill-primary/10 dark:fill-primary/20")
+			.attr("filter", "blur(4px)");
+
+		// Flag icon path data
+		group
+			.append("path")
+			.attr("d", "M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7")
+			.attr("stroke", "currentColor")
+			.attr("stroke-width", "2")
+			.attr("stroke-linecap", "round")
+			.attr("stroke-linejoin", "round")
+			.attr("class", "stroke-primary fill-primary/20")
+			.attr("width", iconSize)
+			.attr("height", iconSize)
+			.attr("transform", `scale(${iconSize / 24})`);
 	}
 
 	if (x === goalCell?.x && y === goalCell?.y) {
-		const circleSize = cellSize * 0.6;
+		const iconSize = cellSize * 0.7; // Slightly larger
 		const centerX = goalCell.x * cellSize + cellSize / 2;
 		const centerY = goalCell.y * cellSize + cellSize / 2;
 
-		svg
+		// Create a group for the icon
+		const group = svg
+			.append("g")
+			.attr("transform", `translate(${centerX - iconSize / 2}, ${centerY - iconSize / 2})`)
+			.attr("class", "transition-colors duration-300");
+
+		// Add glow effect
+		group
 			.append("circle")
-			.attr("cx", centerX)
-			.attr("cy", centerY)
-			.attr("r", circleSize / 2)
-			.attr("fill", "currentColor")
-			.attr("class", "fill-secondary");
+			.attr("cx", iconSize / 2)
+			.attr("cy", iconSize / 2)
+			.attr("r", iconSize / 2)
+			.attr("class", "fill-secondary/10 dark:fill-secondary/20")
+			.attr("filter", "blur(4px)");
+
+		// Target icon path data
+		group
+			.append("path")
+			.attr(
+				"d",
+				"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 18c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z M12 14c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"
+			)
+			.attr("stroke", "currentColor")
+			.attr("stroke-width", "2")
+			.attr("stroke-linecap", "round")
+			.attr("stroke-linejoin", "round")
+			.attr("class", "stroke-secondary fill-secondary/20")
+			.attr("width", iconSize)
+			.attr("height", iconSize)
+			.attr("transform", `scale(${iconSize / 24})`);
 	}
 
 	if (!directions.has("North")) {
