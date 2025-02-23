@@ -1,12 +1,80 @@
 import RevealSection from "@/components/reveal-section";
 import SectionHeader from "@/components/section-header";
 import SocialLinks from "@/components/social-links";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import { ArrowUpRightFromSquare, ChevronDown, Github } from "lucide-react";
+import {
+	ArrowUpRightFromSquare,
+	Blocks,
+	Box,
+	ChevronDown,
+	Cloud,
+	Code2,
+	Cpu,
+	Database,
+	Github,
+	Globe,
+	Layers,
+	LineChart,
+	Server,
+	Workflow,
+	type LucideIcon,
+} from "lucide-react";
 import NextLink from "next/link";
+
+// Skill to icon mapping
+const getSkillIcon = (skill: string): LucideIcon => {
+	const normalizedSkill = skill.toLowerCase();
+
+	// Database technologies
+	if (normalizedSkill.includes("sql") || normalizedSkill.includes("mongo") || normalizedSkill.includes("redis") || normalizedSkill.includes("database")) {
+		return Database;
+	}
+	// Cloud & Infrastructure
+	if (normalizedSkill.includes("aws") || normalizedSkill.includes("azure") || normalizedSkill.includes("cloud")) {
+		return Cloud;
+	}
+	// Backend & Services
+	if (normalizedSkill.includes(".net") || normalizedSkill.includes("node") || normalizedSkill.includes("express")) {
+		return Server;
+	}
+	// Frontend & UI
+	if (normalizedSkill.includes("react") || normalizedSkill.includes("angular") || normalizedSkill.includes("vue")) {
+		return Blocks;
+	}
+	// Programming Languages
+	if (
+		normalizedSkill.includes("python") ||
+		normalizedSkill.includes("javascript") ||
+		normalizedSkill.includes("typescript") ||
+		normalizedSkill.includes("c#")
+	) {
+		return Code2;
+	}
+	// Containers & DevOps
+	if (normalizedSkill.includes("docker") || normalizedSkill.includes("kubernetes")) {
+		return Box;
+	}
+	// Architecture & Patterns
+	if (normalizedSkill.includes("microservice") || normalizedSkill.includes("architecture")) {
+		return Cpu;
+	}
+	// APIs & Integration
+	if (normalizedSkill.includes("api") || normalizedSkill.includes("rest") || normalizedSkill.includes("grpc")) {
+		return Globe;
+	}
+	// Data & Analytics
+	if (normalizedSkill.includes("bi") || normalizedSkill.includes("analytics") || normalizedSkill.includes("power")) {
+		return LineChart;
+	}
+	// Message Queues & Events
+	if (normalizedSkill.includes("kafka") || normalizedSkill.includes("rabbitmq") || normalizedSkill.includes("event")) {
+		return Workflow;
+	}
+	// Default icon for other skills
+	return Layers;
+};
 
 export default function Home() {
 	return (
@@ -16,7 +84,7 @@ export default function Home() {
 
 				<article className="space-y-6 relative">
 					<p className="text-lg md:text-xl leading-relaxed">
-						Hi, <span className="animate-waving-hand inline-block">👋</span> I&apos;m{" "}
+						Hi, <span className="inline-block">👋</span> I&apos;m{" "}
 						<span className="text-primary font-semibold text-xl md:text-2xl bg-primary/10 px-2 py-1 rounded-md">Corbin Murray</span>. I am a{" "}
 						<span className="font-bold relative inline-block after:content-[''] after:absolute after:-bottom-px after:left-0 after:w-full after:h-px after:bg-secondary after:rounded-full">
 							software engineer
@@ -41,40 +109,43 @@ export default function Home() {
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 relative">
 						{/* Professional Section */}
 						<RevealSection className="space-y-6 p-6 hover:bg-primary/5 transition-colors duration-300 bg-gradient-to-br from-primary/5 via-transparent to-transparent h-full rounded-3xl">
-							<div className="flex items-center gap-3">
-								<div className="h-8 w-1 bg-primary rounded-full" />
-								<h3 className="text-2xl font-semibold text-primary/80">Professional Journey</h3>
-							</div>
 							<article>
-								<p className="text-lg leading-relaxed">
+								<div className="flex items-center gap-3">
+									<div className="h-8 w-1 bg-primary rounded-full" />
+									<h3 className="font-semibold text-primary/80 m-0">Professional Journey</h3>
+								</div>
+							</article>
+
+							<article>
+								<p>
 									As a software engineer I am passionate about creating innovative solutions and tackling complex challenges. My professional interests include
 									backend development, event-driven architecture, and building systems that are both scalable and efficient.
 								</p>
 							</article>
 
 							<article>
-								<p className="text-lg leading-relaxed">
-									I thrive in collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.
-								</p>
+								<p>I thrive in collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.</p>
 							</article>
 						</RevealSection>
 
 						{/* Personal Section */}
 						<RevealSection className="space-y-6 p-6 hover:bg-secondary/5 transition-colors duration-300 bg-gradient-to-br from-secondary/5 via-transparent to-transparent h-full rounded-3xl">
-							<div className="flex items-center gap-3">
-								<div className="h-8 w-1 bg-secondary rounded-full" />
-								<h3 className="text-2xl font-semibold text-secondary/80">Beyond the Code</h3>
-							</div>
+							<article>
+								<div className="flex items-center gap-3">
+									<div className="h-8 w-1 bg-secondary rounded-full" />
+									<h3 className="font-semibold text-secondary/80 m-0">Beyond the Code</h3>
+								</div>
+							</article>
 
 							<article>
-								<p className="text-lg leading-relaxed">
+								<p>
 									When I&apos;m not coding, you&apos;ll often find me spending time with my wife and our two dogs, Pretzel and Ink. If we are not taking walks,
 									playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, at the gym, or working on DIY projects.
 								</p>
 							</article>
 
 							<article>
-								<p className="text-lg leading-relaxed">
+								<p>
 									Whether it&apos;s getting lost in nature or diving into a good video game, I try to find balance between my professional and personal
 									passions.
 								</p>
@@ -109,22 +180,46 @@ export default function Home() {
 									<span className="text-sm text-muted font-medium">{experience.dateRange}</span>
 								</div>
 								<div className="flex flex-col gap-1">
-									<span className="text-lg font-semibold text-primary">{experience.positionTitle}</span>
-									<div className="h-0.5 w-16 bg-primary/20 rounded-full" />
+									<span className="text-lg font-semibold text-secondary/80">{experience.positionTitle}</span>
+									<div className="h-0.5 w-16 bg-secondary/20 rounded-full" />
 								</div>
 							</CardHeader>
-							<CardContent className="space-y-4">
-								{experience.descriptions.map((description, ii) => (
-									<p key={ii} className="leading-relaxed text-muted">
-										{description}
-									</p>
-								))}
-								<div className="flex flex-wrap gap-2 pt-4">
-									{experience.skills.map((skill, ii) => (
-										<Badge key={ii} variant="secondary" className="text-sm bg-secondary/10 text-secondary">
-											{skill}
-										</Badge>
+							<CardContent className="space-y-6">
+								{/* Key Responsibilities & Achievements */}
+								<div className="space-y-4">
+									{experience.descriptions.map((description, ii) => (
+										<div key={ii} className="group flex items-start gap-3 hover:bg-secondary/5 p-2 rounded-lg transition-colors duration-300">
+											<div className="mt-1.5 h-2 w-2 rounded-full bg-secondary/40 group-hover:bg-secondary flex-shrink-0 transition-colors duration-300" />
+											<div className="space-y-1">
+												<p className="leading-relaxed text-muted">{description}</p>
+												{/* Optional: Add impact metrics or highlights if available */}
+												{experience.highlights?.[ii] && (
+													<p className="text-sm text-primary/60 pl-2 border-l-2 border-primary/20">{experience.highlights[ii]}</p>
+												)}
+											</div>
+										</div>
 									))}
+								</div>
+
+								{/* Enhanced Skills Section with Icons */}
+								<div className="pt-6 border-t border-primary/10">
+									<div className="flex items-center gap-2 mb-4">
+										<h4 className="text-sm md:text-base font-medium text-primary/80">Skills & Technologies</h4>
+									</div>
+
+									<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+										{experience.skills
+											.sort((a, b) => (a.toLocaleLowerCase() > b.toLocaleLowerCase() ? 1 : -1))
+											.map((skill, ii) => {
+												const Icon = getSkillIcon(skill);
+												return (
+													<div key={ii} className="group flex items-center gap-2.5 transition-all duration-300 hover:translate-x-1">
+														<Icon className="w-4 h-4 text-secondary/60 group-hover:text-secondary transition-colors duration-300" />
+														<span className="text-sm text-muted group-hover:text-secondary transition-colors duration-300">{skill}</span>
+													</div>
+												);
+											})}
+									</div>
 								</div>
 							</CardContent>
 						</Card>
@@ -194,7 +289,7 @@ export default function Home() {
 						})}
 				</div>
 			</RevealSection>
-			
+
 			<RevealSection id="contact" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Contact Me" />
 
