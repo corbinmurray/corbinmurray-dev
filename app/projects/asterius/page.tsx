@@ -47,7 +47,7 @@ export default async function Page() {
 				<div className="relative max-w-3xl mx-auto space-y-16">
 					<article className="relative space-y-12">
 						{/* Section Divider */}
-						<div className="absolute left-0 h-full w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent" />
+						<div className="absolute left-0 h-full w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
 
 						<div className="space-y-6 pl-8">
 							<h3 className="text-2xl font-bold text-foreground relative inline-flex flex-col group">
@@ -58,13 +58,13 @@ export default async function Page() {
 
 							<div className="space-y-4 text-muted/80 leading-relaxed">
 								<p className="relative">
-									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/20" />
+									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									Generating a truly random and unbiased maze can be a complex task. Fortunately, there&apos;s an algorithm designed specifically for this
 									challenge.
 								</p>
 
 								<p className="relative">
-									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/20" />
+									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									Wilson&apos;s algorithm leverages{" "}
 									<Link href="https://en.wikipedia.org/wiki/Loop-erased_random_walk" variant="external">
 										Loop-erased random walks
@@ -84,7 +84,7 @@ export default async function Page() {
 
 							<div className="space-y-4 text-muted/80 leading-relaxed">
 								<p className="relative">
-									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/20" />
+									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									The{" "}
 									<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external">
 										A* (A-star)
@@ -99,14 +99,14 @@ export default async function Page() {
 								</p>
 
 								<p className="relative">
-									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/20" />
+									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									This function, known as the f-score, is the sum of two components: the g-score (the cost to reach the current node from the start) and the
 									h-score (the estimated cost from the current node to the goal). A* uses this combined information to prioritize nodes, ensuring that it
 									explores the most promising paths first.
 								</p>
 
 								<p className="relative">
-									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/20" />
+									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									As the algorithm proceeds, it explores neighboring nodes, updating their f-scores and determining the optimal route by considering both the
 									actual distance traveled and the predicted cost to the goal. Nodes are sorted based on their f-scores, with the algorithm always expanding the
 									node with the lowest f-score. This allows A* to efficiently navigate complex mazes, guaranteeing an optimal solution while avoiding
