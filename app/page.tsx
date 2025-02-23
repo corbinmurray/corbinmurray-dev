@@ -236,51 +236,51 @@ export default function Home() {
 						.map((project, i) => {
 							return (
 								<RevealSection key={i}>
-									<Card className="group relative h-[300px] overflow-hidden border-0">
-										{/* Background Image */}
-										{project.image && (
-											<div
-												className="absolute inset-0 bg-cover bg-center scale-105 group-hover:scale-100 transition-transform duration-500"
-												style={{ backgroundImage: `url(${project.image})` }}
-											/>
-										)}
-
-										{/* Background Layer */}
-										<div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/80 backdrop-blur-sm z-10" />
-										<div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-20" />
-
-										{/* Optional: Placeholder gradient if no image */}
-										{!project.image && <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5" />}
+									<Card className="group relative h-[350px] overflow-hidden border border-primary/10 bg-gradient-to-br from-card/50 via-card/30 to-card/10 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500">
+										{/* Decorative Elements */}
+										<div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50" />
+										<div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-primary/10 to-transparent rounded-full blur-2xl group-hover:from-primary/20 transition-all duration-500" />
+										<div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-radial from-secondary/10 to-transparent rounded-full blur-2xl group-hover:from-secondary/20 transition-all duration-500" />
 
 										{/* Content Layer */}
-										<div className="relative h-full z-30 p-6 flex flex-col">
-											<div className="flex-1">
-												<h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-primary transition-colors duration-300">{project.name}</h3>
-
-												{/* Description - slides up on hover */}
-												<div className="mt-4 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-													<p className="text-white/80 line-clamp-4">{project.description}</p>
-												</div>
+										<div className="relative h-full z-30 p-8 flex flex-col">
+											{/* Project Type Indicator */}
+											<div className="flex items-center gap-2 text-sm text-primary/60 mb-4">
+												<Code2 className="w-4 h-4" />
+												<span className="uppercase tracking-wider font-medium">Project</span>
 											</div>
 
-											{/* Links - fade in on hover */}
-											<div className="flex items-center justify-end gap-3 pt-4 border-t border-white/10 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+											{/* Project Name with Animated Underline */}
+											<h3 className="text-2xl font-bold text-foreground relative inline-flex flex-col group/title">
+												<span>{project.name}</span>
+												<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent group-hover/title:w-full transition-all duration-500" />
+											</h3>
+
+											{/* Description - Slides up on hover */}
+											<div className="mt-6 flex-1">
+												<p className="text-muted-foreground leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
+													{project.description}
+												</p>
+											</div>
+
+											{/* Links - Fade in and slide up on hover */}
+											<div className="flex items-center gap-4 pt-6 border-t border-primary/10 mt-auto">
 												<NextLink
 													href={project.liveSiteLink}
-													className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-primary/20 text-white hover:text-primary transition-colors duration-300"
+													className="flex items-center gap-2 text-sm font-medium text-primary/80 hover:text-primary transition-colors duration-300 group/link"
 													target="_blank"
 													rel="noopener noreferrer">
-													<span className="text-sm font-medium">View Site</span>
-													<ArrowUpRightFromSquare className="w-4 h-4" />
+													<span>View Site</span>
+													<ArrowUpRightFromSquare className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
 												</NextLink>
-												<a
+												<NextLink
 													href={project.githubHtmlUrl}
-													className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-primary/20 text-white hover:text-primary transition-colors duration-300"
+													className="flex items-center gap-2 text-sm font-medium text-primary/80 hover:text-primary transition-colors duration-300 group/link"
 													target="_blank"
 													rel="noopener noreferrer">
-													<span className="text-sm font-medium">Code</span>
-													<Github className="w-4 h-4" />
-												</a>
+													<span>View Code</span>
+													<Github className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
+												</NextLink>
 											</div>
 										</div>
 									</Card>
