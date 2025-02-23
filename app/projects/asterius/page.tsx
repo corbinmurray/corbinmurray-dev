@@ -7,9 +7,6 @@ export default async function Page() {
 	return (
 		<>
 			<RevealSection className="min-h-[50vh] flex flex-col justify-center">
-				{/* Top Decorative Bar */}
-				<div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50" />
-
 				<SectionHeader title="Asterius" />
 
 				<div className="relative max-w-3xl mx-auto">
