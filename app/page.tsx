@@ -264,7 +264,6 @@ export default function Home() {
 												<NextLink
 													href={project.liveSiteLink}
 													className="flex items-center gap-2 text-sm font-medium text-primary/80 hover:text-primary transition-colors duration-300 group/link"
-													target="_blank"
 													rel="noopener noreferrer">
 													<span>View Site</span>
 													<ArrowUpRightFromSquare className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />

@@ -10,13 +10,6 @@ export default async function Page() {
 				<SectionHeader title="Asterius" />
 
 				<div className="relative max-w-3xl mx-auto">
-					{/* Decorative Elements */}
-					<div className="absolute top-1/2 -translate-y-1/2 -left-16 w-32 h-32 bg-gradient-radial from-primary/5 via-primary/5 to-transparent dark:from-primary/10 dark:to-transparent rounded-full blur-2xl animate-pulse" />
-					<div className="absolute top-1/2 -translate-y-1/2 -right-16 w-32 h-32 bg-gradient-radial from-secondary/5 via-secondary/5 to-transparent dark:from-secondary/10 dark:to-transparent rounded-full blur-2xl animate-pulse" />
-
-					{/* Subtle Pattern */}
-					<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/[0.03] via-transparent to-transparent opacity-50" />
-
 					<article className="relative text-lg md:text-xl leading-relaxed text-muted text-center">
 						<p>
 							Asterius is a project I built to bring the{" "}
