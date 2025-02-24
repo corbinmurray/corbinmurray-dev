@@ -158,8 +158,8 @@ export default function Home() {
 					<RevealSection>
 						<article>
 							<blockquote className="mt-6 md:mt-12 border-l-2 pl-6 italic">
-								"This site is a reflection of all those facets — my love for software development, my curiosity for learning, and the things that make life fun
-								along the way."
+								&quot;This site is a reflection of all those facets — my love for software development, my curiosity for learning, and the things that make life
+								fun along the way.&quot;
 							</blockquote>
 						</article>
 					</RevealSection>
@@ -249,9 +249,7 @@ export default function Home() {
 											<div className="relative flex items-center gap-2 text-primary mb-4 overflow-hidden max-w-fit">
 												<Code2 className="w-4 h-4" />
 												<article>
-													<h5 className="uppercase font-medium m-0 group-hover:text-primary transition-colors duration-500 text-foreground">
-														{project.name}
-													</h5>
+													<h5 className="uppercase font-medium m-0 group-hover:text-primary transition-colors duration-500 text-foreground">{project.name}</h5>
 												</article>
 												<div className="absolute w-full -translate-x-full h-0.5 bottom-0 group-hover:translate-x-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 transition-transform duration-500 ease-out" />
 											</div>
