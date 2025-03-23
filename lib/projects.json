@@ -10,5 +10,11 @@
 		"githubHtmlUrl": "https://github.com/corbinmurray/corbinmurray-dev",
 		"liveSiteLink": "/projects/asterius",
 		"description": "Asterius is a project that showcases the A* pathfinding algorithm by visualizing its problem-solving process in real time."
+	},
+	{
+		"name": "Zen Den",
+		"githubHtmlUrl": "https://github.com/corbinmurray/zen-den",
+		"liveSiteLink": "https://zen-den.corbinmurray.dev",
+		"description": "Zen Den is a project that allows people to create calming, funny, silly, and personalized digital zen gardens."
 	}
 ]
