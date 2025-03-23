@@ -28,23 +28,18 @@ import NextLink from "next/link";
 const getSkillIcon = (skill: string): LucideIcon => {
 	const normalizedSkill = skill.toLowerCase();
 
-	// Database technologies
 	if (normalizedSkill.includes("sql") || normalizedSkill.includes("mongo") || normalizedSkill.includes("redis") || normalizedSkill.includes("database")) {
 		return Database;
 	}
-	// Cloud & Infrastructure
 	if (normalizedSkill.includes("aws") || normalizedSkill.includes("azure") || normalizedSkill.includes("cloud")) {
 		return Cloud;
 	}
-	// Backend & Services
 	if (normalizedSkill.includes(".net") || normalizedSkill.includes("node") || normalizedSkill.includes("express")) {
 		return Server;
 	}
-	// Frontend & UI
 	if (normalizedSkill.includes("react") || normalizedSkill.includes("angular") || normalizedSkill.includes("vue")) {
 		return Blocks;
 	}
-	// Programming Languages
 	if (
 		normalizedSkill.includes("python") ||
 		normalizedSkill.includes("javascript") ||
@@ -53,27 +48,22 @@ const getSkillIcon = (skill: string): LucideIcon => {
 	) {
 		return Code2;
 	}
-	// Containers & DevOps
 	if (normalizedSkill.includes("docker") || normalizedSkill.includes("kubernetes")) {
 		return Box;
 	}
-	// Architecture & Patterns
 	if (normalizedSkill.includes("microservice") || normalizedSkill.includes("architecture")) {
 		return Cpu;
 	}
-	// APIs & Integration
 	if (normalizedSkill.includes("api") || normalizedSkill.includes("rest") || normalizedSkill.includes("grpc")) {
 		return Globe;
 	}
-	// Data & Analytics
 	if (normalizedSkill.includes("bi") || normalizedSkill.includes("analytics") || normalizedSkill.includes("power")) {
 		return LineChart;
 	}
-	// Message Queues & Events
 	if (normalizedSkill.includes("kafka") || normalizedSkill.includes("rabbitmq") || normalizedSkill.includes("event")) {
 		return Workflow;
 	}
-	// Default icon for other skills
+
 	return Layers;
 };
 
@@ -243,23 +233,19 @@ export default function Home() {
 										<div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-primary/5 via-primary/5 to-transparent dark:from-primary/10 dark:to-transparent rounded-full blur-2xl group-hover:from-primary/10 group-hover:via-primary/10 dark:group-hover:from-primary/20 transition-all duration-500" />
 										<div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-radial from-secondary/5 via-secondary/5 to-transparent dark:from-secondary/10 dark:to-transparent rounded-full blur-2xl group-hover:from-secondary/10 group-hover:via-secondary/10 dark:group-hover:from-secondary/20 transition-all duration-500" />
 
-										{/* Content Layer */}
 										<div className="relative h-full z-30 p-8 flex flex-col">
-											{/* Project Type Indicator */}
 											<div className="relative flex items-center gap-2 text-primary mb-4 overflow-hidden max-w-fit">
 												<Code2 className="w-4 h-4" />
 												<article>
 													<h5 className="uppercase font-medium m-0 group-hover:text-primary transition-colors duration-500 text-foreground">{project.name}</h5>
 												</article>
-												<div className="absolute w-full -translate-x-full h-0.5 bottom-0 group-hover:translate-x-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 transition-transform duration-500 ease-out" />
+												<div className="absolute w-full -translate-x-full h-0.5 bottom-0 group-hover:translate-x-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-accent/50 transition-transform duration-700 ease-out" />
 											</div>
 
-											{/* Description - Slides up on hover */}
 											<div className="mt-6 flex-1">
-												<p className="text-muted leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all duration-500">{project.description}</p>
+												<p className="text-muted leading-relaxed transition-all duration-500">{project.description}</p>
 											</div>
 
-											{/* Links - Fade in and slide up on hover */}
 											<div className="flex items-center gap-4 pt-6 border-t border-primary/10 mt-auto">
 												<NextLink
 													href={project.liveSiteLink}
