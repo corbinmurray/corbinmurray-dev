@@ -18,18 +18,17 @@
 		"skills": [
 			".NET Core",
 			"C#",
-			"TypeScript/JavaScript",
+			"TypeScript",
 			"Docker",
 			"MongoDB",
 			"PostgreSQL",
 			"RESTful APIs",
 			"gRPC",
 			"Microservices",
-			"Apache Kafka",
-			"AWS ECR",
-			"AWS S3",
-			"AWS Secrets Manager",
-			"Redis"
+			"Kafka",
+			"AWS",
+			"Redis",
+			"Python"
 		]
 	},
 	{
@@ -44,7 +43,7 @@
 			"Increased application reliability by 35% and reduced bug reports by 40% through modern design patterns and 300+ unit tests",
 			"Reduced technical hiring time by 33% and improved candidate quality assessment through the new QA platform"
 		],
-		"skills": ["React", "Redux", ".NET Framework", "C#", "TypeScript/JavaScript", "SQL Server", "RESTful APIs", "OpenAPI", "Memory Cache"]
+		"skills": ["React", "Redux", ".NET Framework", "C#", "TypeScript", "SQL Server", "RESTful APIs", "OpenAPI", "Memory Cache"]
 	},
 	{
 		"dateRange": "Sep 2019 - Jul 2020",

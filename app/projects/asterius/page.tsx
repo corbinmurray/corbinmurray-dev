@@ -13,7 +13,7 @@ export default async function Page() {
 					<article className="relative text-lg md:text-xl leading-relaxed text-muted text-center">
 						<p>
 							Asterius is a project I built to bring the{" "}
-							<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external">
+							<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external" className="text-foreground">
 								A* (A-star)
 							</Link>{" "}
 							pathfinding algorithm to life through visualization. As someone who has been captivated by video games since childhood, I&apos;ve always been
@@ -56,7 +56,7 @@ export default async function Page() {
 								<p className="relative">
 									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									Wilson&apos;s algorithm leverages{" "}
-									<Link href="https://en.wikipedia.org/wiki/Loop-erased_random_walk" variant="external">
+									<Link href="https://en.wikipedia.org/wiki/Loop-erased_random_walk" variant="external" className="text-foreground">
 										Loop-erased random walks
 									</Link>{" "}
 									to construct a uniform spanning tree — an unbiased representation of all possible spanning trees. Unlike other common maze generation methods,
@@ -76,12 +76,12 @@ export default async function Page() {
 								<p className="relative">
 									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									The{" "}
-									<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external">
+									<Link href="https://en.wikipedia.org/wiki/A*_search_algorithm" variant="external" className="text-foreground">
 										A* (A-star)
 									</Link>{" "}
 									algorithm is a popular pathfinding and graph traversal method that efficiently finds the shortest path between two points on a grid, such as
 									from the start to the goal in a maze. It combines the benefits of both{" "}
-									<Link href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" variant="external">
+									<Link href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" variant="external" className="text-foreground">
 										Dijkstra&apos;s algorithm
 									</Link>{" "}
 									and greedy best-first search, using a cost function that takes into account both the distance from the starting point and an estimate of the
@@ -101,7 +101,7 @@ export default async function Page() {
 									actual distance traveled and the predicted cost to the goal. Nodes are sorted based on their f-scores, with the algorithm always expanding the
 									node with the lowest f-score. This allows A* to efficiently navigate complex mazes, guaranteeing an optimal solution while avoiding
 									unnecessary exploration of less promising paths. The A* algorithm&apos;s{" "}
-									<Link href="https://en.wikipedia.org/wiki/Heuristic" variant="external">
+									<Link href="https://en.wikipedia.org/wiki/Heuristic" variant="external" className="text-foreground">
 										heuristic
 									</Link>{" "}
 									approach makes it particularly effective in solving mazes with a balance of accuracy and performance, ensuring that the shortest path is found

@@ -71,25 +71,25 @@ export default function Home() {
 	return (
 		<>
 			<RevealSection className="min-h-[calc(100vh-10rem)] flex flex-col justify-center">
-				<SectionHeader title="Welcome to my digital garden" punctuation="!" />
+				<SectionHeader title="Welcome to my site" punctuation="!" />
 
 				<article className="space-y-6 relative">
-					<p className="text-lg md:text-xl leading-relaxed">
+					<p className="text-lg md:text-xl leading-relaxed text-muted">
 						Hi, <span className="inline-block">👋</span> I&apos;m{" "}
 						<span className="text-primary font-semibold text-xl md:text-2xl bg-primary/10 px-2 py-1 rounded-md">Corbin Murray</span>. I am a{" "}
-						<span className="font-bold relative inline-block after:content-[''] after:absolute after:-bottom-px after:left-0 after:w-full after:h-px after:bg-secondary after:rounded-full">
+						<span className="font-bold relative inline-block after:content-[''] after:absolute after:-bottom-px after:left-0 after:w-full after:h-px after:bg-secondary after:rounded-full text-foreground">
 							software engineer
 						</span>{" "}
 						who loves turning big ideas into practical, working solutions.
 					</p>
-					<p className="text-lg md:text-xl leading-relaxed">
+					<p className="text-lg md:text-xl leading-relaxed text-muted">
 						Welcome to my small slice of the internet, where I share the projects I&apos;ve built, the things I&apos;ve learned, and the occasional wild
 						experiment. Like any good garden, it&apos;s a work in progress — growing, evolving, and sometimes sprouting unexpected ideas. Take a look around,
 						and maybe you&apos;ll find something inspiring — or at least worth chatting about!
 					</p>
 				</article>
 
-				<ChevronDown className="mx-auto h-8 animate-bounce mt-20 lg:mt-40 text-primary/50" />
+				<ChevronDown className="mx-auto h-8 animate-bounce mt-20 lg:mt-40 text-primary/75" />
 			</RevealSection>
 
 			<RevealSection id="about" className="my-36 md:my-72 scroll-m-24">
@@ -99,7 +99,7 @@ export default function Home() {
 					{/* Content Grid */}
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 relative">
 						{/* Professional Section */}
-						<RevealSection className="space-y-6 p-6 hover:bg-primary/5 transition-colors duration-300 bg-gradient-to-br from-primary/5 via-transparent to-transparent h-full rounded-3xl">
+						<RevealSection className="space-y-6 p-6 hover:bg-primary/5 transition-colors duration-300 bg-gradient-to-br from-primary/10 via-transparent to-transparent h-full rounded-3xl">
 							<article>
 								<div className="flex items-center gap-3">
 									<div className="h-8 w-1 bg-primary rounded-full" />
@@ -108,19 +108,21 @@ export default function Home() {
 							</article>
 
 							<article>
-								<p>
+								<p className="text-muted">
 									As a software engineer I am passionate about creating innovative solutions and tackling complex challenges. My professional interests include
 									backend development, event-driven architecture, and building systems that are both scalable and efficient.
 								</p>
 							</article>
 
 							<article>
-								<p>I thrive in collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.</p>
+								<p className="text-muted">
+									I thrive in collaborative environments where creativity meets purpose, and I love working with modern tech stacks to bring ideas to life.
+								</p>
 							</article>
 						</RevealSection>
 
 						{/* Personal Section */}
-						<RevealSection className="space-y-6 p-6 hover:bg-secondary/5 transition-colors duration-300 bg-gradient-to-br from-secondary/5 via-transparent to-transparent h-full rounded-3xl">
+						<RevealSection className="space-y-6 p-6 hover:bg-secondary/5 transition-colors duration-300 bg-gradient-to-br from-secondary/10 via-transparent to-transparent h-full rounded-3xl">
 							<article>
 								<div className="flex items-center gap-3">
 									<div className="h-8 w-1 bg-secondary rounded-full" />
@@ -129,14 +131,14 @@ export default function Home() {
 							</article>
 
 							<article>
-								<p>
+								<p className="text-muted">
 									When I&apos;m not coding, you&apos;ll often find me spending time with my wife and our two dogs, Pretzel and Ink. If we are not taking walks,
 									playing pickleball, or watching a good movie, then you&apos;ll find me playing soccer, at the gym, or working on DIY projects.
 								</p>
 							</article>
 
 							<article>
-								<p>
+								<p className="text-muted">
 									Whether it&apos;s getting lost in nature or diving into a good video game, I try to find balance between my professional and personal
 									passions.
 								</p>
@@ -147,7 +149,7 @@ export default function Home() {
 					{/* Quote Section */}
 					<RevealSection>
 						<article>
-							<blockquote className="mt-6 md:mt-12 border-l-2 pl-6 italic">
+							<blockquote className="mt-6 md:mt-12 pl-6 italic text-base">
 								&quot;This site is a reflection of all those facets — my love for software development, my curiosity for learning, and the things that make life
 								fun along the way.&quot;
 							</blockquote>
@@ -185,7 +187,7 @@ export default function Home() {
 												<p className="leading-relaxed text-muted">{description}</p>
 												{/* Optional: Add impact metrics or highlights if available */}
 												{experience.highlights?.[ii] && (
-													<p className="text-sm text-primary/60 pl-2 border-l-2 border-primary/20">{experience.highlights[ii]}</p>
+													<p className="text-sm text-primary pl-2 border-l-2 border-primary/20">{experience.highlights[ii]}</p>
 												)}
 											</div>
 										</div>
@@ -195,7 +197,7 @@ export default function Home() {
 								{/* Enhanced Skills Section with Icons */}
 								<div className="pt-6 border-t border-primary/10">
 									<div className="flex items-center gap-2 mb-4">
-										<h4 className="text-sm md:text-base font-medium text-primary/80">Skills & Technologies</h4>
+										<h4 className="text-sm md:text-base font-medium text-primary">Skills & Technologies</h4>
 									</div>
 
 									<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -205,8 +207,8 @@ export default function Home() {
 												const Icon = getSkillIcon(skill);
 												return (
 													<div key={ii} className="group flex items-center gap-2.5 transition-all duration-300 hover:translate-x-1">
-														<Icon className="w-4 h-4 text-secondary/60 group-hover:text-secondary transition-colors duration-300" />
-														<span className="text-sm text-muted group-hover:text-secondary transition-colors duration-300">{skill}</span>
+														<Icon className="w-4 h-4 text-accent group-hover:text-accent transition-colors duration-300" />
+														<span className="text-sm text-muted group-hover:text-accent transition-colors duration-300">{skill}</span>
 													</div>
 												);
 											})}
