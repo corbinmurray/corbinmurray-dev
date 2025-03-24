@@ -33,20 +33,20 @@ export default async function Page() {
 				</div>
 			</RevealSection>
 
-			<RevealSection className="my-12 md:my-24">
+			<RevealSection className="my-12 md:my-24 lg:my-32">
 				<div className="relative max-w-3xl mx-auto space-y-16">
 					<article className="relative space-y-12">
-						{/* Section Divider */}
-						<div className="absolute left-0 h-full w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
-
-						<div className="space-y-6 pl-8">
+						{/* Generating the maze description */}
+						<div className="space-y-6 pl-8 relative">
+							{/* Decorative paragraph separator */}
+							<div className="absolute left-0 h-full w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
 							<h3 className="text-2xl font-bold text-foreground relative inline-flex flex-col group">
 								<div className="flex items-center gap-3">
 									<span>Generating the Maze</span>
 								</div>
 							</h3>
 
-							<div className="space-y-4 text-muted/80 leading-relaxed">
+							<div className="space-y-4 text-muted leading-relaxed">
 								<p className="relative">
 									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									Generating a truly random and unbiased maze can be a complex task. Fortunately, there&apos;s an algorithm designed specifically for this
@@ -65,14 +65,18 @@ export default async function Page() {
 							</div>
 						</div>
 
-						<div className="space-y-6 pl-8">
+						{/* Solving the maze description */}
+						<div className="relative space-y-6 pl-8">
+							{/* Decorative paragraph separator */}
+							<div className="absolute left-0 h-full w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
+
 							<h3 className="text-2xl font-bold text-foreground relative inline-flex flex-col group">
 								<div className="flex items-center gap-3">
 									<span>Solving the Maze</span>
 								</div>
 							</h3>
 
-							<div className="space-y-4 text-muted/80 leading-relaxed">
+							<div className="space-y-4 text-muted leading-relaxed">
 								<p className="relative">
 									<span className="absolute -left-8 top-3 h-px w-6 bg-gradient-to-r from-transparent to-primary/50" />
 									The{" "}
