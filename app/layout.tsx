@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { Copyright, Heart } from "lucide-react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -20,7 +20,45 @@ const fontSans = Inter({
 
 export const metadata: Metadata = {
 	title: "Corbin Murray | Software Engineer",
-	description: "Portfolio website for Corbin Murray Software Engineer",
+	description: "Experienced software engineer specializing in full-stack development with expertise in .NET, React, TypeScript, and modern web technologies.",
+	keywords: [
+		"senior software engineer",
+		"backend",
+		".NET",
+		"software engineer",
+		"web developer",
+		"full-stack developer",
+		"React developer",
+		"TypeScript",
+		"Next.js",
+		"Corbin Murray",
+		"portfolio",
+	],
+	authors: [{ name: "Corbin Murray" }],
+	creator: "Corbin Murray",
+	publisher: "Corbin Murray",
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: "https://corbinmurray.dev/",
+		title: "Corbin Murray | Software Engineer",
+		description: "Experienced software engineer specializing in full-stack development with expertise in .NET, React, TypeScript, and modern web technologies.",
+		siteName: "Corbin Murray Portfolio",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Corbin Murray | Software Engineer",
+		description: "Experienced software engineer specializing in full-stack development with expertise in .NET, React, TypeScript, and modern web technologies.",
+	},
+	robots: {
+		index: true,
+		follow: true,
+	},
+};
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
 };
 
 export default function RootLayout({
@@ -53,13 +91,13 @@ export default function RootLayout({
 				<link rel="apple-touch-icon" href="/apple-icon.png" type="image/png" sizes="any" />
 
 				{/* Inject the theme initializer script */}
-				<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
-				
-				{/* If you're a file inspector and reading this, no worries this is a completely private analytics alternative that allows me to see a simple page count for this website :) */}
+				{/* <script dangerouslySetInnerHTML={{ __html: setThemeScript }} /> */}
+
+				{/* Hello inspector 👋, no worries this is a completely private analytics alternative that allows me to see a simple page count for this website :) */}
 				<script defer src="https://umami.corbinmurray.dev/script.js" data-website-id="bbf88294-76ec-4a43-958c-eea82893445e"></script>
 			</head>
 			<body className={cn(fontMono.variable, fontSans.variable, "font-sans antialiased")}>
-				<ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<Navbar />
 
 					{/* 5rem comes from the navbar's height of h-20 */}

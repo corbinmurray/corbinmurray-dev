@@ -2,7 +2,7 @@
 
 import Link from "@/components/link";
 import SocialLinks from "@/components/social-links";
-import ThemeToggle from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { LINKS } from "@/lib/configs";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, type Variants } from "motion/react";
