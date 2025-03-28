@@ -5,6 +5,10 @@ export const LINKS = {
 			href: "/#about",
 		},
 		{
+			name: "Skills",
+			href: "/#skills",
+		},
+		{
 			name: "Experience",
 			href: "/#experience",
 		},

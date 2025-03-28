@@ -3,68 +3,14 @@ import SectionHeader from "@/components/section-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import experiences from "@/lib/experiences.json";
 import projects from "@/lib/projects.json";
-import {
-	ArrowUpRightFromSquare,
-	Blocks,
-	Box,
-	ChevronDown,
-	Cloud,
-	Code2,
-	Cpu,
-	Database,
-	Github,
-	Globe,
-	Layers,
-	LineChart,
-	Linkedin,
-	Mail,
-	Server,
-	Workflow,
-	type LucideIcon,
-} from "lucide-react";
+import skills from "@/lib/skills.json";
+import * as Icons from "lucide-react";
+import { ArrowUpRightFromSquare, ChevronDown, Code2, Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
 import NextLink from "next/link";
 
-// Skill to icon mapping
-const getSkillIcon = (skill: string): LucideIcon => {
-	const normalizedSkill = skill.toLowerCase();
-
-	if (normalizedSkill.includes("sql") || normalizedSkill.includes("mongo") || normalizedSkill.includes("redis") || normalizedSkill.includes("database")) {
-		return Database;
-	}
-	if (normalizedSkill.includes("aws") || normalizedSkill.includes("azure") || normalizedSkill.includes("cloud")) {
-		return Cloud;
-	}
-	if (normalizedSkill.includes(".net") || normalizedSkill.includes("node") || normalizedSkill.includes("express")) {
-		return Server;
-	}
-	if (normalizedSkill.includes("react") || normalizedSkill.includes("angular") || normalizedSkill.includes("vue")) {
-		return Blocks;
-	}
-	if (
-		normalizedSkill.includes("python") ||
-		normalizedSkill.includes("javascript") ||
-		normalizedSkill.includes("typescript") ||
-		normalizedSkill.includes("c#")
-	) {
-		return Code2;
-	}
-	if (normalizedSkill.includes("docker") || normalizedSkill.includes("kubernetes")) {
-		return Box;
-	}
-	if (normalizedSkill.includes("microservice") || normalizedSkill.includes("architecture")) {
-		return Cpu;
-	}
-	if (normalizedSkill.includes("api") || normalizedSkill.includes("rest") || normalizedSkill.includes("grpc")) {
-		return Globe;
-	}
-	if (normalizedSkill.includes("bi") || normalizedSkill.includes("analytics") || normalizedSkill.includes("power")) {
-		return LineChart;
-	}
-	if (normalizedSkill.includes("kafka") || normalizedSkill.includes("rabbitmq") || normalizedSkill.includes("event")) {
-		return Workflow;
-	}
-
-	return Layers;
+// Dynamic icon import function
+const getIcon = (iconName: string): LucideIcon => {
+	return (Icons[iconName as keyof typeof Icons] as LucideIcon) || Icons.Layers;
 };
 
 export default function Home() {
@@ -158,6 +104,42 @@ export default function Home() {
 				</div>
 			</RevealSection>
 
+			<RevealSection id="skills" className="my-36 md:my-72 scroll-m-24">
+				<SectionHeader title="Skills" />
+
+				<div className="space-y-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{skills.categories.map((category, i) => {
+							const Icon = getIcon(category.icon);
+							return (
+								<Card key={i} className="relative hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur border-primary/10">
+									<div className="absolute left-0 top-0 w-1 h-full bg-accent rounded-l-xl" />
+									<CardHeader className="space-y-4">
+										<div className="flex items-center gap-3">
+											<Icon className="w-5 h-5 text-primary" />
+											<CardTitle className="text-lg font-semibold text-primary/80">{category.name}</CardTitle>
+										</div>
+									</CardHeader>
+									<CardContent>
+										<div className="grid grid-cols-2 gap-4">
+											{category.skills.map((skill, ii) => {
+												const SkillIcon = getIcon(category.icon);
+												return (
+													<div key={ii} className="group flex items-center gap-2.5 transition-all duration-300 hover:translate-x-1">
+														<SkillIcon className="size-4 text-accent group-hover:text-accent transition-colors duration-300" />
+														<span className="text-sm text-muted group-hover:text-accent transition-colors duration-300">{skill}</span>
+													</div>
+												);
+											})}
+										</div>
+									</CardContent>
+								</Card>
+							);
+						})}
+					</div>
+				</div>
+			</RevealSection>
+
 			<RevealSection id="experience" className="mt-36 md:mt-72 scroll-m-24">
 				<SectionHeader title="My work experience" />
 			</RevealSection>
@@ -186,16 +168,14 @@ export default function Home() {
 											<div className="space-y-1">
 												<p className="leading-relaxed text-muted">{description}</p>
 												{/* Optional: Add impact metrics or highlights if available */}
-												{experience.highlights?.[ii] && (
-													<p className="text-sm text-primary pl-2 border-l-2 border-primary/20">{experience.highlights[ii]}</p>
-												)}
+												{experience.highlights?.[ii] && <p className="text-sm text-primary pl-2 border-l-2 border-primary/20">{experience.highlights[ii]}</p>}
 											</div>
 										</div>
 									))}
 								</div>
 
 								{/* Enhanced Skills Section with Icons */}
-								<div className="pt-6 border-t border-primary/10">
+								{/* <div className="pt-6 border-t border-primary/10">
 									<div className="flex items-center gap-2 mb-4">
 										<h4 className="text-sm md:text-base font-medium text-primary">Skills & Technologies</h4>
 									</div>
@@ -213,7 +193,7 @@ export default function Home() {
 												);
 											})}
 									</div>
-								</div>
+								</div> */}
 							</CardContent>
 						</Card>
 					</RevealSection>
@@ -296,6 +276,7 @@ export default function Home() {
 									target="_blank"
 									rel="noopener noreferrer">
 									<div className="relative p-4 rounded-full border border-primary/10 group-hover:border-primary/20 group-hover:shadow-lg group-hover:shadow-primary/5 transition-all duration-300">
+										<div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										<div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										<Linkedin className="w-6 h-6 text-primary/80 group-hover:text-primary relative z-10" />
 									</div>

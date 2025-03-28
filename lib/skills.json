@@ -1,0 +1,45 @@
+{
+	"categories": [
+		{
+			"name": "Languages",
+			"icon": "Code2",
+			"skills": ["C#", "Java", "TypeScript", "Python"]
+		},
+		{
+			"name": "Testing",
+			"icon": "TestTube",
+			"skills": ["XUnit", "JUnit", "Jest", "Selenium"]
+		},
+		{
+			"name": "Frontend",
+			"icon": "Monitor",
+			"skills": ["React", "Angular", "HTML/CSS/JavaScript", "Tailwind CSS"]
+		},
+		{
+			"name": "Backend",
+			"icon": "Server",
+			"skills": [".NET", "Node.js", "Spring"]
+		},
+		{
+			"name": "Databases",
+			"icon": "Database",
+			"skills": ["MongoDB", "PostgreSQL", "Redis", "SQL Server", "SQLite", "DynamoDB", "ORM", "ODM", "RDBMS", "NoSQL", "SQL"]
+		},
+		{
+			"name": "DevOps & Cloud",
+			"icon": "Cloud",
+			"skills": ["Docker", "Kubernetes", "AWS", "GitHub Actions", "Azure DevOps", "Helm", "ArgoCD", "Datadog", "Git"]
+		},
+		{
+			"name": "Architecture & Design",
+			"icon": "Cpu",
+			"skills": ["Microservices", "Event-Driven Architecture", "System Design", "RESTful APIs", "gRPC", "Kafka", "RabbitMQ", "Data Structures & Algorithms"]
+		},
+
+		{
+			"name": "Methodologies",
+			"icon": "Users",
+			"skills": ["Agile", "SCRUM", "Kanban"]
+		}
+	]
+}
