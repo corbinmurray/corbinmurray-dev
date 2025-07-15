@@ -25,7 +25,8 @@ function RevealSection({ children, className, fillHeight = false, ...props }: Re
 			variants={animationContainerUpVariants}
 			viewport={{ once: true, amount: "some" }}
 			style={{ opacity: opacity }}
-			className={className}>
+			className={className}
+			{...props}>
 			{Array.isArray(children) ? (
 				children.map((child, index) => (
 					<motion.div key={index} variants={animationChildUpVariants} className={fillHeight ? "h-full" : undefined}>
