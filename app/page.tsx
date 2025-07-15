@@ -107,12 +107,12 @@ export default function Home() {
 			<RevealSection id="skills" className="my-36 md:my-72 scroll-m-24">
 				<SectionHeader title="Skills" />
 
-				<div className="space-y-8">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						{skills.categories.map((category, i) => {
-							const Icon = getIcon(category.icon);
-							return (
-								<Card key={i} className="relative hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur border-primary/10">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+					{skills.categories.map((category, i) => {
+						const Icon = getIcon(category.icon);
+						return (
+							<RevealSection key={i} fillHeight>
+								<Card className="relative h-full hover:dark:bg-card/70 transition-all duration-300 bg-card/50 backdrop-blur border-primary/10">
 									<div className="absolute left-0 top-0 w-1 h-full bg-accent rounded-l-xl" />
 									<CardHeader className="space-y-4">
 										<div className="flex items-center gap-3">
@@ -134,9 +134,9 @@ export default function Home() {
 										</div>
 									</CardContent>
 								</Card>
-							);
-						})}
-					</div>
+							</RevealSection>
+						);
+					})}
 				</div>
 			</RevealSection>
 

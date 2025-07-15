@@ -3,7 +3,11 @@
 import { type HTMLMotionProps, motion, useScroll, useTransform, type Variants } from "motion/react";
 import { useRef } from "react";
 
-function RevealSection({ children, ...props }: HTMLMotionProps<"section">) {
+interface RevealSectionProps extends HTMLMotionProps<"section"> {
+	fillHeight?: boolean;
+}
+
+function RevealSection({ children, className, fillHeight = false, ...props }: RevealSectionProps) {
 	const sectionRef = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
@@ -21,15 +25,17 @@ function RevealSection({ children, ...props }: HTMLMotionProps<"section">) {
 			variants={animationContainerUpVariants}
 			viewport={{ once: true, amount: "some" }}
 			style={{ opacity: opacity }}
-			{...props}>
+			className={className}>
 			{Array.isArray(children) ? (
 				children.map((child, index) => (
-					<motion.div key={index} variants={animationChildUpVariants}>
+					<motion.div key={index} variants={animationChildUpVariants} className={fillHeight ? "h-full" : undefined}>
 						{child}
 					</motion.div>
 				))
 			) : (
-				<motion.div variants={animationChildUpVariants}>{children}</motion.div>
+				<motion.div variants={animationChildUpVariants} className={fillHeight ? "h-full" : undefined}>
+					{children}
+				</motion.div>
 			)}
 		</motion.section>
 	);
