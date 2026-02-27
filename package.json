@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
+    "@corbinmurray/ui-components": "github:corbinmurray/ui-components",
     "@fontsource-variable/outfit": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.575.0",
+    "motion": "^12.34.3",
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
