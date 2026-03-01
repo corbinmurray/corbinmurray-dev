@@ -57,7 +57,7 @@ export function SkillsSection({ sectionId }: SkillsSectionProps) {
                   y: -4,
                   transition: { type: "spring", stiffness: 400, damping: 10 },
                 }}
-                className="flex items-center justify-center p-6 bg-white dark:bg-zinc-900/80 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 dark:border-zinc-800 transition-colors group relative overflow-hidden cursor-crosshair"
+                className="flex items-center justify-center p-6 bg-zinc-50/50 dark:bg-zinc-900/80 rounded-2xl shadow-sm hover:shadow-md border border-zinc-200/80 dark:border-zinc-800 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-300 group relative overflow-hidden cursor-crosshair"
               >
                 <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-transparent group-hover:from-blue-500/5 dark:group-hover:from-blue-500/10 transition-colors duration-300" />
                 <p className="font-semibold text-gray-800 dark:text-gray-200">

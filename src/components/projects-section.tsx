@@ -49,7 +49,7 @@ export function ProjectsSection({ sectionId }: ProjectsSectionProps) {
                 scale: 1.02,
                 transition: { type: "spring", stiffness: 400, damping: 25 },
               }}
-              className="group bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-900/10 transition-shadow duration-300"
+              className="group bg-zinc-50/50 dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800 shadow-sm hover:border-zinc-300/80 dark:hover:border-zinc-700/80 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-900/10 transition-all duration-300"
             >
               <div className="aspect-video bg-gray-100 dark:bg-zinc-800 relative overflow-hidden">
                 {/* Image placeholder */}
@@ -81,7 +81,7 @@ export function ProjectsSection({ sectionId }: ProjectsSectionProps) {
                 scale: 1.02,
                 transition: { type: "spring", stiffness: 400, damping: 25 },
               }}
-              className="group bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-900/10 transition-shadow duration-300"
+              className="group bg-zinc-50/50 dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800 shadow-sm hover:border-zinc-300/80 dark:hover:border-zinc-700/80 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-900/10 transition-all duration-300"
             >
               <div className="aspect-video bg-gray-100 dark:bg-zinc-800 relative overflow-hidden">
                 {/* Image placeholder */}

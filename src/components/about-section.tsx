@@ -81,14 +81,14 @@ export function AboutSection({ sectionId }: AboutSectionProps) {
             variants={proseVariants}
             className="flex-1 prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 max-w-none"
           >
-            <motion.p
+            {/* <motion.p
               variants={proseItemVariants}
               className="lead font-medium text-gray-900 border-l-2 border-blue-500 pl-4 dark:text-gray-100 italic"
             >
               "I'm Corbin, a software engineer who bridges the gap between
               massive backend infrastructure and pixel-perfect user
               experiences."
-            </motion.p>
+            </motion.p> */}
             <motion.p variants={proseItemVariants}>
               I specialize in taking complex, tangled business logic and
               translating it into clean, maintainable systems. My philosophy is
@@ -107,7 +107,7 @@ export function AboutSection({ sectionId }: AboutSectionProps) {
           {/* Interactive Value Proposition Cards */}
           <div className="relative flex-1">
             {/* Subtle background decoration */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/5 dark:to-purple-900/5 rounded-[2rem] -z-10 blur-xl md:blur-2xl opacity-70" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/5 dark:to-purple-900/5 rounded-[2rem] -z-10 blur-xl md:blur-2xl opacity-70" />
 
             <motion.div
               variants={containerVariants}
@@ -125,10 +125,10 @@ export function AboutSection({ sectionId }: AboutSectionProps) {
                   key={idx}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, x: 5 }}
-                  className="bg-white dark:bg-zinc-900/80 border border-gray-100 dark:border-zinc-800 p-6 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-900/20 transition-all cursor-crosshair group relative overflow-hidden"
+                  className="bg-zinc-50/50 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-zinc-300/80 dark:hover:border-zinc-700/80 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-300 group relative overflow-hidden"
                 >
                   {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-transparent group-hover:from-blue-500/5 dark:group-hover:from-blue-500/10 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-blue-500/0 to-transparent group-hover:from-blue-500/5 dark:group-hover:from-blue-500/10 transition-colors duration-300" />
 
                   <div className="flex items-start gap-5">
                     <div className="p-3 bg-gray-50 dark:bg-zinc-800 rounded-xl shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
