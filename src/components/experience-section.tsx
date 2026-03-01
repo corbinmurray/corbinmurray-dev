@@ -6,7 +6,7 @@ export function ExperienceSection({ sectionId }: ExperienceSectionProps) {
   return (
     <motion.section
       id={sectionId}
-      className="relative max-w-4xl py-24 md:py-32"
+      className="relative max-w-7xl mx-auto py-24 md:py-32 w-full"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-100px" }}

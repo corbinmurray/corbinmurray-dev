@@ -6,7 +6,7 @@ export function ContactSection({ sectionId }: ContactSectionProps) {
   return (
     <motion.section
       id={sectionId}
-      className="relative max-w-4xl w-full py-24 md:py-32 mb-20 overflow-hidden bg-blue-600 dark:bg-blue-900 rounded-[3rem] text-center"
+      className="relative max-w-7xl mx-auto py-24 md:py-32 mb-20 overflow-hidden bg-blue-600 dark:bg-blue-900 rounded-[3rem] text-center w-full px-8"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}

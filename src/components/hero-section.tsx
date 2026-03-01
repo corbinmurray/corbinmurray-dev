@@ -47,7 +47,10 @@ export function HeroSection({ sectionId }: HeroSectionProps) {
   };
 
   return (
-    <section id={sectionId} className="relative max-w-4xl py-12 md:py-24">
+    <section
+      id={sectionId}
+      className="relative w-full max-w-7xl mx-auto py-12 md:py-24"
+    >
       {/* 
        Subtle Particles Base
         These tiny dots float slowly in the background space, 

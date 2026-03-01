@@ -6,7 +6,7 @@ export function ProjectsSection({ sectionId }: ProjectsSectionProps) {
   return (
     <motion.section
       id={sectionId}
-      className="relative max-w-4xl py-24 md:py-32"
+      className="relative max-w-7xl mx-auto py-24 md:py-32 w-full"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -30,7 +30,7 @@ export function ProjectsSection({ sectionId }: ProjectsSectionProps) {
               Project Name
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              A complete full-stack application built with modern tooling.    
+              A complete full-stack application built with modern tooling.
             </p>
             <div className="flex gap-2">
               <span className="px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full text-xs font-medium dark:text-gray-300">
