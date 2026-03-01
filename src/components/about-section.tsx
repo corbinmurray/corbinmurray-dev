@@ -1,6 +1,6 @@
 import type { SectionProps } from "@/components/section-props";
 import { Laptop, Rocket, Server } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 
 interface AboutSectionProps extends SectionProps {}
 
@@ -14,7 +14,7 @@ export function AboutSection({ sectionId }: AboutSectionProps) {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
