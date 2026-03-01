@@ -81,26 +81,23 @@ export function AboutSection({ sectionId }: AboutSectionProps) {
             variants={proseVariants}
             className="flex-1 prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 max-w-none"
           >
-            {/* <motion.p
-              variants={proseItemVariants}
-              className="lead font-medium text-gray-900 border-l-2 border-blue-500 pl-4 dark:text-gray-100 italic"
-            >
-              "I'm Corbin, a software engineer who bridges the gap between
-              massive backend infrastructure and pixel-perfect user
-              experiences."
-            </motion.p> */}
-            <motion.p variants={proseItemVariants}>
-              I specialize in taking complex, tangled business logic and
-              translating it into clean, maintainable systems. My philosophy is
-              simple: technology should serve the user, not the other way
-              around.
+            <motion.p variants={proseItemVariants} className="mb-6">
+              I'm a software engineer who loves untangling complex problems and
+              building systems that just <em>work</em>. My sweet spot is backend
+              development and event-driven architecture; crafting scalable,
+              efficient solutions that don't crumble under pressure.
             </motion.p>
-            <motion.p variants={proseItemVariants}>
-              When I'm not architecting databases or tracking down elusive bugs,
-              I'm usually experimenting with new frontend frameworks or studying
-              system design patterns. I believe in writing code that the next
-              developer (which might be me six months from now) will thank me
-              for.
+            <motion.p variants={proseItemVariants} className="mb-6">
+              I thrive in collaborative environments where creativity meets
+              purpose. To me, a great codebase isn't just about syntax; it's
+              about building tools that actually make life easier for the teams
+              and users who rely on them.
+            </motion.p>
+            <motion.p variants={proseItemVariants} className="mb-6">
+              When I close my laptop, you'll find me hanging out with my wife
+              and our two dogs, Pretzel and Ink. If we aren't out on a walk,
+              playing pickleball, or catching a movie, I'm probably playing
+              soccer, hanging out with friends & family, or ankle-deep in a DIY home project.
             </motion.p>
           </motion.div>
 
