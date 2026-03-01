@@ -5,7 +5,7 @@ import {
   Header,
   Skeleton,
 } from "@corbinmurray/ui-components";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 
 // Lazy load sections that are below the viewport on initial load
 const AboutSection = lazy(() => import("@/components/about-section"));
@@ -16,6 +16,29 @@ const ContactSection = lazy(() => import("@/components/contact-section"));
 
 export function App() {
   const appName = "cm";
+
+  // Handle initial hash routing for lazy-loaded components
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Use a short timeout to let Suspense boundaries resolve and paint
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 500);
+      }
+    };
+
+    // Run once on mount
+    handleHash();
+
+    // Re-run if hash changes while already on the page
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
 
   const layoutHeader = (
     <Header
