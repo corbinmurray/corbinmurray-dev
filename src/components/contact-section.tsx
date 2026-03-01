@@ -69,7 +69,7 @@ export function ContactSection({ sectionId }: ContactSectionProps) {
               className="flex flex-col sm:flex-row items-start sm:items-center gap-8 pt-4"
             >
               <motion.a
-                href="mailto:hello@example.com"
+                href="mailto:corbinmurray63@gmail.com"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors duration-200 shadow-lg shadow-blue-500/30 w-full sm:w-auto shrink-0"
