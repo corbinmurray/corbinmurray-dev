@@ -4,7 +4,18 @@ export function App() {
   const appName = "cm";
 
   // Provide the header component
-  const layoutHeader = <Header appName={appName} />;
+  const layoutHeader = (
+    <Header
+      appName={appName}
+      navigationItems={[
+        { label: "About Me", href: "#about" },
+        { label: "Skills", href: "#skills" },
+        { label: "Experience", href: "#experience" },
+        { label: "Projects", href: "#projects" },
+        { label: "Contact", href: "#contact" },
+      ]}
+    />
+  );
 
   // Provide the footer component
   const layoutFooter = <Footer />;
