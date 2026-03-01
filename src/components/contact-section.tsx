@@ -6,7 +6,7 @@ export function ContactSection({ sectionId }: ContactSectionProps) {
   return (
     <motion.section
       id={sectionId}
-      className="py-24 md:py-32 mb-20 relative overflow-hidden bg-blue-600 dark:bg-blue-900 rounded-[3rem] text-center"
+      className="relative max-w-4xl w-full py-24 md:py-32 mb-20 overflow-hidden bg-blue-600 dark:bg-blue-900 rounded-[3rem] text-center"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -16,7 +16,7 @@ export function ContactSection({ sectionId }: ContactSectionProps) {
       <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-500 dark:bg-blue-800 rounded-full blur-3xl opacity-50" />
       <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-indigo-500 dark:bg-indigo-800 rounded-full blur-3xl opacity-50" />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
           Let's Work Together
         </h2>
