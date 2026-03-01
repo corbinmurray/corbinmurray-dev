@@ -1,3 +1,4 @@
+import type { SectionProps } from "@/components/section-props";
 import { motion, type Transition, type Variants } from "motion/react";
 
 // Fixed set of subtle particles to guarantee even spread and avoid hydration issues
@@ -16,7 +17,9 @@ const backgroundParticles = [
   { top: "30%", left: "70%", size: 4, delay: 1, duration: 26 },
 ];
 
-export function HeroSection() {
+interface HeroSectionProps extends SectionProps {}
+
+export function HeroSection({ sectionId }: HeroSectionProps) {
   const springTransition: Transition = {
     type: "spring",
     stiffness: 100,
@@ -44,7 +47,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative max-w-4xl py-12 md:py-24">
+    <section id={sectionId} className="relative max-w-4xl py-12 md:py-24">
       {/* 
        Subtle Particles Base
         These tiny dots float slowly in the background space, 
