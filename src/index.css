@@ -123,9 +123,11 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply font-sans bg-background text-foreground overflow-x-hidden;
+    @apply font-sans bg-background text-foreground;
+    overflow-x: clip;
   }
   html {
-    @apply font-sans overflow-x-hidden;
+    @apply font-sans;
+    overflow-x: clip;
   }
 }
