@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# corbinmurray.dev
 
-## Getting Started
+A high-performance personal portfolio and engineering showcase built with **React 19**, **Tailwind CSS v4**, and **Motion**.
 
-First, run the development server:
+This project serves as a living document of my technical expertise and architectural philosophy. It prioritizes clean code, responsive design, and a "soft-surface" aesthetic designed for high readability.
+
+## 🚀 Tech Stack
+
+- **Framework**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (utilizing high-performance `@theme` blocks)
+- **Animations**: [Motion](https://www.framer.com/motion/) (orchestrated stagger reveals and layout transitions)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **UI Architecture**: custom component library consumed from a private GitHub Packages registry.
+- **Build Tool**: [Vite](https://vitejs.dev/)
+
+## 🛠️ Performance & Architecture
+
+- **Lazy-Loaded Sections**: Below-the-fold content is streamed via `Suspense` and `React.lazy` to maintain a sub-second "Lighthouse Perfect" initial load.
+- **Hash-Routing Resilience**: Custom React hooks handle the transition between lazy-loaded boundaries to ensure that deep links (e.g., `/#contact`) remain accurate even during network streaming.
+- **Data-Driven UI**: Sections like Projects and Experience are driven by local data arrays, making the portfolio trivially extensible without the overhead of an external CMS.
+
+## 📦 Getting Started
+
+### Prerequisites
+
+This project consumes a private UI library (`@corbinmurray/ui-components`). You will need a GitHub Personal Access Token (PAT) with `read:packages` permissions.
+
+1. Create a local `.npmrc` file:
+
+   ```bash
+   @corbinmurray:registry=https://npm.pkg.github.com/
+   ```
+
+2. Authenticate with GitHub:
+
+   ```bash
+   npm login --registry=https://npm.pkg.github.com/
+   ```
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📄 License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT © [Corbin Murray](https://github.com/corbinmurray)
