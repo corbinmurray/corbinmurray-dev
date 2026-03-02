@@ -80,7 +80,7 @@ export function ExperienceSection({ sectionId }: ExperienceSectionProps) {
       className="relative max-w-7xl mx-auto py-24 md:py-32 w-full"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px", amount: 0.2 }}
+      viewport={{ once: true, margin: "-100px", amount: 0.1 }}
     >
       <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
         <SectionHeader index="03" label="WORK_HISTORY" title="Experience" />

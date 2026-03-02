@@ -1,43 +1,35 @@
+import AboutSection from "@/components/about-section";
+import ContactSection from "@/components/contact-section";
+import ExperienceSection from "@/components/experience-section";
 import HeroSection from "@/components/hero-section";
-import {
-  AppLayout,
-  Footer,
-  Header,
-  Skeleton,
-} from "@corbinmurray/ui-components";
-import { Suspense, lazy, useEffect } from "react";
-
-// Lazy load sections that are below the viewport on initial load
-const AboutSection = lazy(() => import("@/components/about-section"));
-const SkillsSection = lazy(() => import("@/components/skills-section"));
-const ExperienceSection = lazy(() => import("@/components/experience-section"));
-const ProjectsSection = lazy(() => import("@/components/projects-section"));
-const ContactSection = lazy(() => import("@/components/contact-section"));
+import ProjectsSection from "@/components/projects-section";
+import SkillsSection from "@/components/skills-section";
+import { AppLayout, Footer, Header } from "@corbinmurray/ui-components";
+import { useEffect } from "react";
 
 export function App() {
   const appName = "cm";
 
-  // Handle initial hash routing for lazy-loaded components
+  // Handle hash routing: scroll to the target section when the hash changes
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        // Use a short timeout to let Suspense boundaries resolve and paint
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 500);
-      }
+    const scrollToHash = (hash: string) => {
+      if (!hash) return;
+      // rAF ensures the DOM has painted before we attempt to scroll
+      requestAnimationFrame(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      });
     };
 
-    // Run once on mount
-    handleHash();
+    // Scroll on initial load if a hash is already present
+    scrollToHash(window.location.hash);
 
-    // Re-run if hash changes while already on the page
-    window.addEventListener("hashchange", handleHash);
-    return () => window.removeEventListener("hashchange", handleHash);
+    // Re-run when the hash changes while on the page
+    const handleHashChange = () => scrollToHash(window.location.hash);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   const layoutHeader = (
@@ -64,14 +56,13 @@ export function App() {
       {/* Hero loads immediately */}
       <HeroSection sectionId="hero" />
 
-      {/* Subsequent sections are lazy-loaded with Suspense */}
-      <Suspense fallback={<Skeleton />}>
-        <AboutSection sectionId="about" />
-        <SkillsSection sectionId="skills" />
-        <ExperienceSection sectionId="experience" />
-        <ProjectsSection sectionId="projects" />
-        <ContactSection sectionId="contact" />
-      </Suspense>
+      {/* Remaining sections rendered eagerly so whileInView observers */}
+      {/* are set up before any hash-based scroll is attempted */}
+      <AboutSection sectionId="about" />
+      <SkillsSection sectionId="skills" />
+      <ExperienceSection sectionId="experience" />
+      <ProjectsSection sectionId="projects" />
+      <ContactSection sectionId="contact" />
     </AppLayout>
   );
 }
