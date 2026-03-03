@@ -48,16 +48,6 @@ export function ProjectsSection({ sectionId }: ProjectsSectionProps) {
       accentTo: "to-teal-500/20",
     },
     {
-      title: "zen den",
-      description:
-        "A playful, interactive digital zen garden. Users can arrange stones, draw in the sand, and create calming digital spaces directly in the browser.",
-      url: "https://zenden.corbinmurray.dev",
-      github: "https://github.com/corbinmurray/zenden",
-      tags: ["Canvas API", "React", "Interactive"],
-      accentFrom: "from-orange-500/20",
-      accentTo: "to-rose-500/20",
-    },
-    {
       title: "corbinmurray.dev",
       description:
         "The portfolio you're currently viewing. Built from the ground up to showcase my engineering process, featuring custom motion animations and a fully responsive Tailwind v4 architecture.",
