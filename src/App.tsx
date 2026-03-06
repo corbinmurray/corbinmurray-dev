@@ -8,7 +8,6 @@ import { AppLayout, Footer, Header } from "@corbinmurray/ui-components";
 import { useEffect } from "react";
 
 export function App() {
-  const appName = "cm";
 
   // Handle hash routing: scroll to the target section when the hash changes
   useEffect(() => {
@@ -34,7 +33,6 @@ export function App() {
 
   const layoutHeader = (
     <Header
-      appName={appName}
       navigationItems={[
         { label: "About Me", href: "#about" },
         { label: "Skills", href: "#skills" },
